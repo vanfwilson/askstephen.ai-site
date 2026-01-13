@@ -1,0 +1,193 @@
+🧾 AskStephen.ai Deployment Checklist
+🧠 1. Pre-Deployment Verification
+🔹 Files & Structure
+
+ Confirm all 9 core pages exist in root:
+index.html, about.html, saas.html, mastermind.html, books.html, faith.html, contact.html, privacy.html, terms.html
+
+ Verify /assets/ folder includes:
+
+ /img/white-Logo.png
+
+ /css/global.css
+
+ /js/toggleTheme.js
+
+ Ensure /head.html, /navigation.json, /robots.txt, and /sitemap.xml are in the root folder.
+
+⚙️ 2. Hosting & Domain Setup
+🌐 Domain
+
+ Primary Domain: askstephen.ai
+
+ Add SSL (HTTPS) certificate
+
+ Add www → non-www redirect for SEO consistency
+
+ Create CNAME or A record to hosting provider
+
+☁️ Hosting Options
+
+Choose one:
+
+ WordPress theme deployment
+
+ Static hosting via Netlify, Vercel, or Cloudflare
+
+ Node.js / React app (for SaaS dashboard integration)
+
+📦 Upload Checklist
+
+ Place robots.txt and sitemap.xml in root directory
+
+ Ensure /assets paths resolve correctly (/assets/...)
+
+ Check all internal links are relative (no localhost or staging URLs)
+
+🧩 3. Functionality & Integrations
+🌓 Dark Mode
+
+ Test toggle button (<button id="theme-toggle">) on all pages
+
+ Verify persistence (dark mode stays active after refresh)
+
+💳 Checkout & Forms
+
+ Link “Subscribe / Join” buttons to WooCommerce, Stripe, or Amazon placeholders
+
+ Verify mailto:info@askstephen.ai form submissions on contact.html
+
+ Add reCAPTCHA or spam filter before launch
+
+🔗 External Links
+
+ Verify all social media icons link to:
+
+ Facebook: facebook.com/groups/askstephenai
+
+ LinkedIn: linkedin.com/company/askstephenai
+
+ YouTube: youtube.com/@askstephenai
+
+ Instagram: instagram.com/askstephenai
+
+ X (Twitter): x.com/askstephenai
+
+📧 Email Configuration
+
+ Use info@askstephen.ai for form submissions and marketing
+
+ Set up DNS SPF + DKIM for deliverability
+
+ Optional: forward inquiries to secondary CRM or Gmail inbox
+
+📱 4. Responsive Design QA
+Device Testing
+Device	Checkpoints
+🖥️ Desktop	Header alignment, hero text spacing, dark toggle works
+💻 Laptop	Cards and grid layouts responsive
+📱 Mobile (iPhone, Android)	Nav collapse readability, form usability
+📲 Tablet	Buttons and CTAs stay centered, footer alignment clean
+Browser Compatibility
+
+ Chrome
+
+ Safari
+
+ Firefox
+
+ Edge
+
+⚡ 5. Performance Optimization
+
+ Compress all images (use .webp or .avif where possible)
+
+ Minify global.css and inline small JS
+
+ Enable caching or CDN (e.g., Cloudflare)
+
+ Lighthouse Performance Score ≥ 90
+
+ Total page size under 2 MB
+
+🔒 6. Privacy, Security & Legal
+
+ Confirm Privacy Policy and Terms links are visible in footer
+
+ Verify GDPR/CCPA text references are correct
+
+ Add cookie consent banner (if analytics used)
+
+ Protect forms via HTTPS only
+
+ Annual review reminder set for 2027
+
+📈 7. SEO & Analytics
+
+ Add <meta> tags from head.html to all pages
+
+ Submit sitemap.xml in Google Search Console
+
+ Add robots.txt and test crawl with “/robots.txt Tester”
+
+ Verify OG and Twitter cards via:
+
+Facebook Sharing Debugger
+
+Twitter Card Validator
+
+ Add Google Analytics / GA4 tracking tag
+
+ Check canonical URLs and schema markup
+
+🧾 8. Accessibility (A11y) Review
+
+ Alt text added to all images
+
+ Sufficient color contrast (WCAG AA compliant)
+
+ Keyboard navigation works on all interactive elements
+
+ ARIA labels used for toggle and icons
+
+ Page titles unique and descriptive
+
+💼 9. Branding & Content Consistency
+
+ Logo appears crisp on both light/dark backgrounds
+
+ Brand colors: Gold #fbbf24, Navy #1e3a8a consistent site-wide
+
+ Social icons match brand theme
+
+ CTA button text consistent (“Join Now”, “Get Started”, “Contact Us”)
+
+ No placeholder text (“Lorem ipsum”) remaining
+
+🚀 10. Launch & Post-Launch
+
+ Test full end-to-end checkout flow
+
+ Send test inquiries through contact form
+
+ Backup all site files before go-live
+
+ Announce launch on social media (Facebook, LinkedIn, YouTube)
+
+ Add your business to Google Business Profile
+
+ Monitor analytics and feedback for 14 days
+
+✅ Launch Ready
+
+When all boxes are checked, your AskStephen.ai site is ready for public release with:
+
+Fully functional dark/light theme
+
+Optimized SEO metadata
+
+Verified privacy compliance
+
+Polished, mobile-first design
+
+Clear conversion funnels

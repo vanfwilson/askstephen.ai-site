@@ -1,0 +1,164 @@
+🧭 AskStephen.ai Marketing Automation Flowchart Blueprint
+🏗️ 1. Top-Level Structure
+AskStephen.ai Website
+│
+├── SaaS Page
+│   ├─ CTA: "Get SaaS Access"
+│   └─ Leads to → CRM (Tag: SaaS-Lead)
+│
+├── Mastermind Page
+│   ├─ CTA: "Join the Mastermind"
+│   └─ Leads to → CRM (Tag: Mastermind-Interest)
+│
+├── Faith-Based Page
+│   ├─ CTA: "Join Faith-Based Mastermind"
+│   └─ Leads to → CRM (Tag: Faith-Business)
+│
+└── Contact Page
+    ├─ Form: "Request Business Review"
+    └─ Leads to → CRM (Tag: Inquiry)
+
+🤖 2. Chatbot (AskStephen.ai Guru)
+Chatbot: "Stephen AI Guru"
+│
+├── Greets user & detects intent:
+│   ├─ "Learn about SaaS" → SaaS info flow
+│   ├─ "Join Mastermind" → Mastermind flow
+│   ├─ "Faith Track" → Faith flow
+│   └─ "Book a review" → Calendly API integration
+│
+└── Sends data → CRM via webhook:
+    Fields: Name, Email, Business Size, Interest
+
+🧩 3. CRM Layer (HubSpot / ActiveCampaign / GoHighLevel)
+CRM: Contact Database
+│
+├── New Contact Created
+│   ├─ Source Tag (SaaS / Mastermind / Faith / Inquiry)
+│   ├─ Campaign ID (tracking from UTM)
+│   └─ Consent Flag (GDPR/CCPA)
+│
+├── Lead Scoring Engine
+│   ├─ +10 visit SaaS page
+│   ├─ +10 open 3+ emails
+│   ├─ +20 book strategy call
+│   └─ -10 inactive 30+ days
+│
+└── → Trigger Email Automation
+
+✉️ 4. Email Automation Flows
+[Email Automation]
+
+Flow 1: Welcome Sequence (Days 1–5)
+  → Introduce AskStephen.ai + videos + testimonials
+
+Flow 2: Conversion Sequence (Days 6–10)
+  → Offer + case studies + discount CTA
+
+Flow 3: Re-Engagement Sequence (after 30 days inactive)
+  → “We Miss You” or “Claim Your Free SWOT Analysis”
+
+All flows → CRM Tag Update → Adjust Lead Score
+
+🧠 5. Qualification & Notifications
+[CRM Workflow]
+
+If Lead Score ≥ 30
+  → Tag as SQL (Sales Qualified Lead)
+  → Notify Team (info@askstephen.ai)
+  → Assign Owner: Stephen Wright
+  → Move to Pipeline Stage: “Consult Scheduled”
+
+📅 6. Calendar & Consultation Booking
+[Calendly / TidyCal Integration]
+
+- Trigger: “Book Strategy Review”
+- Sends meeting link via email
+- Syncs with CRM:
+  - Contact tagged “Consult Scheduled”
+  - Lead Score +10
+
+💳 7. Checkout & Onboarding
+[SaaS Checkout Page]
+→ Payment (WooCommerce/Stripe)
+→ Trigger: “SaaS Subscribed”
+→ CRM Tag: SaaS-Active
+→ Email: SaaS Onboarding (Welcome + Video + Login Link)
+
+[Mastermind Checkout Page]
+→ Payment + Contract
+→ Tag: Mastermind-Active
+→ Email: Welcome + Group Invite + Calendar Link
+
+🌍 8. Data & Analytics Integration
+[Google Tag Manager]
+│
+├── Event 1: CTA Click (Join, Subscribe, Contact)
+├── Event 2: Form Submission
+├── Event 3: Chatbot Opened
+├── Event 4: Scroll Depth > 75%
+└── Event 5: Purchase / Payment Success
+
+→ Feeds into Google Analytics 4 (GA4)
+→ Reports to Dashboard: Leads, CTRs, Conversion Rate
+
+💡 9. Feedback & Continuous Optimization
+[Monthly Automation Review]
+│
+├── Check CRM Lead Sources & Close Rates
+├── Adjust Email Subject Lines (A/B Test)
+├── Update Website CTAs based on performance
+├── Add new case studies to email flows
+└── Expand chatbot knowledge base monthly
+
+🎨 Visual Flowchart Template
+
+You can recreate or import this diagram easily using one of the following tools:
+
+Tool	Import Method	Notes
+Miro	Use “Text to Diagram” and paste this flow	Supports auto connectors
+Lucidchart	Import as text outline	Auto-formats flow shapes
+Figma	Use “Mermaid Chart” or “Flowkit” plugin	Supports design styling
+Whimsical	Paste text outline	Creates connected nodes automatically
+
+If you prefer to use Mermaid syntax (for Markdown or Notion), here’s a ready-to-paste version:
+
+🪄 Mermaid Flowchart Code
+flowchart TD
+A[Website Visitor] --> B{Selects Path}
+B --> C[SaaS Page CTA → CRM Tag: SaaS-Lead]
+B --> D[Mastermind CTA → CRM Tag: Mastermind-Interest]
+B --> E[Faith Page CTA → CRM Tag: Faith-Business]
+B --> F[Contact Form → CRM Tag: Inquiry]
+
+A --> G[Chatbot → Qualify Lead]
+G --> H[CRM API Webhook → Create Contact]
+
+H --> I[CRM Lead Scoring Engine]
+I --> J{Lead Score ≥ 30?}
+J -->|Yes| K[Notify info@askstephen.ai]
+J -->|Yes| L[Assign Stephen Wright]
+J -->|No| M[Continue Email Nurture]
+
+M --> N[Welcome Sequence]
+N --> O[Conversion Sequence]
+O --> P[Re-Engagement Flow (Inactive 30d)]
+
+K --> Q[Calendly Booking → Consult Scheduled]
+Q --> R[Checkout: SaaS or Mastermind]
+R --> S[CRM Update: Active Customer]
+S --> T[Onboarding Sequence → Email + Access]
+
+T --> U[Google Analytics 4 + Dashboard]
+U --> V[Performance Review + Optimization]
+
+
+✅ Deliverables of this Blueprint
+
+Centralized automation ecosystem
+
+Clear data flow across all touchpoints
+
+Compatible with your CRM, chatbot, and SaaS app
+
+Visual system for marketing + dev teams
