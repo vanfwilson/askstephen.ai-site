@@ -5,24 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Newsletter | AskStephen.ai — AI Strategy & Leadership Insights</title>
-  <meta name="description" content="Subscribe to AskStephen.ai’s newsletter for exclusive AI strategy insights, leadership tools, and updates from Stephen Wright and Van Wilson.">
-  <meta name="keywords" content="AskStephen.ai, newsletter, Stephen Wright, Van Wilson, AI strategy, business growth, leadership insights">
+  <title>Consulting Checkout | AskStephen.ai — Executive Strategy Sessions</title>
+  <meta name="description" content="Book three 30-minute consulting sessions with Stephen Wright or Van Wilson. Custom insights, AI research, and business strategy for your company.">
   <meta name="author" content="New View Innovation Financial, LLC">
-  <link rel="canonical" href="https://www.askstephen.ai/newsletter.html">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.askstephen.ai/checkout-consult.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="AskStephen.ai | Subscribe for AI Strategy Insights">
-  <meta property="og:description" content="Get exclusive strategy insights, AI business tools, and leadership content from Stephen Wright and Van Wilson.">
+  <meta property="og:title" content="AskStephen.ai | Executive Consulting Package">
+  <meta property="og:description" content="Three 30-minute consulting sessions with Stephen Wright or Van Wilson. Get tailored strategy and AI guidance.">
   <meta property="og:image" content="https://www.askstephen.ai/assets/img/white-Logo.png">
-  <meta property="og:url" content="https://www.askstephen.ai/newsletter.html">
+  <meta property="og:url" content="https://www.askstephen.ai/checkout-consult.html">
   <meta property="og:type" content="website">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AskStephen.ai | Newsletter">
-  <meta name="twitter:description" content="Actionable business strategy and AI leadership updates — straight from Stephen & Van.">
-  <meta name="twitter:image" content="https://www.askstephen.ai/assets/img/white-Logo.png">
 
   <!-- Styles & Scripts -->
   <link rel="icon" href="assets/img/white-Logo.png" type="image/png">
@@ -30,7 +24,6 @@
   <link rel="stylesheet" href="assets/css/global.css">
   <script src="assets/js/toggleTheme.js" defer></script>
 
-  <!-- Theme Handling -->
   <script>
     if (localStorage.theme === 'dark' ||
       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -55,10 +48,9 @@
       <nav class="hidden md:flex space-x-6 text-lg">
         <a href="index.html" class="hover:text-yellow-500">Home</a>
         <a href="about.html" class="hover:text-yellow-500">About</a>
-        <a href="saas.html" class="hover:text-yellow-500">SaaS</a>
         <a href="mastermind.html" class="hover:text-yellow-500">Mastermind</a>
         <a href="faith.html" class="hover:text-yellow-500">Faith</a>
-        <a href="newsletter.html" class="text-yellow-500 font-semibold">Newsletter</a>
+        <a href="newsletter.html" class="hover:text-yellow-500">Newsletter</a>
       </nav>
 
       <!-- Dark Mode Toggle -->
@@ -69,21 +61,24 @@
     </div>
   </header>
 
-  <!-- Newsletter Hero -->
+  <!-- Hero -->
   <section class="py-24 bg-gradient-to-br from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800 text-center">
-    <div class="max-w-3xl mx-auto px-6">
-      <h1 class="text-5xl font-bold mb-6 text-gray-900 dark:text-yellow-400">Subscribe to Our Insights</h1>
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-5xl font-bold mb-6 text-gray-900 dark:text-yellow-400">
+        Executive Consulting Package
+      </h1>
       <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300">
-        Get actionable AI strategy updates, leadership insights, and exclusive offers from <strong>Stephen Wright</strong> and <strong>Van Wilson</strong>.
+        Three private 30-minute sessions with <strong>Stephen E. Wright</strong> or <strong>Van Wilson</strong>.  
+        Tailored insights and AI research for your company. Normally $475 — now just <strong>$250</strong>.
       </p>
     </div>
   </section>
 
-  <!-- Newsletter Form -->
+  <!-- Checkout Form -->
   <section class="py-20 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-lg mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-yellow-400 mb-6">Join the AskStephen.ai Network</h2>
-      <form id="newsletterForm" class="space-y-6" method="POST" action="#">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-yellow-400 mb-6">Reserve Your Consulting Sessions</h2>
+      <form id="consultForm" class="space-y-6" method="POST" action="#">
         <div>
           <label for="name" class="block text-left text-gray-700 dark:text-gray-300 font-semibold mb-2">Full Name</label>
           <input type="text" id="name" name="name" required placeholder="Your name" class="w-full px-4 py-2 rounded border dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100">
@@ -99,16 +94,32 @@
           <input type="email" id="email" name="email" required placeholder="you@company.com" class="w-full px-4 py-2 rounded border dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100">
         </div>
 
-        <button type="submit" class="btn-primary w-full">Subscribe</button>
+        <div>
+          <label for="notes" class="block text-left text-gray-700 dark:text-gray-300 font-semibold mb-2">Business Focus / Goals</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Briefly describe your business or focus area" class="w-full px-4 py-2 rounded border dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100"></textarea>
+        </div>
+
+        <!-- Price Display -->
+        <div class="text-lg text-gray-800 dark:text-gray-200 font-semibold">
+          Total: $250 (One-time payment)
+        </div>
+
+        <button type="submit" class="btn-primary w-full">Complete Payment</button>
 
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
-          By subscribing, you agree to our <a href="privacy.html" class="text-yellow-500 hover:underline">Privacy Policy</a>.
+          Payment processed securely via WooCommerce or Stripe.  
+          By proceeding, you agree to our <a href="terms.html" class="text-yellow-500 hover:underline">Terms of Service</a>.
         </p>
       </form>
 
-      <!-- Success Message (hidden by default) -->
-      <div id="successMessage" class="hidden mt-6 text-green-500 font-semibold">
-        ✅ Thank you for subscribing! Please check your inbox to confirm your subscription.
+      <!-- Success Message -->
+      <div id="successConsult" class="hidden mt-6 text-center">
+        <div class="text-green-500 font-semibold mb-4">
+          ✅ Payment received! Your consulting package is confirmed.
+        </div>
+        <a href="https://calendly.com/askstephenai/consulting-session" target="_blank" class="btn-primary">
+          Schedule Your First Session Now
+        </a>
       </div>
     </div>
   </section>
@@ -154,12 +165,13 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-  <!-- Simple form handler placeholder -->
+  <!-- Simple Payment Simulation -->
   <script>
-    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+    document.getElementById('consultForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      document.getElementById('successMessage').classList.remove('hidden');
-      // Integrate this form with Mailchimp, ActiveCampaign, or WooCommerce API endpoint here.
+      // Replace this with your WooCommerce checkout or Stripe integration
+      document.getElementById('consultForm').classList.add('hidden');
+      document.getElementById('successConsult').classList.remove('hidden');
     });
   </script>
 </body>
