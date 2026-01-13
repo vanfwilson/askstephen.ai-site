@@ -1,0 +1,123 @@
+/* ===========================
+   AskStephen.ai Global Styles
+   =========================== */
+
+/* Base Reset */
+html, body {
+  scroll-behavior: smooth;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Brand Colors */
+:root {
+  --color-gold: #fbbf24;
+  --color-dark: #111827;
+  --color-light: #f9fafb;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Paragraphs */
+p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-gold);
+  color: #fff;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #eab308;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--color-gold);
+  color: #fff;
+}
+
+/* Shadow accent */
+.shadow-gold {
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+}
+
+/* Links */
+a {
+  transition: color 0.25s ease;
+}
+a:hover {
+  color: var(--color-gold);
+}
+
+/* Tables (if needed for SaaS dashboards or pricing) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background: #f8fafc;
+  color: #111827;
+  text-align: left;
+}
+.dark th {
+  background: #1f2937;
+  color: #fbbf24;
+}
+
+/* Dark Mode Adjustments */
+.dark body {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+.dark a:hover {
+  color: var(--color-gold);
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility Focus Outline */
+:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Footer Styling */
+footer a:hover {
+  text-decoration: underline;
+  color: var(--color-gold);
+}
