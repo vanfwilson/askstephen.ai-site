@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <!-- ===== AskStephen.ai Global Head ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AskStephen.ai SaaS Checkout | AI Tools for Business Growth</title>
+  <meta name="description" content="Subscribe to AskStephen.ai SaaS — advanced AI tools and dashboards for SMB leaders to plan, analyze, and execute with precision.">
+  <meta name="author" content="New View Innovation Financial, LLC">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.askstephen.ai/checkout-saas.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AskStephen.ai SaaS | AI Tools for Strategic Growth">
+  <meta property="og:description" content="Subscribe to AskStephen.ai’s AI-powered platform. Get automated research, SWOT analysis, dashboards, and CRM integrations.">
+  <meta property="og:image" content="https://www.askstephen.ai/assets/img/white-Logo.png">
+  <meta property="og:url" content="https://www.askstephen.ai/checkout-saas.html">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="assets/img/white-Logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <script src="assets/js/toggleTheme.js" defer></script>
+
+  <script>
+    if (localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+</head>
+
+<body class="transition-colors duration-500 bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="assets/img/white-Logo.png" alt="AskStephen.ai logo" class="h-10 w-10">
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">
+          Ask<span class="text-yellow-500">Stephen.ai</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex space-x-6 text-lg">
+        <a href="index.html" class="hover:text-yellow-500">Home</a>
+        <a href="about.html" class="hover:text-yellow-500">About</a>
+        <a href="mastermind.html" class="hover:text-yellow-500">Mastermind</a>
+        <a href="faith.html" class="hover:text-yellow-500">Faith</a>
+        <a href="newsletter.html" class="hover:text-yellow-500">Newsletter</a>
+      </nav>
+
+      <!-- Dark Mode Toggle -->
+      <button id="theme-toggle" aria-label="Toggle Dark Mode"
+        class="text-gray-700 dark:text-gray-200 hover:text-yellow-500 text-2xl focus:outline-none transition">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="py-24 bg-gradient-to-br from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-5xl font-bold mb-6 text-gray-900 dark:text-yellow-400">
+        Subscribe to AskStephen.ai SaaS
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300">
+        Access AI-powered business dashboards, live SWOT insights, automation tools, and CRM/ERP integrations — all in one platform.
+      </p>
+      <p class="mt-4 text-gray-600 dark:text-gray-400">$119/month — 12-month minimum commitment.</p>
+    </div>
+  </section>
+
+  <!-- Checkout Form -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-lg mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-yellow-400 mb-6">Activate Your Subscription</h2>
+      <form id="saasForm" class="space-y-6" method="POST" action="#">
+        <div>
+          <label for="name" class="block text-left text-gray-700 dark:text-gray-300 font-semibold mb-2">Full Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" class="w-full px-4 py-2 rounded border dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100">
+        </div>
+
+        <div>
+          <label for="company" class="block text-left text-gray-700 dark:text-gray-300 font-semibold mb-2">Company</label>
+          <input type="text" id="company" name="company" placeholder="Your company name" class="w-full px-4 py-2 rounded border dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100">
+        </div>
+
+        <div>
+          <label for="email" class="block text-left text-gray-700 dark:text-gray-300 font-semibold mb-2">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="you@company.com" class="w-full px-4 py-2 rounded border dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100">
+        </div>
+
+        <div>
+          <label for="notes" class="block text-left text-gray-700 dark:text-gray-300 font-semibold mb-2">Primary Business Goal</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Briefly describe what you want to achieve with AskStephen.ai" class="w-full px-4 py-2 rounded border dark:border-gray-700 dark:bg-gray-700 dark:text-gray-100"></textarea>
+        </div>
+
+        <div class="text-lg text-gray-800 dark:text-gray-200 font-semibold">
+          $119/month — 12-month minimum ($1,428 total)
+        </div>
+
+        <button type="submit" class="btn-primary w-full">Subscribe Now</button>
+
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+          Payment processed securely via WooCommerce or Stripe.  
+          Includes platform access, updates, and support.  
+          By subscribing, you agree to our <a href="terms.html" class="text-yellow-500 hover:underline">Terms of Service</a>.
+        </p>
+      </form>
+
+      <div id="successSaaS" class="hidden mt-6 text-center">
+        <div class="text-green-500 font-semibold mb-4">
+          ✅ Subscription successful! Welcome to AskStephen.ai.
+        </div>
+        <a href="https://askstephen.ai/login" target="_blank" class="btn-primary">
+          Access Your Dashboard
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 dark:bg-black dark:text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+      <div>
+        <h3 class="text-xl font-semibold text-yellow-500 mb-3">Contact</h3>
+        <p class="text-sm">
+          4780 Ashford Dunwoody Road, Suite A 540 PMB #296<br>
+          Atlanta, GA 30338-5504<br>
+          <a href="mailto:info@askstephen.ai" class="text-yellow-400 hover:underline">info@askstephen.ai</a><br>
+          (404) 434-0179
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-yellow-500 mb-3">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+          <li><a href="about.html" class="hover:text-yellow-400">About</a></li>
+          <li><a href="privacy.html" class="hover:text-yellow-400">Privacy Policy</a></li>
+          <li><a href="terms.html" class="hover:text-yellow-400">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-yellow-500 mb-3">Connect</h3>
+        <div class="flex space-x-4 text-yellow-400 text-2xl">
+          <a href="https://facebook.com/groups/askstephenai" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://linkedin.com/company/askstephenai" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://youtube.com/@askstephenai" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://instagram.com/askstephenai" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/askstephenai" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 text-center text-sm text-gray-500">
+      © 2026 AskStephen.ai — New View Innovation Financial & 3A Automation Authority.
+    </div>
+  </footer>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Simple Payment Simulation -->
+  <script>
+    document.getElementById('saasForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Replace this with WooCommerce checkout or Stripe subscription integration
+      document.getElementById('saasForm').classList.add('hidden');
+      document.getElementById('successSaaS').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>

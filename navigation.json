@@ -1,0 +1,23 @@
+{
+  "mainNav": [
+    { "title": "Home", "path": "index.html" },
+    { "title": "About", "path": "about.html" },
+    { "title": "SaaS Platform", "path": "saas.html" },
+    { "title": "Mastermind", "path": "mastermind.html" },
+    { "title": "Books & Courses", "path": "books.html" },
+    { "title": "Faith-Based Path", "path": "faith.html" },
+    { "title": "Contact", "path": "contact.html" }
+  ],
+  "footerNav": [
+    { "title": "Privacy Policy", "path": "privacy.html" },
+    { "title": "Terms of Service", "path": "terms.html" },
+    { "title": "Contact Us", "path": "contact.html" }
+  ],
+  "socialLinks": {
+    "facebook": "https://facebook.com/groups/askstephenai",
+    "linkedin": "https://linkedin.com/company/askstephenai",
+    "youtube": "https://youtube.com/@askstephenai",
+    "instagram": "https://instagram.com/askstephenai",
+    "x": "https://x.com/askstephenai"
+  }
+}
