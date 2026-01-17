@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pick One Strategy – Clarify. Focus. Grow.</title>
+  <meta name="description" content="Transform your business with Pick One Strategy — the proven system for growth clarity, purpose, and results." />
+  <link rel="icon" href="assets/img/pickone-logo.png" type="image/png" />
+  <style>
+    /* ===============================
+       GLOBAL STYLES AND BRAND COLORS
+       =============================== */
+    :root {
+      --gold: #ffd700;
+      --dark-bg: #0a0a0a;
+      --light-bg: #ffffff;
+      --text-dark: #111;
+      --text-light: #eee;
+      --yale-blue: #0F4D92;
+      --harvard-red: #A51C30;
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--light-bg);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: 700;
+    }
+    a {
+      text-decoration: none;
+      color: var(--gold);
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--harvard-red);
+    }
+    section {
+      padding: 6rem 1.5rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: var(--gold);
+      color: #000;
+      font-weight: 700;
+      padding: 0.75rem 1.75rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background-color: var(--harvard-red);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* STAR PARTICLE ANIMATION (subtle, professional) */
+    .starfield {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 4s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    /* ======================
+       HERO SECTION (LIGHT)
+       ====================== */
+    #hero {
+      position: relative;
+      background: linear-gradient(180deg, #fff8e1 0%, #fff 100%);
+      color: var(--text-dark);
+      text-align: center;
+      overflow: hidden;
+    }
+    #hero .overlay {
+      position: relative;
+      z-index: 1;
+    }
+    #hero h1 {
+      font-size: 3rem;
+      color: var(--yale-blue);
+    }
+    #hero h2 {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .video-wrapper {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .video-wrapper img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .video-wrapper:hover img {
+      transform: scale(1.03);
+    }
+    .video-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.25rem;
+      transition: background 0.3s ease;
+    }
+    .video-overlay:hover {
+      background: rgba(0,0,0,0.6);
+    }
+    .play-button {
+      width: 70px; height: 70px;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+    .play-button::before {
+      content: "";
+      width: 0; height: 0;
+      border-left: 20px solid var(--gold);
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+    }
+    .video-wrapper.active .video-overlay {
+      display: none;
+    }
+
+    /* ==============================
+       PROBLEM SECTION (DARK)
+       ============================== */
+    #problem {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+    }
+    #problem h2 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    /* ==============================
+       SOLUTION SECTION (LIGHT)
+       ============================== */
+    #solution {
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+    }
+
+    /* ==============================
+       PROOF SECTION (DARK)
+       ============================== */
+    #proof {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+    }
+
+    /* ==============================
+       NEXT STEPS SECTION (LIGHT)
+       ============================== */
+    #next-steps {
+      background-color: var(--light-bg);
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .offer-card {
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .offer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* ==============================
+       FREE RESOURCE (DARK)
+       ============================== */
+    #free {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    /* ==============================
+       FAITH TEASER (LIGHT GOLD)
+       ============================== */
+    #faith {
+      background: linear-gradient(180deg, #fffbe6 0%, #fff 100%);
+      color: var(--text-dark);
+      text-align: center;
+    }
+
+    /* ==============================
+       FOOTER
+       ============================== */
+    footer {
+      background-color: var(--yale-blue);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ============================
+       HERO SECTION – Light Theme
+       Purpose: Emotional introduction with thumbnail-to-video player
+       ============================ -->
+  <section id="hero">
+    <div class="starfield" id="stars"></div>
+    <div class="overlay container fade-in">
+      <img src="assets/img/pickone-logo.png" alt="Pick One Strategy logo" style="height:80px; margin-bottom:1rem;">
+      <h1>Clarify Your Strategy.</h1>
+      <h2>One Decision. Endless Growth.</h2>
+
+      <!-- WordPress-style YouTube placeholder -->
+      <div class="video-wrapper" id="videoWrapper" data-video="https://www.youtube.com/watch?v=placeholder">
+        <img src="assets/img/stephen-wright-blueplaid.jpg" alt="Stephen ready to talk" />
+        <div class="video-overlay">
+          <div class="play-button"></div>
+          <p>Stephen Wright — Click to watch</p>
+        </div>
+      </div>
+
+      <p style="margin-top:2rem;">Start your journey with the <strong>Pick One Strategy Book</strong></p>
+      <a href="https://askstephen.ai/checkout/?add-to-cart=1790" class="btn">Get the Book & Workbook – $39</a>
+    </div>
+  </section>
+
+  <!-- ============================
+       PROBLEM SECTION – Dark Theme
+       Purpose: Describe business challenges before solution
+       ============================ -->
+  <section id="problem" class="fade-in">
+    <div class="container">
+      <h2>When Working Harder Stops Working</h2>
+      <p>Most business owners reach a point where growth stalls. You’re busy, your team is stretched, and yet the numbers don’t move.  
+         The old playbook isn’t working, and the stress keeps building. You start to wonder—what’s missing?</p>
+      <p>The truth is, it’s not about working harder. It’s about working with focus, guided by clarity and purpose.</p>
+    </div>
+  </section>
+
+  <!-- ============================
+       SOLUTION SECTION – Light Theme
+       Purpose: Introduce Pick One framework and book
+       ============================ -->
+  <section id="solution" class="fade-in">
+    <div class="container" style="text-align:center;">
+      <h2 style="color:var(--yale-blue);">The Pick One Framework</h2>
+      <p style="max-width:700px; margin:1rem auto;">Discover a simple, proven path to sustainable growth.  
+         Pick One helps you identify the single most important strategy that unlocks momentum in every area of your business.</p>
+      <img src="assets/img/Pick One book&workbook.png" alt="Pick One Book and Workbook" style="max-width:400px; width:100%; border-radius:8px; margin:2rem 0;">
+      <div>
+        <a href="https://askstephen.ai/checkout/?add-to-cart=1789" class="btn">Buy Book – $19</a>
+        <a href="https://askstephen.ai/checkout/?add-to-cart=1790" class="btn" style="margin-left:1rem;">Book & Workbook – $39</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       PROOF SECTION – Dark Theme
+       Purpose: Testimonials and results
+       ============================ -->
+  <section id="proof" class="fade-in">
+    <div class="container">
+      <h2>Trusted by Leaders Who Build with Purpose</h2>
+      <p>"Pick One gave us the clarity to simplify our entire operation.  
+         Our profits grew 22% in six months — without adding staff."</p>
+      <p>— CEO, Manufacturing Firm</p>
+    </div>
+  </section>
+
+  <!-- ============================
+       NEXT STEPS SECTION – Light Theme
+       Purpose: Present all offers and CTAs
+       ============================ -->
+  <section id="next-steps" class="fade-in">
+    <div class="container">
+      <h2 style="text-align:center; color:var(--harvard-red);">Choose Your Next Step</h2>
+      <div class="card-grid" style="margin-top:3rem;">
+        <div class="offer-card">
+          <h3>1. Read the Book</h3>
+          <p>Start your journey with clarity.  
+             Understand the framework that drives business success.</p>
+          <a href="https://askstephen.ai/checkout/?add-to-cart=1790" class="btn">Buy Book + Workbook – $39</a>
+        </div>
+        <div class="offer-card">
+          <h3>2. Personalized Consulting</h3>
+          <p>Three private 30-minute sessions with Stephen Wright.  
+             $475 value — now only $250.</p>
+          <a href="https://askstephen.ai/checkout/?add-to-cart=1788" class="btn">Book Sessions – $250</a>
+        </div>
+        <div class="offer-card">
+          <h3>3. Mastermind Access</h3>
+          <p>Join an exclusive community of business owners.  
+             Ongoing mentorship, AI tools, and peer support.</p>
+          <a href="https://askstephen.ai/checkout/?add-to-cart=1787" class="btn">Join Mastermind</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       FREE RESOURCE SECTION – Dark Theme
+       Purpose: Offer free lead magnet PDF and newsletter signup
+       ============================ -->
+  <section id="free" class="fade-in">
+    <div class="container">
+      <h2 style="color:var(--gold);">Get Your Free Resource</h2>
+      <p>Download the <strong>7 Questions Every Business Owner Must Answer</strong>  
+         and start transforming how you think about growth.</p>
+      <img src="assets/img/3d-7 questions every business owner must answer.png" alt="7 Questions booklet" style="max-width:250px; margin:2rem auto;">
+      <div>
+        <a href="https://askstephen.ai/7questions" class="btn">Get the Free PDF</a>
+        <a href="https://askstephen.ai/newsletter/" class="btn" style="margin-left:1rem;">Subscribe to Newsletter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       FAITH TEASER SECTION – Light Gold
+       Purpose: Connect faith and business leadership
+       ============================ -->
+  <section id="faith" class="fade-in">
+    <div class="container">
+      <h2>Faith-Based Leadership</h2>
+      <p>We believe true wisdom in business comes from faith and integrity.  
+         Biblical principles inspire the Pick One framework — guiding leaders to serve, steward, and grow with purpose.</p>
+      <a href="https://askstephen.ai/faith/" class="btn">Learn More</a>
+    </div>
+  </section>
+
+  <!-- ============================
+       FOOTER – Brand and links
+       ============================ -->
+  <footer>
+    <p>&copy; 2026 New View Innovation Financial, LLC &amp; 3A Automation Authority</p>
+    <p><a href="https://askstephen.ai/privacy/">Privacy Policy</a> | <a href="https://askstephen.ai/terms/">Terms of Use</a></p>
+    <p>Follow us: 
+      <a href="https://facebook.com/groups/askstephenai">Facebook</a> · 
+      <a href="https://linkedin.com/company/askstephenai">LinkedIn</a> · 
+      <a href="https://youtube.com/@askstephenai">YouTube</a> · 
+      <a href="https://instagram.com/askstephenai">Instagram</a> · 
+      <a href="https://x.com/askstephenai">X</a>
+    </p>
+  </footer>
+
+  <!-- ============================
+       JAVASCRIPT – Animations and Interactions
+       ============================ -->
+  <script>
+    // FADE-IN ON SCROLL
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // HERO VIDEO CLICK-TO-PLAY (WordPress-like)
+    const videoWrapper = document.getElementById('videoWrapper');
+    videoWrapper.addEventListener('click', () => {
+      const videoUrl = videoWrapper.getAttribute('data-video');
+      videoWrapper.classList.add('active');
+      videoWrapper.innerHTML = `<iframe width="100%" height="405" src="${videoUrl}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+    });
+
+    // STARFIELD CREATION (subtle twinkle)
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 30; i++) {
+      const star = document.createElement('div');
+      const size = Math.random() * 2 + 1;
+      star.classList.add('star');
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 4}s`;
+      starsContainer.appendChild(star);
+    }
+  </script>
+</body>
+</html>
