@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask Stephen Mastermind | Pick One Strategy</title>
+  <meta name="description" content="Join the Ask Stephen Mastermind. Monthly access to everything: consulting hours, new materials, weekly group calls, Q&A, and a community of business owners finding clarity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243352;
+      --navy-dark: #0f1829;
+      --gold: #c9a227;
+      --gold-light: #e8c547;
+      --gold-dark: #a68619;
+      --amber: #d4770a;
+      --cream: #faf8f3;
+      --warm-gray: #f5f3ef;
+      --white: #ffffff;
+      --text-dark: #2d3748;
+      --text-muted: #5a6578;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans Pro', -apple-system, sans-serif; line-height: 1.7; color: var(--text-dark); }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .section { padding: 80px 24px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .text-center { text-align: center; }
+    .eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 700; margin-bottom: 16px; }
+    .headline { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 24px; }
+    .btn { display: inline-block; padding: 18px 36px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; border: none; cursor: pointer; }
+    .btn--primary { color: var(--navy-dark); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%); box-shadow: 0 4px 20px rgba(201, 162, 39, 0.4); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201, 162, 39, 0.5); }
+    .btn--large { padding: 22px 48px; font-size: 1.1rem; }
+
+    .hero { background: linear-gradient(135deg, var(--navy-dark), var(--navy)); padding: 100px 24px 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at top right, rgba(201, 162, 39, 0.15), transparent 50%); }
+    .hero__content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; text-align: center; }
+    .hero__badge { display: inline-block; background: rgba(201, 162, 39, 0.2); border: 1px solid var(--gold); color: var(--gold-light); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 24px; }
+    .hero__headline { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--white); margin-bottom: 20px; }
+    .hero__headline span { color: var(--gold-light); }
+    .hero__subheadline { font-size: 1.25rem; color: rgba(255,255,255,0.85); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    .what { background: var(--cream); }
+    .what__intro { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 48px; line-height: 1.8; }
+    .what__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .what__card { background: var(--white); padding: 32px; border-radius: 12px; text-align: center; border-top: 4px solid var(--gold); box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
+    .what__card-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .what__card-title { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .what__card-desc { color: var(--text-muted); font-size: 0.95rem; }
+
+    .includes { background: var(--white); }
+    .includes__list { max-width: 700px; margin: 48px auto 0; }
+    .includes__item { display: flex; align-items: flex-start; gap: 20px; padding: 24px 0; border-bottom: 1px solid #eee; }
+    .includes__item:last-child { border-bottom: none; }
+    .includes__icon { flex-shrink: 0; width: 50px; height: 50px; background: linear-gradient(135deg, var(--gold), var(--amber)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    .includes__content { flex: 1; }
+    .includes__title { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .includes__desc { color: var(--text-muted); }
+
+    .who { background: var(--navy); }
+    .who__eyebrow { color: var(--gold-light); }
+    .who__headline { color: var(--white); }
+    .who__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
+    .who__card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 28px; border-radius: 12px; }
+    .who__card-title { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .who__card-desc { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+
+    .compare { background: var(--warm-gray); }
+    .compare__table-wrapper { overflow-x: auto; margin-top: 48px; }
+    .compare__table { width: 100%; max-width: 800px; margin: 0 auto; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .compare__table th, .compare__table td { padding: 16px 20px; text-align: left; border-bottom: 1px solid #eee; }
+    .compare__table th { background: var(--navy); color: var(--white); font-weight: 600; }
+    .compare__table th:first-child { border-radius: 12px 0 0 0; }
+    .compare__table th:last-child { border-radius: 0 12px 0 0; }
+    .compare__table td { color: var(--text-dark); }
+    .compare__table tr:last-child td { border-bottom: none; }
+    .compare__check { color: var(--gold); font-weight: 700; }
+    .compare__highlight { background: rgba(201, 162, 39, 0.1); }
+    .compare__highlight td { font-weight: 600; }
+
+    .apply { background: var(--cream); }
+    .apply__box { max-width: 600px; margin: 0 auto; background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .apply__header { background: linear-gradient(135deg, var(--gold), var(--amber)); padding: 32px; text-align: center; }
+    .apply__title { font-size: 1.5rem; font-weight: 700; color: var(--navy); }
+    .apply__subtitle { color: var(--navy); opacity: 0.8; margin-top: 4px; }
+    .apply__content { padding: 40px 32px; }
+    .apply__price { text-align: center; margin-bottom: 28px; }
+    .apply__price-amount { font-size: 3.5rem; font-weight: 700; color: var(--navy); }
+    .apply__price-per { color: var(--text-muted); }
+    .apply__includes { margin-bottom: 28px; }
+    .apply__include { display: flex; align-items: center; gap: 12px; padding: 10px 0; }
+    .apply__include-check { color: var(--gold); font-weight: 700; }
+    .apply__note { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; padding: 16px; background: var(--cream); border-radius: 8px; }
+    .apply__form { margin-top: 24px; }
+    .apply__field { margin-bottom: 16px; }
+    .apply__label { display: block; font-weight: 600; color: var(--navy); margin-bottom: 6px; font-size: 0.95rem; }
+    .apply__input, .apply__textarea, .apply__select { width: 100%; padding: 14px 16px; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; font-family: inherit; transition: border-color 0.3s; }
+    .apply__input:focus, .apply__textarea:focus, .apply__select:focus { outline: none; border-color: var(--gold); }
+    .apply__textarea { resize: vertical; min-height: 100px; }
+
+    .final { background: linear-gradient(135deg, var(--gold), var(--amber)); padding: 80px 24px; }
+    .final__headline { font-size: clamp(2rem, 5vw, 2.8rem); color: var(--navy); margin-bottom: 16px; }
+    .final__text { color: var(--navy); opacity: 0.9; font-size: 1.15rem; margin-bottom: 28px; }
+    .final__btn { background: var(--navy); color: var(--white); }
+    .final__btn:hover { background: var(--navy-light); }
+
+    .footer { background: var(--navy-dark); padding: 40px 24px; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+    .footer a { color: var(--gold-light); text-decoration: none; }
+    .footer__links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer__links a { color: rgba(255,255,255,0.6); }
+    .footer__links a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero__content">
+    <div class="hero__badge">By Application Only</div>
+    <h1 class="hero__headline">The Ask Stephen <span>Mastermind</span></h1>
+    <p class="hero__subheadline">Monthly access to everything: consulting, new materials, weekly calls, and a community of business owners finding clarity together.</p>
+    <a href="#apply" class="btn btn--primary btn--large">Apply to Join</a>
+  </div>
+</section>
+
+<section class="what section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">The Mastermind</p>
+    <h2 class="headline" style="color: var(--navy);">Your Ongoing Partner in Business Clarity</h2>
+    <p class="what__intro">The Mastermind is for business owners who want continuous support, accountability, and access to Stephen and a community of peers. It's not just a course—it's a partnership.</p>
+    <div class="what__grid">
+      <div class="what__card"><div class="what__card-icon">👥</div><h3 class="what__card-title">Community</h3><p class="what__card-desc">Connect with other business owners facing similar challenges. Learn from their wins and share your own.</p></div>
+      <div class="what__card"><div class="what__card-icon">📞</div><h3 class="what__card-title">Access</h3><p class="what__card-desc">Hours of consulting time with Stephen every month. Get personalized guidance for your specific situation.</p></div>
+      <div class="what__card"><div class="what__card-icon">📚</div><h3 class="what__card-title">Resources</h3><p class="what__card-desc">New materials, templates, and training released regularly. Stay ahead with fresh insights.</p></div>
+      <div class="what__card"><div class="what__card-icon">🎯</div><h3 class="what__card-title">Accountability</h3><p class="what__card-desc">Weekly group calls to stay on track. Report progress and get support when you're stuck.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="includes section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">What's Included</p>
+    <h2 class="headline" style="color: var(--navy);">Everything You Need, Every Month</h2>
+    <div class="includes__list">
+      <div class="includes__item"><div class="includes__icon">📚</div><div class="includes__content"><h3 class="includes__title">Complete Pick One Library</h3><p class="includes__desc">Book, workbook, course, all templates, and every resource we've ever created. Instant access to everything.</p></div></div>
+      <div class="includes__item"><div class="includes__icon">⏰</div><div class="includes__content"><h3 class="includes__title">Monthly Consulting Hours</h3><p class="includes__desc">Dedicated hours with Stephen each month for 1-on-1 or small group consulting on your specific challenges.</p></div></div>
+      <div class="includes__item"><div class="includes__icon">📅</div><div class="includes__content"><h3 class="includes__title">Weekly Group Calls</h3><p class="includes__desc">Live video calls every week for training, Q&A, hot seats, and accountability. Never feel stuck alone.</p></div></div>
+      <div class="includes__item"><div class="includes__icon">🆕</div><div class="includes__content"><h3 class="includes__title">New Materials Monthly</h3><p class="includes__desc">Fresh training, new templates, updated resources. We're always adding value for members.</p></div></div>
+      <div class="includes__item"><div class="includes__icon">💬</div><div class="includes__content"><h3 class="includes__title">Private Community</h3><p class="includes__desc">Connect with other Mastermind members. Share wins, ask questions, build relationships that last.</p></div></div>
+      <div class="includes__item"><div class="includes__icon">🏆</div><div class="includes__content"><h3 class="includes__title">Priority Access</h3><p class="includes__desc">First access to new programs, exclusive events, and opportunities only available to Mastermind members.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="who section">
+  <div class="container text-center">
+    <p class="eyebrow who__eyebrow">Is This For You?</p>
+    <h2 class="headline who__headline">The Mastermind Is For Business Owners Who...</h2>
+    <div class="who__grid">
+      <div class="who__card"><h3 class="who__card-title">Value Ongoing Support</h3><p class="who__card-desc">You know transformation isn't a one-time event. You want a partner for the long haul.</p></div>
+      <div class="who__card"><h3 class="who__card-title">Want Accountability</h3><p class="who__card-desc">You thrive with structure and support. You want someone checking in on your progress.</p></div>
+      <div class="who__card"><h3 class="who__card-title">Appreciate Community</h3><p class="who__card-desc">You know the value of learning from peers. You want to give and receive support.</p></div>
+      <div class="who__card"><h3 class="who__card-title">Are Ready to Invest</h3><p class="who__card-desc">You're committed to your business growth and willing to invest time and money consistently.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="compare section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">Compare Your Options</p>
+    <h2 class="headline" style="color: var(--navy);">Find the Right Fit</h2>
+    <div class="compare__table-wrapper">
+      <table class="compare__table">
+        <thead><tr><th>What's Included</th><th>Book ($19-39)</th><th>Course ($1,250)</th><th>Mastermind ($800/mo)</th></tr></thead>
+        <tbody>
+          <tr><td>Pick One Book &amp; Workbook</td><td><span class="compare__check">✓</span></td><td><span class="compare__check">✓</span></td><td><span class="compare__check">✓</span></td></tr>
+          <tr><td>Complete Course Access</td><td>—</td><td><span class="compare__check">✓</span></td><td><span class="compare__check">✓</span></td></tr>
+          <tr><td>Live Q&amp;A Sessions</td><td>—</td><td>Bi-weekly</td><td>Weekly</td></tr>
+          <tr><td>1-on-1 Consulting Hours</td><td>—</td><td>—</td><td><span class="compare__check">✓</span></td></tr>
+          <tr><td>New Monthly Materials</td><td>—</td><td>—</td><td><span class="compare__check">✓</span></td></tr>
+          <tr><td>Private Community Access</td><td>—</td><td>—</td><td><span class="compare__check">✓</span></td></tr>
+          <tr class="compare__highlight"><td><strong>Best For</strong></td><td>Self-starters</td><td>Teams ready to implement</td><td>Ongoing partnership</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="apply" class="apply section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">Apply Now</p>
+    <h2 class="headline" style="color: var(--navy);">Join the Ask Stephen Mastermind</h2>
+    <div class="apply__box">
+      <div class="apply__header"><p class="apply__title">Mastermind Membership</p><p class="apply__subtitle">By application only</p></div>
+      <div class="apply__content">
+        <div class="apply__price"><span class="apply__price-amount">$800</span><span class="apply__price-per">/month</span></div>
+        <div class="apply__includes">
+          <div class="apply__include"><span class="apply__include-check">✓</span><span>Complete access to everything</span></div>
+          <div class="apply__include"><span class="apply__include-check">✓</span><span>Monthly consulting hours with Stephen</span></div>
+          <div class="apply__include"><span class="apply__include-check">✓</span><span>Weekly group calls &amp; Q&A</span></div>
+          <div class="apply__include"><span class="apply__include-check">✓</span><span>New materials every month</span></div>
+          <div class="apply__include"><span class="apply__include-check">✓</span><span>Private community access</span></div>
+          <div class="apply__include"><span class="apply__include-check">✓</span><span>Cancel anytime</span></div>
+        </div>
+        <p class="apply__note">We review applications to ensure the Mastermind is a good fit. Not everyone is accepted.</p>
+        <form class="apply__form" action="https://askstephen.ai/mastermind-application" method="POST">
+          <div class="apply__field"><label class="apply__label">Your Name</label><input type="text" name="name" class="apply__input" required></div>
+          <div class="apply__field"><label class="apply__label">Email Address</label><input type="email" name="email" class="apply__input" required></div>
+          <div class="apply__field"><label class="apply__label">Company Name</label><input type="text" name="company" class="apply__input" required></div>
+          <div class="apply__field"><label class="apply__label">Industry</label><select name="industry" class="apply__select"><option value="">Select your industry</option><option value="construction">Construction / Contracting</option><option value="hvac">HVAC / Plumbing / Electrical</option><option value="manufacturing">Manufacturing</option><option value="professional-services">Professional Services</option><option value="other">Other</option></select></div>
+          <div class="apply__field"><label class="apply__label">Annual Revenue (approximate)</label><select name="revenue" class="apply__select"><option value="">Select range</option><option value="under-1m">Under $1M</option><option value="1m-5m">$1M - $5M</option><option value="5m-10m">$5M - $10M</option><option value="10m-25m">$10M - $25M</option><option value="over-25m">Over $25M</option></select></div>
+          <div class="apply__field"><label class="apply__label">Why do you want to join the Mastermind?</label><textarea name="why" class="apply__textarea" placeholder="Tell us about your goals and what you're hoping to achieve..." required></textarea></div>
+          <button type="submit" class="btn btn--primary" style="width: 100%;">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final text-center">
+  <div class="container">
+    <h2 class="headline final__headline">More Peace. More Profit.</h2>
+    <p class="final__text">All you need to do is Ask Stephen and Pick One Strategy.</p>
+    <a href="#apply" class="btn btn--large final__btn">Apply to Join the Mastermind</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__links">
+    <a href="https://askstephen.ai/shop">Book &amp; Workbook</a>
+    <a href="https://askstephen.ai/course">Pick One Course</a>
+    <a href="https://askstephen.ai/consulting">Intro Consulting</a>
+    <a href="https://askstephen.ai/privacy/">Privacy Policy</a>
+    <a href="https://askstephen.ai/terms/">Terms</a>
+    <a href="https://askstephen.ai/newsletter/">Newsletter</a>
+  </div>
+  <p>&copy; 2026 Pick One Strategy. All rights reserved. | <a href="/cdn-cgi/l/email-protection#84f7f1f4f4ebf6f0c4e5f7eff7f0e1f4ece1eaaae5ed"><span class="

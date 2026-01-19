@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You! Your Pick One Book is Ready | Pick One Strategy</title>
+  <meta name="description" content="Thank you for your purchase. Access your Pick One book and workbook here.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243352;
+      --navy-dark: #0f1829;
+      --gold: #c9a227;
+      --gold-light: #e8c547;
+      --gold-dark: #a68619;
+      --amber: #d4770a;
+      --cream: #faf8f3;
+      --warm-gray: #f5f3ef;
+      --white: #ffffff;
+      --green: #22c55e;
+      --green-light: #dcfce7;
+      --text-dark: #2d3748;
+      --text-muted: #5a6578;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Source Sans Pro', -apple-system, sans-serif; line-height: 1.7; color: var(--text-dark); background: var(--cream); }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .section { padding: 60px 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .text-center { text-align: center; }
+    .eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 700; margin-bottom: 16px; }
+    .headline { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.2; margin-bottom: 24px; }
+    .btn { display: inline-block; padding: 18px 36px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; border: none; cursor: pointer; }
+    .btn--primary { color: var(--navy-dark); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%); box-shadow: 0 4px 20px rgba(201, 162, 39, 0.4); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201, 162, 39, 0.5); }
+    .btn--secondary { color: var(--white); background: var(--navy); }
+    .btn--secondary:hover { background: var(--navy-light); }
+    .btn--large { padding: 22px 48px; font-size: 1.1rem; }
+
+    .confirm { background: var(--white); padding: 60px 24px 40px; }
+    .confirm__icon { width: 80px; height: 80px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+    .confirm__icon svg { width: 40px; height: 40px; color: var(--green); }
+    .confirm__headline { font-size: clamp(2rem, 5vw, 2.8rem); color: var(--navy); margin-bottom: 16px; }
+    .confirm__text { font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+    .access { background: var(--cream); padding: 40px 24px; }
+    .access__box { max-width: 600px; margin: 0 auto; background: var(--white); border-radius: 16px; padding: 32px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
+    .access__title { font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: 20px; text-align: center; }
+    .access__item { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #eee; flex-wrap: wrap; gap: 12px; }
+    .access__item:last-child { border-bottom: none; }
+    .access__item-info { display: flex; align-items: center; gap: 12px; }
+    .access__item-icon { font-size: 1.5rem; }
+    .access__item-name { font-weight: 600; color: var(--navy); }
+    .access__item-btn { padding: 10px 20px; font-size: 0.85rem; background: var(--navy); color: var(--white); text-decoration: none; border-radius: 4px; font-weight: 600; transition: background 0.3s; }
+    .access__item-btn:hover { background: var(--navy-light); }
+    .access__note { margin-top: 20px; padding: 16px; background: var(--cream); border-radius: 8px; font-size: 0.9rem; color: var(--text-muted); text-align: center; }
+
+    .upsell { background: var(--navy); padding: 60px 24px; }
+    .upsell__eyebrow { color: var(--gold-light); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 16px; }
+    .upsell__headline { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--white); margin-bottom: 20px; }
+    .upsell__text { font-size: 1.15rem; color: rgba(255,255,255,0.85); max-width: 650px; margin: 0 auto 32px; }
+    .upsell__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .upsell__card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 32px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
+    .upsell__card:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .upsell__card-badge { display: inline-block; background: var(--gold); color: var(--navy); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; }
+    .upsell__card-title { font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .upsell__card-desc { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 20px; }
+    .upsell__card-price { font-size: 2rem; font-weight: 700; color: var(--gold-light); margin-bottom: 20px; }
+    .upsell__card-price span { font-size: 0.9rem; font-weight: 400; color: rgba(255,255,255,0.6); }
+    .upsell__card-features { text-align: left; margin-bottom: 24px; }
+    .upsell__card-feature { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+    .upsell__card-feature-icon { color: var(--gold); flex-shrink: 0; }
+    .upsell__card-btn { display: block; width: 100%; padding: 14px 20px; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; transition: all 0.3s; }
+    .upsell__card-btn--primary { background: linear-gradient(135deg, var(--gold), var(--amber)); color: var(--navy); }
+    .upsell__card-btn--primary:hover { transform: scale(1.02); box-shadow: 0 4px 20px rgba(201, 162, 39, 0.4); }
+    .upsell__card-btn--outline { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+    .upsell__card-btn--outline:hover { background: var(--gold); color: var(--navy); }
+
+    .not-ready { background: var(--warm-gray); padding: 60px 24px; }
+    .not-ready__box { max-width: 650px; margin: 0 auto; background: var(--white); border-radius: 16px; padding: 40px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
+    .not-ready__headline { font-size: 1.6rem; color: var(--navy); margin-bottom: 16px; }
+    .not-ready__text { color: var(--text-muted); margin-bottom: 24px; line-height: 1.8; }
+    .not-ready__features { text-align: left; max-width: 450px; margin: 0 auto 24px; }
+    .not-ready__feature { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; color: var(--text-dark); font-size: 0.95rem; }
+    .not-ready__feature-icon { color: var(--gold); flex-shrink: 0; }
+    .not-ready__price { margin-bottom: 20px; }
+    .not-ready__price-old { font-size: 1.1rem; color: var(--text-muted); text-decoration: line-through; }
+    .not-ready__price-new { font-size: 2rem; font-weight: 700; color: var(--navy); }
+
+    .next-steps { background: var(--cream); padding: 60px 24px; }
+    .next-steps__title { font-size: 1.5rem; color: var(--navy); margin-bottom: 32px; }
+    .next-steps__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .next-step { text-align: center; }
+    .next-step__number { width: 50px; height: 50px; background: linear-gradient(135deg, var(--gold), var(--amber)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; color: var(--navy); margin: 0 auto 16px; }
+    .next-step__title { font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .next-step__desc { color: var(--text-muted); font-size: 0.9rem; }
+
+    .newsletter { background: var(--white); padding: 60px 24px; }
+    .newsletter__box { max-width: 550px; margin: 0 auto; text-align: center; }
+    .newsletter__title { font-size: 1.4rem; color: var(--navy); margin-bottom: 12px; }
+    .newsletter__text { color: var(--text-muted); margin-bottom: 24px; }
+    .newsletter__form { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .newsletter__input { flex: 1; min-width: 220px; padding: 14px 18px; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; }
+    .newsletter__input:focus { outline: none; border-color: var(--gold); }
+    .newsletter__btn { padding: 14px 28px; background: var(--navy); color: var(--white); border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: background 0.3s; }
+    .newsletter__btn:hover { background: var(--navy-light); }
+
+    .footer { background: var(--navy-dark); padding: 32px 24px; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+    .footer a { color: var(--gold-light); text-decoration: none; }
+    .footer__links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer__links a { color: rgba(255,255,255,0.6); }
+    .footer__links a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<section class="confirm text-center">
+  <div class="container">
+    <div class="confirm__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <h1 class="confirm__headline">Thank You! You're In.</h1>
+    <p class="confirm__text">Your Pick One book and workbook are ready. Check your email for your receipt and access details, or download directly below.</p>
+  </div>
+</section>
+
+<section class="access">
+  <div class="container">
+    <div class="access__box">
+      <h2 class="access__title">Your Downloads</h2>
+      <div class="access__item">
+        <div class="access__item-info"><span class="access__item-icon">📕</span><span class="access__item-name">Pick One Book (PDF)</span></div>
+        <a href="#download-book" class="access__item-btn">Download</a>
+      </div>
+      <div class="access__item">
+        <div class="access__item-info"><span class="access__item-icon">📝</span><span class="access__item-name">Pick One Workbook (PDF)</span></div>
+        <a href="#download-workbook" class="access__item-btn">Download</a>
+      </div>
+      <div class="access__item">
+        <div class="access__item-info"><span class="access__item-icon">🗺️</span><span class="access__item-name">Strategy Map (PDF)</span></div>
+        <a href="#download-map" class="access__item-btn">Download</a>
+      </div>
+      <p class="access__note">📧 A copy of these files has also been sent to your email.</p>
+    </div>
+  </div>
+</section>
+
+<section class="upsell text-center">
+  <div class="container">
+    <p class="upsell__eyebrow">Want Faster Results?</p>
+    <h2 class="upsell__headline">Take Your Transformation Further</h2>
+    <p class="upsell__text">The book gives you the knowledge. These options give you implementation support, accountability, and direct access to Stephen.</p>
+    <div class="upsell__grid">
+      <div class="upsell__card">
+        <div class="upsell__card-badge">Most Popular</div>
+        <h3 class="upsell__card-title">Pick One Course</h3>
+        <p class="upsell__card-desc">Complete video training with implementation tools for your whole team.</p>
+        <p class="upsell__card-price">$1,250 <span>one-time</span></p>
+        <div class="upsell__card-features">
+          <div class="upsell__card-feature"><span class="upsell__card-feature-icon">✓</span><span>5 Training Modules</span></div>
+          <div class="upsell__card-feature"><span class="upsell__card-feature-icon">✓</span><span>Bi-Weekly Live Q&A</span></div>
+          <div class="upsell__card-feature"><span class="upsell__card-feature-icon">✓</span><span>Team Implementation Tools</span></div>
+          <div class="upsell__card-feature"><span class="upsell__card-feature-icon">✓</span><span>90-Day Action Plan</span></div>
+        </div>
+        <a href="https://askstephen.ai/course" class="upsell__card-btn upsell__card-btn--primary">Learn More</a>
+      </div>
+      <div class="upsell__card">
+        <div class="upsell__card-badge">Full Access</div>
+        <h3 class="upsell__card-title">Ask Stephen Mastermind</h3>
+        <p class="upsell__card-desc">Monthly access to everything: consulting, calls, community, and new materials.</p>
+        <p class="upsell__card-price">$800 <span>/month</span></p>
+        <div class="upsell__card-features">
+          <div class="upsell__card-feature"><span class="upsell__card-feature-icon">✓</span><span>Monthly Consulting Hours</span></div>
+          <div class="upsell__card-feature"><span class="upsell__card-feature-icon">✓</span><span>Weekly Group Calls</span></div>
+          <div class="upsell__card-feature"><span class="upsell__card-feature-icon">✓</span><span>Private Community</span></div>
+          <div class="upsell__card-feature"><span class="upsell__card-feature-icon">✓</span><span>New Materials Monthly</span></div>
+        </div>
+        <a href="https://askstephen.ai/mastermind/" class="upsell__card-btn upsell__card-btn--outline">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="not-ready">
+  <div class="container">
+    <div class="not-ready__box">
+      <h2 class="not-ready__headline">Not Ready to Jump Into a Course?</h2>
+      <p class="not-ready__text">That's completely understandable. Some people want to get to know Stephen first. Start with an introductory consulting package—a chance to meet each other and find the right path for your business.</p>
+      <div class="not-ready__features">
+        <div class="not-ready__feature"><span class="not-ready__feature-icon">✓</span><span>Three 30-minute sessions (schedule at your convenience)</span></div>
+        <div class="not-ready__feature"><span class="not-ready__feature-icon">✓</span><span>Initial research report about your company</span></div>
+        <div class="not-ready__feature"><span class="not-ready__feature-icon">✓</span><span>SWOT analysis and proposed next steps</span></div>
+      </div>
+      <div class="not-ready__price"><span class="not-ready__price-old">$475 value</span><br><span class="not-ready__price-new">Only $250</span></div>
+      <a href="https://askstephen.ai/consulting" class="btn btn--secondary">Learn More About Intro Consulting</a>
+    </div>
+  </div>
+</section>
+
+<section class="next-steps text-center">
+  <div class="container">
+    <h2 class="next-steps__title">Your Next Steps</h2>
+    <div class="next-steps__grid">
+      <div class="next-step"><div class="next-step__number">1</div><h3 class="next-step__title">Download Your Materials</h3><p class="next-step__desc">Get your book, workbook, and strategy map from above.</p></div>
+      <div class="next-step"><div class="next-step__number">2</div><h3 class="next-step__title">Read the Introduction</h3><p class="next-step__desc">Start with the first chapter to understand the framework.</p></div>
+      <div class="next-step"><div class="next-step__number">3</div><h3 class="next-step__title">Complete the Workbook</h3><p class="next-step__desc">Work through the exercises to discover your ONE strategy.</p></div>
+      <div class="next-step"><div class="next-step__number">4</div><h3 class="next-step__title">Take Action</h3><p class="next-step__desc">Implement what you learn. Remember: Pick One.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter__box">
+      <h2 class="newsletter__title">Stay Connected</h2>
+      <p class="newsletter__text">Get weekly insights on business clarity, strategy tips, and exclusive content.</p>
+      <form class="newsletter__form" action="https://askstephen.ai/newsletter/" method="POST">
+        <input type="email" name="email" placeholder="Your email address" class="newsletter__input" required>
+        <button type="submit" class="newsletter__btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__links">
+    <a href="https://askstephen.ai/shop">Book &amp; Workbook</a>
+    <a href="https://askstephen.ai/course">Course</a>
+    <a href="https://askstephen.ai/consulting">Intro Consulting</a>
+    <a href="https://askstephen.ai/mastermind/">Mastermind</a>
+    <a href="https://askstephen.ai/privacy/">Privacy</a>
+    <a href="https://askstephen.ai/terms/">Terms</a>
+  </div>
+  <p>Questions? Email <a href="/cdn-cgi/l/email-protection#11626461617e63655170627a6265746179747f3f7078"><span class="__cf_email__" data-cfemail="30434540405f42447051435b4344554058555e1e5159">[email&#160;p
