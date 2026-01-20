@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pick One Strategy - Never worry about your next business move. Ever.</title>
+  <title>Pick One Strategy - Find Clarity in Your Business</title>
   <meta name="description" content="When you focus on one strategy, you'll always know what to do in your business and why. Find your best fit of 4 Proven Strategies.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -401,8 +401,21 @@
     }
     .transform__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    @media (max-width: 480px) {
+      .transform__grid {
+        gap: 12px;
+      }
+      .transform__card {
+        padding: 20px 16px;
+      }
+      .transform__card-icon { font-size: 2rem; margin-bottom: 10px; }
+      .transform__card-title { font-size: 1.1rem; }
+      .transform__card-desc { font-size: 0.9rem; }
     }
     .transform__card {
       background: var(--white);
@@ -707,7 +720,7 @@
 
 <!-- ===== TOP BAR (5amclub style - dark gold with white text) ===== -->
 <div class="top-bar">
-  <p class="top-bar__text">PICK ONE Strategy — Never worry about what to do again.</p>
+  <p class="top-bar__text">PICK ONE Strategy — Never worry about your next move. Ever.</p>
 </div>
 <div style="background: var(--cream-gold); padding: 6px 24px 2px; text-align: center;">
   <p style="font-size: 1.5rem; font-weight: 700; margin: 0;"><span style="color: var(--navy);">More Peace.</span> <span style="color: var(--gold-dark);">More Profit.</span></p>
@@ -730,18 +743,21 @@
     
     <p class="video-hero__author">Stephen E. Wright — Business Management Coach, Lecturer, Fractional CEO</p>
     
-    <p class="video-hero__cta-text">All you need to do is Ask Stephen and Pick One Strategy.</p>
+    <div style="max-width: 700px; margin: 32px auto;">
+      <img src="images/Pick_One_big_promo_the_course___tools_system.png" alt="Pick One: 4 Proven Strategies, Real AI Insights, Unmatched Growth Tools" style="width: 100%; border-radius: 12px;">
+    </div>
     
-    <div class="video-hero__promo">
-      <img src="images/pick_one_promo.png" alt="Pick One Strategy">
+    <div class="video-hero__tagline" style="margin-bottom: 24px;">
+      <span class="video-hero__tagline-small">4 Proven Strategies: Focus on Your Best Path</span>
+      <p class="video-hero__tagline-main"><span class="peace">More Peace.</span> <span class="profit">More Profit.</span></p>
     </div>
     
     <a href="#get-the-book" class="btn btn--primary btn--large">Get the PICK ONE Book & Workbook</a>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 12px;">Also available: Live Course & Mastermind</p>
     
-    <div class="video-hero__tagline">
-      <span class="video-hero__tagline-small">4 Proven Strategies to Pick One from<br>to Gain</span>
-      <p class="video-hero__tagline-main"><span class="peace">More Peace.</span> <span class="profit">More Profit.</span></p>
-    </div>
+    <p style="font-size: 1rem; color: var(--navy); margin-top: 32px; margin-bottom: 16px;">or if you want more info first?</p>
+    <a href="https://askstephen.ai/intro-sessions" class="btn btn--secondary">Get 3 Intro Sessions with Stephen</a>
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">No Obligation, No Hard Sales Pitch. Your Custom Business Report.</p>
   </div>
 </section>
 
@@ -791,9 +807,9 @@
       </div>
       <div class="empathy__content">
         <p class="eyebrow empathy__eyebrow">A Note From Stephen</p>
-        <h2 class="headline empathy__headline">We've Been There</h2>
-        <p class="empathy__text">We have felt that way.</p>
-        <p class="empathy__discovery">Stephen discovered the 4 Proven Strategies to choose the best one for you. This has helped hundreds of businesses like yours.</p>
+        <h2 class="headline empathy__headline">Stephen spent decades as a CEO and coach</h2>
+        <p class="empathy__text">feeling the same strain, until he found what really works.</p>
+        <p class="empathy__discovery">What he discovered changed everything: when you Pick One Strategy, and focus on it, you always know what to do in your business—and why. Everything else falls into place naturally. Business grows with peace and more profitability.</p>
       </div>
     </div>
   </div>
@@ -803,12 +819,12 @@
 <section style="background: var(--white); padding: 60px 24px;">
   <div class="container">
     <p class="eyebrow" style="text-align: center; color: var(--gold-dark);">What People Are Saying</p>
-    <h2 class="headline" style="text-align: center; color: var(--navy); margin-bottom: 40px;">Real Results From Real Business Owners</h2>
+    <h2 class="headline" style="text-align: center; color: var(--navy); margin-bottom: 40px;"><span style="display: inline-block; text-align: left;">Real Results From<br>Real Business Owners</span></h2>
     
     <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
       <!-- Testimonial 1 - Ryan -->
       <div style="background: var(--cream); border-radius: 12px; padding: 28px 24px; max-width: 320px; flex: 1; min-width: 280px;">
-        <p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); margin-bottom: 12px;">3X Growth, 4 Years</p>
+        <p style="font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); margin-bottom: 12px;">3X Growth, 4 Years</p>
         <p style="font-size: 1.1rem; color: var(--text-dark); font-style: italic; margin-bottom: 20px; line-height: 1.6;">"In 4 years, our company has more than tripled in size."</p>
         <div style="display: flex; align-items: center; gap: 12px;">
           <div style="width: 48px; height: 48px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 1.2rem;">R</div>
@@ -850,13 +866,15 @@
 <section class="solution section">
   <div class="container text-center">
     <p class="eyebrow" style="color: var(--gold-dark);">The Solution</p>
-    <h2 class="headline" style="color: var(--navy);">All you need is<br>Ask Stephen and Pick One Strategy.</h2>
     
-    <div style="max-width: 700px; margin: 40px auto;">
-      <img src="images/chaos_clarity_cash.png" alt="Chaos → Clarity → Cash" style="width: 100%; border-radius: 12px;">
+    <p style="font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 600; margin-bottom: 32px;"><span style="font-size: 0.85em;">All you need is</span> <span style="font-weight: 700;"><span style="color: var(--navy);">Ask</span> <span style="color: var(--gold-dark);">Stephen</span></span> <span style="font-size: 0.85em;">and</span> <span style="font-weight: 800; background: linear-gradient(135deg, var(--gold-bright), var(--gold), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 0.02em;">PICK ONE</span> <span style="font-size: 0.85em; font-weight: 600;">Strategy.</span></p>
+    
+    <div style="max-width: 700px; margin: 0 auto 32px;">
+      <img src="images/pick_one_chaos_2_clarity_2_cash.png" alt="Pick One: Chaos to Clarity to Cash" style="width: 100%; border-radius: 12px;">
     </div>
     
-    <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto;">Pick One Strategy is the single focus that turns confusion into clarity. That makes everything else fall into place. This brings Peace of Mind.</p>
+    <p style="font-size: 1rem; font-weight: 400; color: var(--text-dark); margin-bottom: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">With one clear strategy, confusion disappears, direction appears,<br>and decisions get simple again.</p>
+    <p style="font-size: 1.1rem; font-weight: 600; color: var(--gold-dark);">This brings Peace.</p>
   </div>
 </section>
 
@@ -866,6 +884,17 @@
     <p class="eyebrow" style="color: var(--gold-light);">The Transformation</p>
     <h2 class="headline" style="color: var(--white);">What Changes When You Pick One</h2>
     <p class="transform__intro" style="color: rgba(255,255,255,0.85);">You will discover your best strategy, which will make clear what to do in each situation. That makes it easy to spot metrics to watch, systems to put in place, and how to train for excellence.</p>
+    
+    <div style="text-align: left; max-width: 500px; margin: 0 auto 40px;">
+      <p style="font-weight: 700; color: var(--gold-light); font-size: 1.1rem; margin-bottom: 12px;">The Transformation comes with Benefits:</p>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Know what to fix and what to ignore</li>
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Align your team</li>
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Build systems that work</li>
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Find key Metrics, adjust, and track your growth</li>
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Easily turn chaos into clarity, and clarity into cash</li>
+      </ul>
+    </div>
     
     <div class="transform__grid">
       <div class="transform__card" style="background: var(--navy-light);">
@@ -902,7 +931,7 @@
       <div class="end-result__content">
         <p class="eyebrow end-result__eyebrow" style="color: var(--gold-dark);">The End Result</p>
         <h2 class="end-result__promise" style="color: var(--navy);">More Peace.<br><span style="background: linear-gradient(135deg, var(--gold), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">More Profit.</span></h2>
-        <p class="end-result__dont-worry" style="color: var(--gold-dark);">Never worry about what to do again.</p>
+        <p class="end-result__dont-worry" style="color: var(--gold-dark);">Never Worry about Your Next Move. Ever.</p>
         
         <div class="end-result__options" style="background: var(--cream);">
           <div class="end-result__option" style="border-color: rgba(0,0,0,0.1);">
