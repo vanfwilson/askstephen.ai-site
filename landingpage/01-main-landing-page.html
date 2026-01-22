@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pick One Strategy - Find Clarity in Your Business</title>
+  <meta name="description" content="When you focus on one strategy, you'll always know what to do in your business and why. Find your best fit of 4 Proven Strategies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243352;
+      --navy-dark: #0f1829;
+      --gold: #c9a227;
+      --gold-light: #e8c547;
+      --gold-bright: #ffd700;
+      --gold-dark: #a68619;
+      --amber: #d4770a;
+      --cream: #faf8f3;
+      --cream-gold: #fff9e6;
+      --warm-gray: #f5f3ef;
+      --white: #ffffff;
+      --text-dark: #2d3748;
+      --text-muted: #5a6578;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .section { padding: 80px 24px; }
+    @media (max-width: 768px) { .section { padding: 60px 16px; } }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .text-center { text-align: center; }
+    .eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .headline {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 18px 36px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn--primary {
+      color: var(--navy-dark);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+      box-shadow: 0 4px 20px rgba(201, 162, 39, 0.4);
+    }
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 162, 39, 0.5);
+    }
+    .btn--secondary {
+      color: var(--white);
+      background: var(--navy);
+      box-shadow: 0 4px 15px rgba(26, 39, 68, 0.3);
+    }
+    .btn--secondary:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+    }
+    .btn--large { padding: 22px 48px; font-size: 1.1rem; }
+
+    /* ===== TOP BAR (5amclub style) ===== */
+    .top-bar {
+      background: var(--gold-dark);
+      padding: 12px 24px;
+      text-align: center;
+    }
+    .top-bar__text {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 600px) {
+      .top-bar__text { font-size: 0.9rem; }
+    }
+
+    /* ===== VIDEO HERO (5amclub style - light gold bg, bright gold frame) ===== */
+    .video-hero {
+      background: linear-gradient(135deg, var(--cream-gold) 0%, #fff5d6 50%, var(--cream-gold) 100%);
+      padding: 30px 24px 70px;
+      text-align: center;
+    }
+    .video-hero__headline {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 40px;
+      line-height: 1.25;
+    }
+    .video-hero__headline em {
+      font-style: normal;
+      color: var(--gold-dark);
+    }
+    .video-hero__wrapper {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto 24px;
+      padding: 8px;
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold), var(--amber));
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(201, 162, 39, 0.3);
+    }
+    .video-hero__inner {
+      background: var(--navy-dark);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .video-hero__embed {
+      aspect-ratio: 16/9;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-hero__placeholder {
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+    }
+    .video-hero__author {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .video-hero__cta-text {
+      font-size: 1.25rem;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .video-hero__tagline {
+      margin-bottom: 16px;
+    }
+    .video-hero__tagline-small {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .video-hero__tagline-main {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+    }
+    .video-hero__tagline-main .peace {
+      color: var(--navy);
+    }
+    .video-hero__tagline-main .profit {
+      color: var(--gold-dark);
+    }
+    .video-hero__promo {
+      max-width: 800px;
+      margin: 0 auto 32px;
+    }
+    .video-hero__promo img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+    }
+
+    /* ===== SECTION 1: PROBLEM ===== */
+    .problem {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 40%, var(--navy-light) 100%);
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .problem::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .problem__content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .problem__question {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 48px;
+    }
+    .problem__pains {
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+    .problem__pain {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      text-align: left;
+    }
+    .problem__pain-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: rgba(201, 162, 39, 0.2);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+    .problem__transition {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.8);
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+    .problem__truth {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      padding: 36px 40px;
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.2), rgba(201, 162, 39, 0.08));
+      border-left: 5px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+    }
+    .problem__truth-text {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 0;
+    }
+    .problem__diagnosis {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
+    }
+
+    /* ===== SECTION 2: EMPATHY ===== */
+    .empathy { background: var(--warm-gray); }
+    .empathy__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .empathy__grid { grid-template-columns: 280px 1fr; gap: 64px; }
+    }
+    .empathy__photo { text-align: center; }
+    .empathy__photo-img {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      margin: 0 auto 16px;
+      display: block;
+    }
+    .empathy__photo-name {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+    .empathy__photo-title {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    @media (max-width: 767px) {
+      .empathy__content { text-align: center; }
+    }
+    .empathy__content { text-align: left; }
+    .empathy__eyebrow { color: var(--gold-dark); }
+    .empathy__headline { color: var(--navy); font-size: clamp(1.8rem, 4vw, 2.5rem); }
+    .empathy__text {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .empathy__discovery {
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+    .empathy__cta {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* ===== SECTION 3: SOLUTION ===== */
+    .solution { background: var(--white); }
+    .solution__intro {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 16px;
+    }
+    .solution__cta-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 48px;
+    }
+    .solution__flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin: 48px 0;
+    }
+    @media (min-width: 700px) {
+      .solution__flow { flex-direction: row; justify-content: center; gap: 32px; }
+    }
+    .solution__step { text-align: center; }
+    .solution__icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      margin: 0 auto 16px;
+      background: var(--cream);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .solution__step:hover .solution__icon {
+      transform: scale(1.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    .solution__step--highlight .solution__icon {
+      background: linear-gradient(135deg, var(--gold), var(--amber));
+      box-shadow: 0 8px 30px rgba(201, 162, 39, 0.4);
+    }
+    .solution__step-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .solution__step-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .solution__arrow {
+      font-size: 2.5rem;
+      color: var(--gold);
+      transform: rotate(90deg);
+    }
+    @media (min-width: 700px) {
+      .solution__arrow { transform: none; }
+    }
+
+    /* ===== SECTION 4: TRANSFORMATION ===== */
+    .transform { background: var(--cream); }
+    .transform__intro {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      max-width: 800px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+    }
+    .transform__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    @media (max-width: 480px) {
+      .transform__grid {
+        gap: 12px;
+      }
+      .transform__card {
+        padding: 20px 16px;
+      }
+      .transform__card-icon { font-size: 2rem; margin-bottom: 10px; }
+      .transform__card-title { font-size: 1.1rem; }
+      .transform__card-desc { font-size: 0.9rem; }
+    }
+    .transform__card {
+      background: var(--white);
+      padding: 32px 28px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+    .transform__card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    .transform__card-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .transform__card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .transform__card-desc { color: var(--text-muted); font-size: 1rem; }
+
+    /* ===== SECTION 5: END RESULT + BOOK CTA ===== */
+    .end-result { background: var(--navy); }
+    .end-result__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .end-result__grid { grid-template-columns: 1fr 1.2fr; gap: 64px; }
+    }
+    .end-result__image {
+      position: relative;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+    .end-result__image img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .end-result__image:hover img { transform: scale(1.03) rotate(-1deg); }
+    .end-result__content { text-align: left; }
+    @media (max-width: 767px) { .end-result__content { text-align: center; } }
+    .end-result__eyebrow { color: var(--gold-light); }
+    .end-result__promise {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .end-result__promise span {
+      display: block;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .end-result__subtitle {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 8px;
+    }
+    .end-result__dont-worry {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 32px;
+    }
+    .end-result__options {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .end-result__option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .end-result__option:last-child { border-bottom: none; }
+    .end-result__option-name { color: rgba(255,255,255,0.85); }
+    .end-result__option-price { font-weight: 700; color: var(--gold); font-size: 1.2rem; }
+    .end-result__cta-group { display: flex; flex-direction: column; gap: 12px; }
+    .end-result__cta-primary {
+      display: block;
+      padding: 20px 32px;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--navy);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
+      border-radius: 4px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .end-result__cta-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 40px rgba(201, 162, 39, 0.5);
+    }
+    .end-result__cta-secondary {
+      display: block;
+      padding: 16px 32px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--gold);
+      background: transparent;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .end-result__cta-secondary:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+    .end-result__guarantee {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+      padding: 16px;
+      background: rgba(201, 162, 39, 0.1);
+      border-radius: 8px;
+    }
+    .end-result__guarantee-icon { font-size: 2rem; }
+    .end-result__guarantee-text {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .end-result__guarantee-text strong { color: var(--gold-light); }
+
+    /* ===== LEAD CAPTURE ===== */
+    .lead-capture { background: var(--white); }
+    .lead-capture__box {
+      max-width: 750px;
+      margin: 0 auto;
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 48px 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    }
+    @media (max-width: 600px) { .lead-capture__box { padding: 32px 24px; } }
+    .lead-capture__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (min-width: 550px) {
+      .lead-capture__grid { grid-template-columns: 140px 1fr; }
+    }
+    .lead-capture__image {
+      width: 140px;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      margin: 0 auto;
+    }
+    .lead-capture__content { text-align: left; }
+    @media (max-width: 549px) { .lead-capture__content { text-align: center; } }
+    .lead-capture__title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .lead-capture__subtitle {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+    .lead-capture__form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 549px) { .lead-capture__form { justify-content: center; } }
+    .lead-capture__input {
+      flex: 1;
+      min-width: 200px;
+      padding: 14px 18px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    .lead-capture__input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .lead-capture__submit {
+      padding: 14px 28px;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .lead-capture__submit:hover { background: var(--navy-light); }
+    .lead-capture__privacy {
+      font-size: 0.75rem;
+      color: #999;
+      margin-top: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--navy-dark);
+      padding: 60px 24px 30px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+    .footer__container { max-width: 1100px; margin: 0 auto; }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    @media (min-width: 768px) {
+      .footer__grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+    }
+    .footer__brand { max-width: 280px; }
+    .footer__logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer__tagline {
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .footer__col-title {
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    .footer__links { list-style: none; }
+    .footer__links li { margin-bottom: 10px; }
+    .footer__links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer__links a:hover { color: var(--gold); }
+    .footer__newsletter-text {
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+    }
+    .footer__newsletter-form {
+      display: flex;
+      gap: 8px;
+    }
+    .footer__newsletter-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+    .footer__newsletter-input::placeholder { color: rgba(255,255,255,0.4); }
+    .footer__newsletter-btn {
+      padding: 10px 16px;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .footer__newsletter-btn:hover { background: var(--gold-light); }
+    .footer__bottom {
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .footer__bottom { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+    .footer__bottom a { color: var(--gold-light); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- ===== TOP BAR (5amclub style - dark gold with white text) ===== -->
+<div class="top-bar">
+  <p class="top-bar__text">PICK ONE Strategy — Never worry about your next move. Ever.</p>
+</div>
+<div style="background: var(--cream-gold); padding: 6px 24px 2px; text-align: center;">
+  <p style="font-size: 1.5rem; font-weight: 700; margin: 0;"><span style="color: var(--navy);">More Peace.</span> <span style="color: var(--gold-dark);">More Profit.</span></p>
+</div>
+
+<!-- ===== VIDEO HERO (5amclub style - light gold bg, bright gold frame) ===== -->
+<section class="video-hero">
+  <div class="container">
+    <p class="video-hero__eyebrow" style="color: var(--gold-dark); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; margin-bottom: 12px;">4 Proven Strategies: Focus on Your Best Path</p>
+    <h1 class="video-hero__headline">When you find your one best strategy,<br>you'll always know what to do in your business and why.</h1>
+    
+    <div class="video-hero__wrapper">
+      <div class="video-hero__inner">
+        <div class="video-hero__embed">
+          <!-- Replace with actual YouTube/Vimeo embed -->
+          <p class="video-hero__placeholder">Video embed goes here</p>
+        </div>
+      </div>
+    </div>
+    
+    <p class="video-hero__author">Stephen E. Wright — Business Management Coach, Lecturer, Fractional CEO</p>
+    
+    <div style="max-width: 700px; margin: 32px auto;">
+      <img src="images/Pick_One_big_promo_the_course___tools_system.png" alt="Pick One: 4 Proven Strategies, Real AI Insights, Unmatched Growth Tools" style="width: 100%; border-radius: 12px;">
+    </div>
+    
+    <div class="video-hero__tagline" style="margin-bottom: 24px;">
+      <span class="video-hero__tagline-small">4 Proven Strategies: Focus on Your Best Path</span>
+      <p class="video-hero__tagline-main"><span class="peace">More Peace.</span> <span class="profit">More Profit.</span></p>
+    </div>
+    
+    <a href="#get-the-book" class="btn btn--primary btn--large">Get the PICK ONE Book & Workbook</a>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 12px;">Also available: Live Course & Mastermind</p>
+    
+    <p style="font-size: 1rem; color: var(--navy); margin-top: 32px; margin-bottom: 16px;">or if you want more info first?</p>
+    <a href="https://askstephen.ai/intro-sessions" class="btn btn--secondary">Get 3 Intro Sessions with Stephen</a>
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">No Obligation, No Hard Sales Pitch. Your Custom Business Report.</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 1: PROBLEM ===== -->
+<section class="problem">
+  <div class="problem__content">
+    <p class="eyebrow" style="color: var(--gold-light);">The Problem</p>
+    <h2 class="problem__question">In your business, do you ever stay up late, frustrated or worried about what to do next?</h2>
+    
+    <div class="problem__pains">
+      <div class="problem__pain">
+        <span class="problem__pain-icon">→</span>
+        <span>You're booked out, working harder, but the profits seem to elude you.</span>
+      </div>
+      <div class="problem__pain">
+        <span class="problem__pain-icon">→</span>
+        <span>Your people say you're growing but it feels like you're drowning.</span>
+      </div>
+      <div class="problem__pain">
+        <span class="problem__pain-icon">→</span>
+        <span>If you're anything like us, you've tried everything. It feels like Duct Tape.</span>
+      </div>
+      <div class="problem__pain">
+        <span class="problem__pain-icon">→</span>
+        <span>We understand... You're given pain meds when you asked for a cure.</span>
+      </div>
+    </div>
+    
+    <p class="problem__transition">We've learned these are the symptoms of a deeper cause.</p>
+    
+    <div class="problem__truth">
+      <p class="problem__truth-text">In any business, the biggest competitor is confusion.</p>
+    </div>
+    
+    <p class="problem__diagnosis">Your business isn't broken. It's just unclear.<br>Simply put, no clarity. No direction.</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: EMPATHY ===== -->
+<section class="empathy section">
+  <div class="container">
+    <div class="empathy__grid">
+      <div class="empathy__photo">
+        <img src="images/stephenwrightblue.jpg" alt="Stephen E. Wright" class="empathy__photo-img">
+        <p class="empathy__photo-name">Stephen E. Wright</p>
+        <p class="empathy__photo-title">Business Management Coach,<br>Lecturer, Fractional CEO</p>
+      </div>
+      <div class="empathy__content">
+        <p class="eyebrow empathy__eyebrow">A Note From Stephen</p>
+        <h2 class="headline empathy__headline">Stephen spent decades as a CEO and coach</h2>
+        <p class="empathy__text">feeling the same strain, until he found what really works.</p>
+        <p class="empathy__discovery">What he discovered changed everything: when you Pick One Strategy, and focus on it, you always know what to do in your business—and why. Everything else falls into place naturally. Business grows with peace and more profitability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section style="background: var(--white); padding: 60px 24px;">
+  <div class="container">
+    <p class="eyebrow" style="text-align: center; color: var(--gold-dark);">What People Are Saying</p>
+    <h2 class="headline" style="text-align: center; color: var(--navy); margin-bottom: 40px;"><span style="display: inline-block; text-align: left;">Real Results From<br>Real Business Owners</span></h2>
+    
+    <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+      <!-- Testimonial 1 - Ryan -->
+      <div style="background: var(--cream); border-radius: 12px; padding: 28px 24px; max-width: 320px; flex: 1; min-width: 280px;">
+        <p style="font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); margin-bottom: 12px;">3X Growth, 4 Years</p>
+        <p style="font-size: 1.1rem; color: var(--text-dark); font-style: italic; margin-bottom: 20px; line-height: 1.6;">"In 4 years, our company has more than tripled in size."</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 1.2rem;">R</div>
+          <div>
+            <p style="font-weight: 700; color: var(--navy); margin: 0;">Ryan</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">COO</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Testimonial 2 - Jorge -->
+      <div style="background: var(--cream); border-radius: 12px; padding: 28px 24px; max-width: 320px; flex: 1; min-width: 280px;">
+        <p style="font-size: 1.1rem; color: var(--text-dark); font-style: italic; margin-bottom: 20px; line-height: 1.6;">"Stephen has led the way for the improved path my company is on."</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 1.2rem;">J</div>
+          <div>
+            <p style="font-weight: 700; color: var(--navy); margin: 0;">Jorge</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Business Owner</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Testimonial 3 - John -->
+      <div style="background: var(--cream); border-radius: 12px; padding: 28px 24px; max-width: 320px; flex: 1; min-width: 280px;">
+        <p style="font-size: 1.1rem; color: var(--text-dark); font-style: italic; margin-bottom: 20px; line-height: 1.6;">"The most impactful and memorable training throughout my career."</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 1.2rem;">J</div>
+          <div>
+            <p style="font-weight: 700; color: var(--navy); margin: 0;">John</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Senior Executive</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: SOLUTION ===== -->
+<section class="solution section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">The Solution</p>
+    
+    <p style="font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 600; margin-bottom: 32px;"><span style="font-size: 0.85em;">All you need is</span> <span style="font-weight: 700;"><span style="color: var(--navy);">Ask</span> <span style="color: var(--gold-dark);">Stephen</span></span> <span style="font-size: 0.85em;">and</span> <span style="font-weight: 800; background: linear-gradient(135deg, var(--gold-bright), var(--gold), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 0.02em;">PICK ONE</span> <span style="font-size: 0.85em; font-weight: 600;">Strategy.</span></p>
+    
+    <div style="max-width: 700px; margin: 0 auto 32px;">
+      <img src="images/pick_one_chaos_2_clarity_2_cash.png" alt="Pick One: Chaos to Clarity to Cash" style="width: 100%; border-radius: 12px;">
+    </div>
+    
+    <p style="font-size: 1rem; font-weight: 400; color: var(--text-dark); margin-bottom: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">With one clear strategy, confusion disappears, direction appears,<br>and decisions get simple again.</p>
+    <p style="font-size: 1.1rem; font-weight: 600; color: var(--gold-dark);">This brings Peace.</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: TRANSFORMATION ===== -->
+<section class="transform section" style="background: var(--navy);">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-light);">The Transformation</p>
+    <h2 class="headline" style="color: var(--white);">What Changes When You Pick One</h2>
+    <p class="transform__intro" style="color: rgba(255,255,255,0.85);">You will discover your best strategy, which will make clear what to do in each situation. That makes it easy to spot metrics to watch, systems to put in place, and how to train for excellence.</p>
+    
+    <div style="text-align: left; max-width: 500px; margin: 0 auto 40px;">
+      <p style="font-weight: 700; color: var(--gold-light); font-size: 1.1rem; margin-bottom: 12px;">The Transformation comes with Benefits:</p>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Know what to fix and what to ignore</li>
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Align your team</li>
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Build systems that work</li>
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Find key Metrics, adjust, and track your growth</li>
+        <li style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 8px; padding-left: 24px; position: relative;"><span style="position: absolute; left: 0; color: var(--gold-light);">✓</span> Easily turn chaos into clarity, and clarity into cash</li>
+      </ul>
+    </div>
+    
+    <div class="transform__grid">
+      <div class="transform__card" style="background: var(--navy-light);">
+        <div class="transform__card-icon">🎯</div>
+        <h3 class="transform__card-title" style="color: var(--white);">Clarity</h3>
+        <p class="transform__card-desc" style="color: rgba(255,255,255,0.8);">Know what matters and act on it.</p>
+      </div>
+      <div class="transform__card" style="background: var(--navy-light);">
+        <div class="transform__card-icon">💪</div>
+        <h3 class="transform__card-title" style="color: var(--white);">Confidence</h3>
+        <p class="transform__card-desc" style="color: rgba(255,255,255,0.8);">What to do, what to ignore, and how to lead.</p>
+      </div>
+      <div class="transform__card" style="background: var(--navy-light);">
+        <div class="transform__card-icon">⚙️</div>
+        <h3 class="transform__card-title" style="color: var(--white);">Systems</h3>
+        <p class="transform__card-desc" style="color: rgba(255,255,255,0.8);">Metrics, systems, training—all finally make sense.</p>
+      </div>
+      <div class="transform__card" style="background: var(--navy-light);">
+        <div class="transform__card-icon">☮️</div>
+        <h3 class="transform__card-title" style="color: var(--white);">Peace</h3>
+        <p class="transform__card-desc" style="color: rgba(255,255,255,0.8);">Run your business with peace and purpose.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: END RESULT + BOOK CTA ===== -->
+<section id="get-the-book" class="end-result section" style="background: var(--white);">
+  <div class="container">
+    <div class="end-result__grid">
+      <div class="end-result__image">
+        <img src="images/pick_one_book_cover.png" alt="Pick One: 4 Proven Strategies - Never worry about what to do in your business again">
+      </div>
+      <div class="end-result__content">
+        <p class="eyebrow end-result__eyebrow" style="color: var(--gold-dark);">The End Result</p>
+        <h2 class="end-result__promise" style="color: var(--navy);">More Peace.<br><span style="background: linear-gradient(135deg, var(--gold), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">More Profit.</span></h2>
+        <p class="end-result__dont-worry" style="color: var(--gold-dark);">Never Worry about Your Next Move. Ever.</p>
+        
+        <div class="end-result__options" style="background: var(--cream);">
+          <div class="end-result__option" style="border-color: rgba(0,0,0,0.1);">
+            <span class="end-result__option-name" style="color: var(--text-dark);">Pick One Book (Digital)</span>
+            <span class="end-result__option-price" style="color: var(--gold-dark);">$19</span>
+          </div>
+          <div class="end-result__option" style="border-color: rgba(0,0,0,0.1);">
+            <span class="end-result__option-name" style="color: var(--text-dark);">Book + Workbook Package</span>
+            <span class="end-result__option-price" style="color: var(--gold-dark);">$39</span>
+          </div>
+        </div>
+        
+        <div class="end-result__cta-group">
+          <a href="https://askstephen.ai/checkout/book-workbook" class="end-result__cta-primary">
+            Get the Book + Workbook Package — $39
+          </a>
+          <a href="https://askstephen.ai/checkout/book" class="end-result__cta-secondary" style="color: var(--navy); border-color: var(--navy);">
+            Just the Book — $19
+          </a>
+        </div>
+        
+        </div>
+    </div>
+    
+    <!-- Also Available Section -->
+    <div style="margin-top: 32px; padding-top: 28px; border-top: 1px solid #e0e0e0;">
+      <p style="text-align: center; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-dark); font-weight: 700; margin-bottom: 12px;">Also Available</p>
+      <h3 style="text-align: center; font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 28px;">Ready to Go Deeper?</h3>
+      
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <!-- Course Card -->
+        <a href="02-course-sales-page.html" style="text-decoration: none; display: flex; flex-direction: column; width: 180px; background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #e8e8e8;">
+          <div style="height: 100px; background: var(--cream); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="images/course_materials.jpg" alt="Pick One Course" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 14px 12px; flex-grow: 1; display: flex; flex-direction: column;">
+            <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); font-weight: 700; margin-bottom: 4px;">Most Popular</p>
+            <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; color: var(--navy); margin-bottom: 6px; line-height: 1.2;">The Pick One Course</h4>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 12px; flex-grow: 1; line-height: 1.4;">Includes Book & Workbook plus complete video training for your team.</p>
+          </div>
+          <div style="background: var(--navy); padding: 10px 12px; text-align: center;">
+            <p style="font-weight: 700; color: var(--white); font-size: 1rem; margin: 0;">$1,250</p>
+          </div>
+        </a>
+        
+        <!-- Consulting Card -->
+        <a href="03-intro-consulting-page.html" style="text-decoration: none; display: flex; flex-direction: column; width: 180px; background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #e8e8e8;">
+          <div style="height: 100px; background: var(--cream); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="images/stephenwrightblue.jpg" alt="Consulting with Stephen" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 14px 12px; flex-grow: 1; display: flex; flex-direction: column;">
+            <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); font-weight: 700; margin-bottom: 4px;">Special Price</p>
+            <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; color: var(--navy); margin-bottom: 6px; line-height: 1.2;">3 Consulting Sessions</h4>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 12px; flex-grow: 1; line-height: 1.4;">Three 30-min sessions with Stephen.</p>
+          </div>
+          <div style="background: var(--navy); padding: 10px 12px; text-align: center;">
+            <p style="font-weight: 700; color: var(--white); font-size: 1rem; margin: 0;">$250</p>
+          </div>
+        </a>
+        
+        <!-- Mastermind Card -->
+        <a href="04-mastermind-application-page.html" style="text-decoration: none; display: flex; flex-direction: column; width: 180px; background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #e8e8e8;">
+          <div style="height: 100px; background: var(--cream); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="images/finalaskstephenailogo.png" alt="The Mastermind" style="width: 80%; height: auto; object-fit: contain;">
+          </div>
+          <div style="padding: 14px 12px; flex-grow: 1; display: flex; flex-direction: column;">
+            <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); font-weight: 700; margin-bottom: 4px;">Full Access</p>
+            <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; color: var(--navy); margin-bottom: 6px; line-height: 1.2;">The Mastermind</h4>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 12px; flex-grow: 1; line-height: 1.4;">Includes Book, Workbook & Course. Weekly live calls, private community, monthly consulting, Q&A with experts.</p>
+          </div>
+          <div style="background: var(--navy); padding: 10px 12px; text-align: center;">
+            <p style="font-weight: 700; color: var(--white); font-size: 1rem; margin: 0;">$800<span style="font-size: 0.7rem; font-weight: 400;">/mo</span></p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEAD CAPTURE ===== -->
+<section class="lead-capture section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 32px;">
+      <p class="eyebrow" style="color: var(--gold-dark);">Not Ready Yet?</p>
+      <h2 class="headline" style="color: var(--navy);">Get Our Free Guide</h2>
+    </div>
+    <div class="lead-capture__box">
+      <div class="lead-capture__grid">
+        <img src="images/The_7_Questions.jpg" alt="7 Questions Every Business Owner Must Answer" class="lead-capture__image">
+        <div class="lead-capture__content">
+          <h3 class="lead-capture__title">7 Questions Every Business Owner Must Answer</h3>
+          <p class="lead-capture__subtitle">Start finding clarity in your business today with this free guide.</p>
+          <form class="lead-capture__form" action="https://askstephen.ai/newsletter/" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" class="lead-capture__input" required>
+            <button type="submit" class="lead-capture__submit">Send My Free Guide</button>
+          </form>
+          <p class="lead-capture__privacy">We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <p class="footer__logo">Pick One Strategy</p>
+        <p class="footer__tagline">More Peace. More Profit.</p>
+        <p>All you need to do is Ask Stephen and Pick One Strategy.</p>
+      </div>
+      
+      <div>
+        <p class="footer__col-title">Products</p>
+        <ul class="footer__links">
+          <li><a href="https://askstephen.ai/shop">Book &amp; Workbook</a></li>
+          <li><a href="https://askstephen.ai/course">Pick One Course</a></li>
+          <li><a href="https://askstephen.ai/consulting">Intro Consulting</a></li>
+          <li><a href="https://askstephen.ai/mastermind/">Mastermind</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <p class="footer__col-title">Legal</p>
+        <ul class="footer__links">
+          <li><a href="https://askstephen.ai/privacy/">Privacy Policy</a></li>
+          <li><a href="https://askstephen.ai/terms/">Terms &amp; Conditions</a></li>
+          <li><a href="https://askstephen.ai/refund">Refund Policy</a></li>
+          <li><a href="https://askstephen.ai/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <p class="footer__col-title">Stay Connected</p>
+        <p class="footer__newsletter-text">Get weekly insights on business clarity.</p>
+        <form class="footer__newsletter-form" action="https://askstephen.ai/newsletter/" method="POST">
+          <input type="email" name="email" placeholder="Your email" class="footer__newsletter-input" required>
+          <button type="submit" class="footer__newsletter-btn">Join</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="footer__bottom">
+      <p>&copy; 2026 Pick One Strategy. All rights reserved.</p>
+      <p>Questions? Email <a href="/cdn-cgi/l/email-protection#24575154544b56506445574f575041544c414a0a454d"><span class="__cf_email__" data-c

@@ -1,0 +1,4 @@
+### Sales Playbook Notes
+- Mention *PN* in the first or second response when relevant.
+- For pricing, use exact prices only if listed in files; otherwise describe pricing tiers.
+- If the visitor is ready to buy, offer to connect via *SAPN* or log an enquiry at *CFURL*.

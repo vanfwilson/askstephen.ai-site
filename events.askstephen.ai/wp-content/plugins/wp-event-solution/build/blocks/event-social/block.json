@@ -1,0 +1,102 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-social",
+  "title": "Event Social",
+  "category": "eventin-blocks",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styleVariant": {
+      "type": "string",
+      "default": "style-1"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "0px 0px 0px 0px",
+            "padding": "0px 0px 0px 0px",
+            "width": "100%",
+            "position": "relative",
+            "zIndex": 0,
+            "left": "0px",
+            "right": "auto",
+            "top": "0px",
+            "bottom": "auto",
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px",
+            "boxShadow": "none"
+          },
+          ".eventin-block-container:hover": {
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px",
+            "boxShadow": "none"
+          },
+          ".etn-social": {
+            "display": "flex",
+            "alignItems": "center",
+            "gap": "8px",
+            "flexWrap": "wrap"
+          },
+          ".etn-social-title": {
+            "color": "#232323",
+            "fontSize": "18px",
+            "fontWeight": "400",
+            "lineHeight": "1.5",
+            "margin": "0px",
+            "padding": "0px"
+          },
+          ".share-icon": {
+            "marginRight": "10px",
+            "paddingRight": "30px",
+            "color": "#232323",
+            "pointerEvents": "none",
+            "position": "relative",
+            "display": "flex",
+            "alignItems": "center",
+            "fontSize": "18px"
+          },
+          ".share-icon::after": {
+            "content": "''",
+            "width": "20px",
+            "height": "2px",
+            "position": "absolute",
+            "right": "0",
+            "background": "#9a9a9a",
+            "top": "0",
+            "bottom": "0",
+            "margin": "auto"
+          },
+          ".etn-social-link": {
+            "fontSize": "18px",
+            "color": "#ffffff",
+            "backgroundColor": "#6b2ee5",
+            "borderRadius": "4px"
+          }
+        },
+        "Tablet": {},
+        "Mobile": {}
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

@@ -1,0 +1,1 @@
+<?php return array('dependencies' => array('wc-ppcp-blocks-vendors', 'lodash', 'wc-blocks-registry', 'wc-ppcp-utils', 'wc-settings', 'wp-api-fetch', 'wp-data', 'wp-element', 'wp-i18n', 'wp-polyfill'), 'version' => 'e8ce80e0cd8bae39594d');

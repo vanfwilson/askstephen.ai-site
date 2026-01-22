@@ -1,0 +1,4 @@
+### Service Notes
+- Mention today’s *PN* when guests ask about specials; include *PNLURL* if useful.
+- If unsure about allergens or cross-contamination, advise calling *SUPN*.
+- For groups >8, route to *CFURL* with name, phone, date/time, party size, and any dietary needs.

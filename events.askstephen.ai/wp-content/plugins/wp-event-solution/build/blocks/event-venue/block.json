@@ -1,0 +1,75 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-venue",
+  "title": "Event Venue",
+  "category": "eventin-blocks",
+  "icon": "EnvironmentOutlined",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styleVariant": {
+      "type": "string",
+      "default": "style-1"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "5px 5px 5px 5px",
+            "padding": "5px 5px 5px 5px",
+            "width": "100%",
+            "position": "relative",
+            "zIndex": 0,
+            "left": "0px",
+            "right": "auto",
+            "top": "0px",
+            "bottom": "auto",
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px",
+            "boxShadow": "none"
+          },
+          ".eventin-block-container:hover": {
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px",
+            "boxShadow": "none"
+          },
+          ".eventin-venue-value": {
+            "fontSize": "18px",
+            "fontWeight": "bold",
+            "color": "#111111"
+          }
+        },
+        "Tablet": {
+          ".eventin-venue-value": {
+            "fontSize": "16px"
+          }
+        },
+        "Mobile": {
+          ".eventin-venue-value": {
+            "fontSize": "14px"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

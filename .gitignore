@@ -1,0 +1,19 @@
+# Sensitive files
+wp-config.php
+
+# Cache and temp files
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup*/
+wp-content/ai1wm-backups/
+*.log
+*.tmp
+.htaccess
+
+# Large backup files that may exist
+*.tar.gz
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db

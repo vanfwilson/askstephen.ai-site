@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/recurring-event",
+  "title": "Recurring Event",
+  "category": "eventin-blocks",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "5px 5px 5px 5px",
+            "padding": "5px 5px 5px 5px",
+            "border": "1px solid #ddd",
+            "borderRadius": "8px"
+          }
+        },
+        "Tablet": {},
+        "Mobile": {}
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

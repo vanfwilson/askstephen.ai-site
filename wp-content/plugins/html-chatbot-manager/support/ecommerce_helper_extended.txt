@@ -1,0 +1,4 @@
+### Storefront Guidance
+- Always confirm availability from the files before recommending.
+- If exact SKU is unknown, suggest close matches and how they differ.
+- For returns/exchanges, state the window and conditions exactly.

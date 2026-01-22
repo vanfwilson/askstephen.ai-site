@@ -1,0 +1,54 @@
+/**
+ * SF Pro Font Family
+ * 
+ * This file contains @font-face declarations for SF Pro font family.
+ * SF Pro is Apple's system font, available on macOS and iOS devices.
+ * For other platforms, we use the self-hosted font files.
+ * 
+ * The font-family declaration includes system font fallbacks for optimal performance
+ * on Apple devices while providing self-hosted fonts for other platforms.
+ */
+
+@font-face {
+	font-family: 'SF Pro';
+	src: local('SF Pro'),
+		 local('-apple-system'),
+		 local('BlinkMacSystemFont'),
+		 url('../fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SF Pro';
+	src: local('SF Pro'),
+		 local('-apple-system'),
+		 local('BlinkMacSystemFont'),
+		 url('../fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SF Pro';
+	src: local('SF Pro'),
+		 local('-apple-system'),
+		 local('BlinkMacSystemFont'),
+		 url('../fonts/SF-Pro-Text-Semibold.otf') format('opentype');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'SF Pro';
+	src: local('SF Pro'),
+		 local('-apple-system'),
+		 local('BlinkMacSystemFont'),
+		 url('../fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sitemap | AskStephen.ai</title>
+  <meta name="description" content="Explore all pages and resources available on AskStephen.ai — AI tools, mastermind programs, consulting, and faith-based leadership." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Sitemap | AskStephen.ai" />
+  <meta property="og:description" content="Quickly navigate all AskStephen.ai pages, resources, and offers in one place." />
+  <meta property="og:image" content="https://www.askstephen.ai/assets/img/white-Logo.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/img/white-Logo.png" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <script src="assets/js/toggleTheme.js" defer></script>
+</head>
+
+<body class="transition-colors duration-500 bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="assets/img/white-Logo.png" alt="AskStephen.ai logo" class="h-10 w-10" />
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">Ask<span class="text-yellow-500">Stephen.ai</span></span>
+      </a>
+      <nav class="hidden md:flex space-x-6 text-lg">
+        <a href="index.html" class="hover:text-yellow-500">Home</a>
+        <a href="saas.html" class="hover:text-yellow-500">SaaS</a>
+        <a href="books.html" class="hover:text-yellow-500">Books</a>
+        <a href="mastermind.html" class="hover:text-yellow-500">Mastermind</a>
+        <a href="faith.html" class="hover:text-yellow-500">Faith</a>
+        <a href="contact.html" class="hover:text-yellow-500">Contact</a>
+        <a href="sitemap.html" class="text-yellow-500 font-semibold">Sitemap</a>
+      </nav>
+      <button id="theme-toggle" aria-label="Toggle Dark Mode" class="text-gray-700 dark:text-gray-200 hover:text-yellow-500 text-2xl focus:outline-none transition">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="py-20 bg-gradient-to-br from-yellow-50 to-white dark:from-gray-900 dark:to-gray-800 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-5xl font-bold text-gray-900 dark:text-yellow-400 mb-6">Sitemap</h1>
+      <p class="text-lg text-gray-700 dark:text-gray-300">
+        A complete overview of every page and resource available on AskStephen.ai.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sitemap Content -->
+  <main class="max-w-6xl mx-auto px-6 py-20 text-gray-700 dark:text-gray-300">
+    <div class="grid md:grid-cols-3 gap-12">
+
+      <!-- Column 1 -->
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-yellow-400 mb-4">Main Pages</h2>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-yellow-500">Home</a></li>
+          <li><a href="about.html" class="hover:text-yellow-500">About</a></li>
+          <li><a href="contact.html" class="hover:text-yellow-500">Contact</a></li>
+          <li><a href="newsletter.html" class="hover:text-yellow-500">Newsletter</a></li>
+          <li><a href="thank-you.html" class="hover:text-yellow-500">Thank You</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2 -->
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-yellow-400 mb-4">Products & Programs</h2>
+        <ul class="space-y-2">
+          <li><a href="books.html" class="hover:text-yellow-500">Pick One Strategy Book</a></li>
+          <li><a href="books.html#workbook" class="hover:text-yellow-500">Workbook & Bundle</a></li>
+          <li><a href="saas.html" class="hover:text-yellow-500">AskStephen.ai SaaS Platform</a></li>
+          <li><a href="mastermind.html" class="hover:text-yellow-500">Mastermind Membership</a></li>
+          <li><a href="consulting.html" class="hover:text-yellow-500">Consulting Sessions</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-yellow-400 mb-4">Resources & Legal</h2>
+        <ul class="space-y-2">
+          <li><a href="faith.html" class="hover:text-yellow-500">Faith-Based Business</a></li>
+          <li><a href="privacy.html" class="hover:text-yellow-500">Privacy Policy</a></li>
+          <li><a href="terms.html" class="hover:text-yellow-500">Terms of Use</a></li>
+          <li><a href="sitemap.html" class="hover:text-yellow-500">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 text-center text-gray-600 dark:text-gray-400 text-sm">
+      If you have trouble finding a page or need assistance, please contact  
+      <a href="mailto:info@askstephen.ai" class="text-yellow-500 hover:underline">info@askstephen.ai</a>.
+    </div>
+  </main>
+
+  <!-- Footer Include -->
+  <?php include 'footer.html'; ?>
+
+</body>
+</html>

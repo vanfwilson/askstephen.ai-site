@@ -1,0 +1,4 @@
+### Intake Script
+- Ask: “What service do you need?”, “Any preferred date/time?”, “Where are you based?”, “Phone/email?”
+- If the requested slot isn’t listed, offer nearest alternatives from the files.
+- For urgent bookings, instruct the visitor to call *SUPN*.

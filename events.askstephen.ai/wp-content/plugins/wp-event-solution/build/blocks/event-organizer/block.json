@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-organizer",
+  "title": "Event Organizer",
+  "category": "eventin-blocks",
+  "icon": "EnvironmentOutlined",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "styleVariant": {
+      "type": "string",
+      "default": "style-1"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "0px 0px 0px 0px",
+            "padding": "0px 0px 0px 0px",
+            "width": "100%",
+            "position": "relative",
+            "zIndex": 0,
+            "left": "0px",
+            "right": "auto",
+            "top": "0px",
+            "bottom": "auto",
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px",
+            "boxShadow": "none"
+          },
+          ".eventin-block-container:hover": {},
+          ".etn-organaizer-item .etn-organizer-name": {
+            "fontSize": "16px",
+            "fontWeight": "700",
+            "color": "#0b243f",
+            "lineHeight": 1.2
+          },
+          ".etn-organaizer-item .etn-organizer-email": {
+            "fontSize": "14px",
+            "color": "#6d7d8c",
+            "lineHeight": 1.2
+          },
+          ".etn-organaizer-item .etn-organizer-logo": {
+            "width": "50px",
+            "height": "50px"
+          },
+          ".etn-organaizer-item .etn-social .etn-icon": {
+            "fontSize": "12px"
+          }
+        },
+        "Tablet": {},
+        "Mobile": {}
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

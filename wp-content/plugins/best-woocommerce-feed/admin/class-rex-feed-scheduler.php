@@ -1,0 +1,708 @@
+<?php
+/**
+ * Class Rex_Feed_Scheduler
+ *
+ * @link       https://rextheme.com
+ * @since      1.0.0
+ *
+ * @package    /admin/
+ * @author     RexTheme <info@rextheme.com>
+ */
+
+/**
+ *
+ * This class is responsible for all the background process functionalities
+ *
+ * @author     RexTheme <info@rextheme.com>
+ */
+class Rex_Feed_Scheduler {
+
+    /**
+     * Constructor - attach hooks to detect pro plugin activation/installation
+     * and ensure custom scheduler is registered when pro becomes active.
+     * @since 7.4.55
+     */
+    public function __construct() {
+        // When any plugin is activated, check if it's the pro plugin and register schedulers
+        add_action( 'activated_plugin', [ $this, 'on_plugin_activated' ], 10, 2 );
+
+        // When plugins are installed/updated via the updater, catch plugin installs
+        add_action( 'upgrader_process_complete', [ $this, 'on_upgrader_process_complete' ], 10, 2 );
+
+        // On init, try to register the custom scheduler if pro is active but scheduler not present yet
+        add_action( 'init', [ $this, 'maybe_register_custom_scheduler' ] );
+    }
+
+    /**
+     * Fired when any plugin is activated. If the pro plugin was activated, (re-)register schedulers.
+     *
+     * @param string $plugin Plugin file path being activated (eg. "plugin-folder/plugin-file.php").
+     * @param bool $network_wide Whether the plugin is activated network wide.
+     * @return void
+     * @since 7.4.55
+     */
+    public function on_plugin_activated( $plugin, $network_wide ) {
+        // Adjust this check to match your pro plugin's main file path if different.
+        $pro_plugin_basename = 'best-woocommerce-feed-pro/best-woocommerce-feed-pro.php';
+
+        if ( isset( $plugin ) && $plugin === $pro_plugin_basename ) {
+            // Pro plugin activated — ensure custom scheduler is registered
+            $this->maybe_register_custom_scheduler();
+        }
+    }
+
+    /**
+     * Fired after an upgrader action completes. Used to detect plugin installs via the WP upgrader.
+     *
+     * @param WP_Upgrader $upgrader_object Upgrader instance.
+     * @param array $options Array of bulk item update data.
+     * @return void
+     * @since 7.4.55
+     */
+    public function on_upgrader_process_complete( $upgrader_object, $options ) {
+        if ( empty( $options ) || ! is_array( $options ) ) {
+            return;
+        }
+
+        // Check installed plugins list (available for bulk installs)
+        if ( ! empty( $options['plugins'] ) && is_array( $options['plugins'] ) ) {
+            $pro_plugin_basename = 'best-woocommerce-feed-pro/best-woocommerce-feed-pro.php';
+            if ( in_array( $pro_plugin_basename, $options['plugins'], true ) ) {
+                $this->maybe_register_custom_scheduler();
+            }
+        }
+    }
+
+    /**
+     * Register the custom recurring Action Scheduler job only when the pro plugin is active
+     * and the job is not already scheduled. This avoids relying solely on free plugin activation.
+     *
+     * @return void
+     * @since 7.4.55
+     */
+    public function maybe_register_custom_scheduler() {
+        if ( ! function_exists( 'as_has_scheduled_action' ) || ! function_exists( 'as_schedule_recurring_action' ) ) {
+            return;
+        }
+
+        // Only register custom schedule if pro features are active (filter) or pro plugin exists
+        if ( ! apply_filters( 'wpfm_is_premium_activate', false ) ) {
+            return;
+        }
+
+        $custom_schedule = as_has_scheduled_action( CUSTOM_SCHEDULE_HOOK, null, 'wpfm' );
+        if ( ! $custom_schedule ) {
+            $now = new DateTime( 'now', wp_timezone() );
+            $now->modify( '+1 hour' );
+            $now->setTime( (int) $now->format( 'H' ), 0, 0 );
+            $next_full_hour = $now->getTimestamp();
+
+            as_schedule_recurring_action(
+                $next_full_hour,
+                /**
+                 * Apply a filter to set the interval for the custom cron job in seconds.
+                 *
+                 * @param int $interval The interval in seconds for the custom cron job.
+                 * @return int The modified interval in seconds.
+                 */
+                apply_filters( 'rexfeed_custom_cron_interval', 3600 ),
+                CUSTOM_SCHEDULE_HOOK,
+                [],
+                'wpfm'
+            );
+        }
+    }
+
+    /**
+     * Deregister previous cron schedules with core WP_CRON
+     *
+     * @return void
+     * @since 7.3.0
+     */
+    private function deregister_wp_cron_schedules() {
+        if( wp_next_scheduled( 'rex_feed_schedule_update' ) || wp_next_scheduled( 'rex_feed_daily_update' ) ||  wp_next_scheduled( 'rex_feed_weekly_update' ) ||  wp_next_scheduled( 'rex_feed_custom_update' )) {
+            $this->remove_processing_feeds_queue();
+            wp_clear_scheduled_hook( 'rex_feed_schedule_update' );
+            wp_clear_scheduled_hook( 'rex_feed_daily_update' );
+            wp_clear_scheduled_hook( 'rex_feed_weekly_update' );
+            wp_clear_scheduled_hook( 'rex_feed_custom_update' );
+        }
+    }
+
+    /**
+     * Remove the processing feeds queue [after installing action scheduler version]
+     * that was generated with wp-cron and update feed status as `completed`
+     *
+     * @return void
+     * @since 7.3.0
+     */
+    private function remove_processing_feeds_queue() {
+        global $wpdb;
+
+        delete_option( 'rex_wpfm_feed_queue' );
+
+        try {
+            $wpdb->delete(
+                $wpdb->postmeta,
+                [ 'meta_key' => 'rex_feed_status' ],
+            );
+
+            $wpdb->update(
+                $wpdb->postmeta,
+                [ 'meta_value' => 'completed' ],
+                [ 'meta_key' => '_rex_feed_status' ],
+            );
+
+            $find_key_1 = $wpdb->esc_like( 'wp_rex_product_feed_background_process_batch_' ) . '%';
+            $find_key_2 = '%' . $wpdb->esc_like( 'wp_rex_product_feed_background_process_cron' ) . '%';
+
+            $wpdb->query(
+                $wpdb->prepare(
+                    'DELETE FROM %1s WHERE `option_name` LIKE %s OR `option_name` LIKE %s;',
+                    $wpdb->options,
+                    $find_key_1,
+                    $find_key_2
+                )
+            );
+        }
+        catch( Exception $e ) {
+            if( is_wpfm_logging_enabled() ) {
+                $log = wc_get_logger();
+                $log->warning( print_r( $e->getMessage(), 1 ), array( 'source' => 'WPFM_BACKGROUND_PROCESS_ERROR' ) );
+            }
+        }
+    }
+
+    /**
+     * Register cron schedules for background feed processing
+     *
+     * @return void
+     * @since 7.3.0
+     */
+    public function register_background_schedulers() {
+        $this->deregister_wp_cron_schedules();
+
+        if( function_exists( 'as_has_scheduled_action' ) && function_exists( 'as_schedule_recurring_action' ) ) {
+            $hourly_schedule = as_has_scheduled_action( HOURLY_SCHEDULE_HOOK, null, 'wpfm' );
+            if( !$hourly_schedule ) {
+                as_schedule_recurring_action(
+					time(),
+	                /**
+	                 * Apply a filter to set the interval for the hourly cron job in seconds.
+	                 *
+	                 * @param int $interval The interval in seconds for the hourly cron job.
+	                 * @return int The modified interval in seconds.
+	                 */
+					apply_filters( 'rexfeed_hourly_cron_interval', 3600 ),
+					HOURLY_SCHEDULE_HOOK, [], 'wpfm'
+                );
+            }
+
+            $daily_schedule = as_has_scheduled_action( DAILY_SCHEDULE_HOOK, null, 'wpfm' );
+            if( !$daily_schedule ) {
+                as_schedule_recurring_action(
+					time(),
+	                /**
+	                 * Apply a filter to set the interval for the daily cron job in seconds.
+	                 *
+	                 * @param int $interval The interval in seconds for the daily cron job.
+	                 * @return int The modified interval in seconds.
+	                 */
+	                apply_filters( 'rexfeed_daily_cron_interval', 24 * 3600 ),
+					DAILY_SCHEDULE_HOOK, [], 'wpfm'
+                );
+            }
+
+            $weekly_schedule = as_has_scheduled_action( WEEKLY_SCHEDULE_HOOK, null, 'wpfm' );
+            if( !$weekly_schedule ) {
+                as_schedule_recurring_action(
+					time(),
+	                /**
+	                 * Apply a filter to set the interval for the weekly cron job in seconds.
+	                 *
+	                 * @param int $interval The interval in seconds for the weekly cron job.
+	                 * @return int The modified interval in seconds.
+	                 */
+	                apply_filters( 'rexfeed_weekly_cron_interval', 7 * 24 * 3600 ),
+					WEEKLY_SCHEDULE_HOOK, [], 'wpfm'
+                );
+            }
+        }
+    }
+
+    /**
+     * Callback function to Hourly Cron Schedule Hook
+     *
+     * @return void
+     * @since 7.3.0
+     */
+    public function hourly_cron_handler() {
+        $feed_ids = $this->get_feeds( 'hourly' );
+
+        if( !is_wp_error( $feed_ids ) && is_array( $feed_ids ) && !empty( $feed_ids ) ) {
+            $this->schedule_merchant_single_batch_object( $feed_ids );
+        }
+    }
+
+    /**
+     * Callback function to Daily Cron Schedule Hook
+     *
+     * @return void
+     * @since 7.3.0
+     */
+    public function daily_cron_handler() {
+        $feed_ids = $this->get_feeds( 'daily' );
+
+        if( !is_wp_error( $feed_ids ) && is_array( $feed_ids ) && !empty( $feed_ids ) ) {
+            $this->schedule_merchant_single_batch_object( $feed_ids );
+        }
+    }
+
+    /**
+     * Callback function to Weekly Cron Schedule Hook
+     *
+     * @return void
+     * @since 7.3.0
+     */
+    public function weekly_cron_handler() {
+        $feed_ids = $this->get_feeds( 'weekly' );
+
+        if( !is_wp_error( $feed_ids ) && is_array( $feed_ids ) && !empty( $feed_ids ) ) {
+            $this->schedule_merchant_single_batch_object( $feed_ids );
+        }
+    }
+
+    /**
+     * Callback function to Custom Cron Schedule Hook
+     *
+     * @return void
+     * @since 7.4.41
+     */
+    public function custom_cron_handler() {
+        $feed_ids = $this->get_feeds( 'custom' );
+        if( !is_wp_error( $feed_ids ) && is_array( $feed_ids ) && !empty( $feed_ids ) ) {
+            $this->schedule_merchant_single_batch_object( $feed_ids );
+        }
+    }
+
+    /**
+     * Generate single batch scheduled in background
+     *
+     * @param array $data Feed information.
+     * @return void
+     */
+    public function regenerate_feed_batch( array $data ) {
+        if( !is_wp_error( $data ) && !empty( $data ) ) {
+            $feed_id       = !empty( $data[ 'feed_id' ] ) ? $data[ 'feed_id' ] : '';
+            $current_batch = !empty( $data[ 'current_batch' ] ) ? $data[ 'current_batch' ] : '';
+            $total_batches = !empty( $data[ 'total_batches' ] ) ? $data[ 'total_batches' ] : '';
+            $per_batch     = !empty( $data[ 'per_batch' ] ) ? $data[ 'per_batch' ] : '';
+            $offset        = !empty( $data[ 'offset' ] ) ? $data[ 'offset' ] : '';
+
+            $scheduled_actions = as_get_scheduled_actions( [
+                'hook' => 'rex_feed_regenerate_feed_batch',
+                'group' => "wpfm-feed-{$feed_id}",
+                'status' => ActionScheduler_Store::STATUS_PENDING
+            ] );
+
+            if( !empty( $scheduled_actions ) ) {
+                Rex_Product_Feed_Controller::update_feed_status( $feed_id, 'processing' );
+            }
+
+            try {
+                $payload  = $this->get_feed_settings_payload( $feed_id, $current_batch, $total_batches, $per_batch, $offset );
+                $merchant = Rex_Product_Feed_Factory::build( $payload, true );
+                $merchant->make_feed();
+                if( empty( $scheduled_actions ) ) {
+                    Rex_Product_Feed_Controller::update_feed_status( $feed_id, 'completed' );
+                }
+            }
+            catch( Exception $e ) {
+                if( is_wpfm_logging_enabled() ) {
+                    $log = wc_get_logger();
+                    $log->warning( print_r( $e->getMessage(), 1 ), array( 'source' => 'WPFM_BACKGROUND_PROCESS_ERROR' ) );
+                }
+            }
+        }
+        else {
+            if( is_wpfm_logging_enabled() ) {
+                $log = wc_get_logger();
+                $log->warning( 'Invalid data!', array( 'source' => 'WPFM_BACKGROUND_PROCESS_ERROR' ) );
+                $log->warning( print_r( $data, 1 ), array( 'source' => 'WPFM_BACKGROUND_PROCESS_ERROR' ) );
+            }
+        }
+    }
+
+    /**
+     * Register background scheduler for updating WC abandoned child list
+     *
+     * @return void
+     */
+    public function register_wc_abandoned_child_update_scheduler() {
+        if( function_exists( 'as_has_scheduled_action' ) && function_exists( 'as_schedule_single_action' ) ) {
+            $wc_scheduler = as_has_scheduled_action( WC_SINGLE_SCHEDULER, null, 'wpfm' );
+            if( !$wc_scheduler ) {
+                as_schedule_single_action( time(), WC_SINGLE_SCHEDULER, [], 'wpfm' );
+            }
+        }
+    }
+
+    /**
+     * Update WC abandoned child list in option table
+     *
+     * @return void
+     */
+    public function update_wc_abandoned_child_list() {
+        Rex_Product_Feed_Ajax::update_abandoned_child_list();
+    }
+
+    /**
+     * Configure feed merchant in single batch wise
+     * and schedule as a single process
+     *
+     * @param array $feed_ids Feed ids that need to be updated.
+     * @param bool $update_single If only a single feed needs to be updated only.
+     *
+     * @return void
+     * @throws Exception
+     */
+    public function schedule_merchant_single_batch_object( $feed_ids, $update_single = false ) {
+        if( !is_wp_error( $feed_ids ) && !empty( $feed_ids ) ) {
+            $products_info = wpfm_get_cached_data( 'cron_products_info' );
+
+            if( is_wp_error( $products_info ) || !is_array( $products_info ) || empty( $products_info ) ) {
+                try {
+                    $products_info = Rex_Product_Feed_Ajax::get_product_number( [ 'feed_id' => '' ] );
+                }
+                catch( Exception $e ) {
+                    $products_info = [];
+                    if( is_wpfm_logging_enabled() ) {
+                        $log = wc_get_logger();
+                        $log->warning( print_r( $e->getMessage(), 1 ), array( 'source' => 'WPFM_BACKGROUND_PROCESS_ERROR' ) );
+                    }
+                }
+                wpfm_set_cached_data( 'cron_products_info', $products_info );
+            }
+
+            $per_batch     = !empty( $products_info[ 'per_batch' ] ) ? $products_info[ 'per_batch' ] : 0;
+            $total_batches = !empty( $products_info[ 'total_batch' ] ) ? $products_info[ 'total_batch' ] : 1;
+
+            if( $per_batch && $total_batches ) {
+                foreach( $feed_ids as $feed_id ) {
+                    $update_on_product_change = get_post_meta( $feed_id, '_rex_feed_update_on_product_change', true ) ?: get_post_meta( $feed_id, 'rex_feed_update_on_product_change', true );
+                    $is_triggered_by_product_change = ( 'yes' === $update_on_product_change && get_option( 'rex_feed_wc_product_updated', false ) );
+
+                    if( $update_single || $is_triggered_by_product_change || ( !$update_on_product_change || 'no' === $update_on_product_change ) ) {
+                        $is_custom_executable = '';
+                        if( !$update_single ) {
+                            $schedule             = $this->get_feed_schedule_settings( $feed_id );
+                            $schedule_time        = get_post_meta( $feed_id, '_rex_feed_custom_time', true ) ?: get_post_meta( $feed_id, 'rex_feed_custom_time', true );
+                            $is_custom_executable = 'custom' === $schedule;
+                        }
+
+                        if( $update_single || $is_custom_executable || in_array( $schedule, [ 'hourly', 'daily', 'weekly', 'custom' ] ) ) {
+                            update_post_meta( $feed_id, '_generation_start_time', time() );
+                            $offset = 0;
+                            for( $current_batch = 1; $current_batch <= $total_batches; $current_batch++ ) {
+                                $data         = [];
+                                $data[]       = [
+                                    'feed_id'       => $feed_id,
+                                    'current_batch' => $current_batch,
+                                    'total_batches' => $total_batches,
+                                    'per_batch'     => $per_batch,
+                                    'offset'        => $offset,
+                                ];
+                                $is_scheduled = function_exists( 'as_has_scheduled_action' ) && as_has_scheduled_action( 'rex_feed_regenerate_feed_batch', $data, 'wpfm-feed-' . $feed_id );
+                                if( !$is_scheduled ) {
+                                    $scheduled = function_exists( 'as_schedule_single_action' ) && as_schedule_single_action( time(), 'rex_feed_regenerate_feed_batch', $data, 'wpfm-feed-' . $feed_id );
+                                    if( 1 === $current_batch && !is_wp_error( $scheduled ) && $scheduled ) {
+                                        Rex_Product_Feed_Controller::update_feed_status( $feed_id, 'In queue' );
+                                    }
+                                }
+                                $offset += $per_batch;
+                            }
+                        }
+                    }
+                }
+            }
+            wpfm_purge_cached_data( 'cron_products_info' );
+        }
+    }
+
+    /**
+     * Get all scheduled feed ids
+     *
+     * @param string $schedule Schedule of the feed(s).
+     *
+     * @return int[]|WP_Post[]
+     * @since 7.3.0
+     */
+    public function get_feeds( $schedule ) {
+        $status = [ 'canceled', 'completed' ];
+
+        $meta_queries = [
+            'relation' => 'AND',
+            [
+                'relation' => 'OR',
+                [
+                    'key'   => '_rex_feed_schedule',
+                    'value' => $schedule,
+                ],
+                [
+                    'key'   => 'rex_feed_schedule',
+                    'value' => $schedule,
+                ],
+            ],
+            [
+                'relation' => 'OR',
+                [
+                    'key'   => '_rex_feed_status',
+                    'value' => $status,
+                ],
+                [
+                    'key'   => 'rex_feed_status',
+                    'value' => $status,
+                ],
+            ],
+        ];
+
+        $is_manual_run = $this->is_manual_action_scheduler_run();
+
+        if('custom' === $schedule && !$is_manual_run) {
+            $timezone = new DateTimeZone( wp_timezone_string() );
+            $now_time = wp_date( "G", null, $timezone );
+
+            $meta_queries[] = [
+                'relation' => 'AND',
+                [
+                    'relation' => 'OR',
+                    [
+                        'key'   => '_rex_feed_schedule',
+                        'value' => 'custom',
+                    ],
+                    [
+                        'key'   => 'rex_feed_schedule',
+                        'value' => 'custom',
+                    ],
+                ],
+                [
+                    'key'     => '_rex_feed_custom_time',
+                    'value'   => $now_time,
+                    'compare' => '=',
+                    'type'    => 'CHAR',
+                ],
+            ];
+        }
+
+        $args = [
+            'fields'           => 'ids',
+            'post_type'        => 'product-feed',
+            'post_status'      => 'publish',
+            'orderby'          => 'ID',
+            'order'            => 'ASC',
+            'meta_query'       => $meta_queries,
+            'suppress_filters' => true,
+        ];
+
+        return (new WP_Query($args))->get_posts();
+    }
+
+    /**
+     * Check if the current action is a manual run of Action Scheduler
+     *
+     * @return bool
+     * @since 7.4.46
+     */
+    private function is_manual_action_scheduler_run() {
+        // CLI
+        if ( defined( 'WP_CLI' ) && WP_CLI ) {
+            return true;
+        }
+
+        // Admin page trigger (Run button)
+        if ( is_admin() && ! ( defined( 'DOING_CRON' ) && DOING_CRON ) && ! wp_doing_ajax() ) {
+            return true;
+        }
+
+        // The async runner for "Run" button
+        if ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'as_async_request_queue_runner' && is_user_logged_in() ) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Generate the feed generation payload
+     *
+     * @param string|int $feed_id Feed id.
+     * @param string|int $current_batch Current batch no.
+     * @param string|int $total_batches Total batch count.
+     * @param string|int $per_batch Products number need to be fetched per batch.
+     * @param string|int $offset Product offset number.
+     *
+     * @return array
+     * @since 7.3.0
+     */
+    private function get_feed_settings_payload( $feed_id, $current_batch, $total_batches, $per_batch, $offset ) {        $analytics_params  = [];
+        $merchant          = get_post_meta( $feed_id, '_rex_feed_merchant', true ) ?: get_post_meta( $feed_id, 'rex_feed_merchant', true );
+        $product_condition = get_post_meta( $feed_id, '_rex_feed_product_condition', true ) ?: get_post_meta( $feed_id, 'rex_feed_product_condition', true );
+        $feed_config       = get_post_meta( $feed_id, '_rex_feed_feed_config', true ) ?: get_post_meta( $feed_id, 'rex_feed_feed_config', true );
+        $analytics         = get_post_meta( $feed_id, '_rex_feed_analytics_params_options', true ) ?: get_post_meta( $feed_id, 'rex_feed_analytics_params_options', true );
+        if( 'on' === $analytics || 'yes' === $analytics ) {
+            $analytics_params = get_post_meta( $feed_id, '_rex_feed_analytics_params', true ) ?: get_post_meta( $feed_id, 'rex_feed_analytics_params', true );
+        }
+        $feed_filter                 = get_post_meta( $feed_id, '_rex_feed_feed_config_filter', true ) ?: get_post_meta( $feed_id, 'rex_feed_feed_config_filter', true );
+        $product_scope               = get_post_meta( $feed_id, '_rex_feed_products', true ) ?: get_post_meta( $feed_id, 'rex_feed_products', true );
+        $include_out_of_stock        = get_post_meta( $feed_id, '_rex_feed_include_out_of_stock', true ) ?: get_post_meta( $feed_id, 'rex_feed_include_out_of_stock', true );
+        $include_variations          = get_post_meta( $feed_id, '_rex_feed_variations', true ) ?: get_post_meta( $feed_id, 'rex_feed_variations', true );
+        $include_variations          = 'yes' === $include_variations;
+        $include_default_variation   = get_post_meta( $feed_id, '_rex_feed_default_variation', true ) ?: get_post_meta( $feed_id, 'rex_feed_default_variation', true );
+        $include_default_variation   = 'yes' === $include_default_variation;
+        $include_highest_variation   = get_post_meta( $feed_id, '_rex_feed_highest_variation', true ) ?: get_post_meta( $feed_id, 'rex_feed_highest_variation', true );
+        $include_highest_variation   = 'yes' === $include_highest_variation;
+        $include_cheapest_variation  = get_post_meta( $feed_id, '_rex_feed_cheapest_variation', true ) ?: get_post_meta( $feed_id, 'rex_feed_cheapest_variation', true );
+        $include_cheapest_variation  = 'yes' === $include_cheapest_variation;
+        $variable_product            = get_post_meta( $feed_id, '_rex_feed_variable_product', true ) ?: get_post_meta( $feed_id, 'rex_feed_variable_product', true );
+        $variable_product            = 'yes' === $variable_product;
+        $parent_product              = get_post_meta( $feed_id, '_rex_feed_parent_product', true ) ?: get_post_meta( $feed_id, 'rex_feed_parent_product', true );
+        $parent_product              = 'yes' === $parent_product;
+        $exclude_hidden_products     = get_post_meta( $feed_id, '_rex_feed_hidden_products', true ) ?: get_post_meta( $feed_id, 'rex_feed_hidden_products', true );
+        $exclude_hidden_products     = 'yes' === $exclude_hidden_products;
+        $exclude_simple_products     = get_post_meta( $feed_id, '_rex_feed_exclude_simple_products', true ) ?: get_post_meta( $feed_id, 'rex_feed_exclude_simple_products', true );
+        $exclude_simple_products     = 'yes' === $exclude_simple_products;
+        $append_variations           = get_post_meta( $feed_id, '_rex_feed_variation_product_name', true ) ?: get_post_meta( $feed_id, 'rex_feed_variation_product_name', true );
+        $append_variations           = 'yes' === $append_variations;
+        $wpml                        = get_post_meta( $feed_id, '_rex_feed_wpml_language', true ) ?: get_post_meta( $feed_id, 'rex_feed_wpml_language', true );
+        $feed_format                 = get_post_meta( $feed_id, '_rex_feed_feed_format', true ) ?: get_post_meta( $feed_id, 'rex_feed_feed_format', true );
+        $feed_format                 = $feed_format ?: 'xml';
+        $wcml_currency               = get_post_meta( $feed_id, '_rex_feed_wcml_currency', true ) ?: get_post_meta( $feed_id, 'rex_feed_wcml_currency', true );
+        $aelia_currency              = get_post_meta( $feed_id, '_rex_feed_aelia_currency', true ) ?: get_post_meta( $feed_id, 'rex_feed_aelia_currency', true );
+        $curcy_currency              = get_post_meta( $feed_id, '_rex_feed_curcy_currency', true ) ?: get_post_meta( $feed_id, 'rex_feed_curcy_currency', true );
+        $wmc_currency                = get_post_meta( $feed_id, '_rex_feed_wmc_currency', true ) ?: get_post_meta( $feed_id, 'rex_feed_wmc_currency', true );
+        $woocs_currency              = get_post_meta( $feed_id, '_rex_feed_woocs_currency', true );
+        $skip_product                = get_post_meta( $feed_id, '_rex_feed_skip_product', true ) ?: get_post_meta( $feed_id, 'rex_feed_skip_product', true );
+        $skip_product                = 'yes' === $skip_product;
+        $skip_row                    = get_post_meta( $feed_id, '_rex_feed_skip_row', true ) ?: get_post_meta( $feed_id, 'rex_feed_skip_row', true );
+        $skip_row                    = 'yes' === $skip_row;
+        $feed_separator              = get_post_meta( $feed_id, '_rex_feed_separator', true ) ?: get_post_meta( $feed_id, 'rex_feed_separator', true );
+        $include_zero_price_products = get_post_meta( $feed_id, '_rex_feed_include_zero_price_products', true ) ?: get_post_meta( $feed_id, 'rex_feed_include_zero_price_products', true );
+        $custom_filter_option        = get_post_meta( $feed_id, '_rex_feed_custom_filter_option', true ) ?: get_post_meta( $feed_id, 'rex_feed_custom_filter_option', true );
+        $feed_rules_button           = get_post_meta( $feed_id, '_rex_feed_feed_rules_button', true ) ?: get_post_meta( $feed_id, 'rex_feed_feed_rules_button', true );
+        $feed_country                = get_post_meta( $feed_id, '_rex_feed_feed_country', true ) ?: get_post_meta( $feed_id, 'rex_feed_feed_country', true );
+        $custom_wrapper              = get_post_meta( $feed_id, '_rex_feed_custom_wrapper', true );
+        $custom_wrapper_el           = get_post_meta( $feed_id, '_rex_feed_custom_wrapper_el', true );
+        $custom_items_wrapper        = get_post_meta( $feed_id, '_rex_feed_custom_items_wrapper', true );
+        $custom_xml_header           = get_post_meta( $feed_id, '_rex_feed_custom_xml_header', true );
+        $yandex_company_name         = get_post_meta( $feed_id, '_rex_feed_yandex_company_name', true );
+        $yandex_old_price            = get_post_meta( $feed_id, '_rex_feed_yandex_old_price', true );
+        $hotline_firm_id             = get_post_meta( $feed_id, '_rex_feed_hotline_firm_id', true );
+        $hotline_firm_name           = get_post_meta( $feed_id, '_rex_feed_hotline_firm_name', true );
+        $hotline_exch_rate           = get_post_meta( $feed_id, '_rex_feed_hotline_exchange_rate', true );
+        $translatepress_language    = get_post_meta( $feed_id, '_rex_feed_translate_press_language', true );
+        $is_google_content_api       = 'yes' === get_post_meta( $feed_id, '_rex_feed_is_google_content_api', true );
+        $yandex_old_price            = 'include' === $yandex_old_price;
+
+        if( apply_filters( 'wpfm_is_premium', false ) ) {
+            $feed_rules = get_post_meta( $feed_id, '_rex_feed_feed_config_rules', true ) ?: get_post_meta( $feed_id, 'rex_feed_feed_config_rules', true );
+        }
+        else {
+            $feed_rules = array();
+        }
+
+        $terms_array   = array();
+        $ignored_scope = array( 'all', 'filter', 'product_filter', 'featured', '' );
+
+        if( !in_array( $product_scope, $ignored_scope ) ) {
+            $terms = wp_get_post_terms( $feed_id, $product_scope );
+            if( $terms ) {
+                foreach( $terms as $term ) {
+                    $terms_array[] = $term->slug;
+                }
+            }
+        }
+
+        return array(
+            'merchant'                    => $merchant,
+            'feed_format'                 => $feed_format,
+            'feed_config'                 => $feed_config,
+            'append_variations'           => $append_variations,
+            'info'                        => array(
+                'post_id'        => $feed_id,
+                'title'          => get_the_title( $feed_id ),
+                'desc'           => get_the_title( $feed_id ),
+                'total_batch'    => $total_batches,
+                'batch'          => $current_batch,
+                'per_page'       => $per_batch,
+                'offset'         => $offset,
+                'products_scope' => $product_scope,
+                'cats'           => $terms_array,
+                'tags'           => $terms_array,
+                'brands'         => $terms_array,
+            ),
+            'feed_filter'                 => $feed_filter,
+            'feed_rules'                  => $feed_rules,
+            'product_condition'           => $product_condition,
+            'include_variations'          => $include_variations,
+            'include_default_variation'   => $include_default_variation,
+            'include_highest_variation'   => $include_highest_variation,
+            'include_cheapest_variation'  => $include_cheapest_variation,
+            'include_out_of_stock'        => $include_out_of_stock,
+            'include_zero_price_products' => $include_zero_price_products,
+            'variable_product'            => $variable_product,
+            'parent_product'              => $parent_product,
+            'exclude_hidden_products'     => $exclude_hidden_products,
+            'exclude_simple_products'     => $exclude_simple_products,
+            'wpml_language'               => $wpml,
+            'analytics'                   => $analytics,
+            'analytics_params'            => $analytics_params,
+            'wcml_currency'               => $wcml_currency,
+            'aelia_currency'              => $aelia_currency,
+            'curcy_currency'               => $curcy_currency,
+            'wmc_currency'                => $wmc_currency,
+            'woocs_currency'              => $woocs_currency,
+            'skip_product'                => $skip_product,
+            'skip_row'                    => $skip_row,
+            'feed_separator'              => $feed_separator,
+            'custom_filter_option'        => $custom_filter_option,
+            'feed_country'                => $feed_country,
+            'custom_wrapper'              => $custom_wrapper,
+            'custom_wrapper_el'           => $custom_wrapper_el,
+            'custom_items_wrapper'        => $custom_items_wrapper,
+            'custom_xml_header'           => $custom_xml_header,
+            'yandex_company_name'         => $yandex_company_name,
+            'yandex_old_price '           => $yandex_old_price,
+            'hotline_firm_id'             => $hotline_firm_id,
+            'hotline_firm_name'           => $hotline_firm_name,
+            'hotline_exch_rate'           => $hotline_exch_rate,
+            'feed_rules_button'           => $feed_rules_button,
+            'is_google_content_api'       => $is_google_content_api,
+            'translatepress_language'     => $translatepress_language,
+        );
+    }
+
+    /**
+     * Update [for previous meta key] and get feed schedule
+     *
+     * @param string|int $feed_id Feed id.
+     *
+     * @return string|bool
+     * @since 7.2.18
+     */
+    private function get_feed_schedule_settings( $feed_id ) {
+        $feed_schedule = get_post_meta( $feed_id, '_rex_feed_schedule', true );
+        if( $feed_schedule ) {
+            delete_post_meta( $feed_id, 'rex_feed_schedule' );
+        }
+        else {
+            $feed_schedule = get_post_meta( $feed_id, 'rex_feed_schedule', true );
+            if( $feed_schedule ) {
+                update_post_meta( $feed_id, '_rex_feed_schedule', $feed_schedule );
+                delete_post_meta( $feed_id, 'rex_feed_schedule' );
+            }
+        }
+        return $feed_schedule;
+    }
+}
+

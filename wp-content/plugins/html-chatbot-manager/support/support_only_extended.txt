@@ -1,0 +1,5 @@
+### Business / Website Specific Guidance
+- Common troubleshooting steps can be found in troubleshooting_guide.pdf.
+- Warranty and returns information: warranty_returns.txt.
+- Urgent support should be directed to *SUPN*.
+- Escalate complex issues to a human via *CFURL*.

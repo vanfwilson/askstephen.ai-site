@@ -1,0 +1,89 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-datetime",
+  "title": "Event Date Time",
+  "category": "eventin-blocks",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styleVariant": {
+      "type": "string",
+      "default": "style-1"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "5px 5px 5px 5px",
+            "padding": "5px 5px 5px 5px",
+            "width": "400px"
+          },
+          ".etn-widget": {
+            "boxShadow": "0 0 30px rgba(0, 0, 0, 0.03)",
+            "marginBottom": "30px",
+            "padding": "35px"
+          },
+          ".etn-ul": {
+            "listStyleType": "none",
+            "margin": "0",
+            "padding": "0"
+          },
+          ".etn-li": {
+            "borderBottom": "1px solid #f2f2f2",
+            "display": "block",
+            "fontSize": "1rem",
+            "marginBottom": "15px",
+            "paddingBottom": "15px"
+          },
+          ".etn-span": {
+            "fontWeight": "700"
+          }
+        },
+        "Tablet": {
+          ".eventin-block-container": {
+            "margin": "5px 5px 5px 5px",
+            "padding": "5px 5px 5px 5px"
+          },
+          ".etn-widget": {
+            "boxShadow": "0 0 30px rgba(0, 0, 0, 0.03)",
+            "marginBottom": "30px",
+            "padding": "35px"
+          },
+          ".etn-li": {
+            "borderBottom": "1px solid #f2f2f2",
+            "display": "block",
+            "fontSize": "1rem",
+            "marginBottom": "15px",
+            "paddingBottom": "15px"
+          },
+          ".etn-span": {
+            "fontWeight": "700"
+          }
+        },
+        "Mobile": {
+          ".eventin-block-container": {
+            "margin": "5px 5px 5px 5px",
+            "padding": "5px 5px 5px 5px",
+            "width": "100%"
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

@@ -1,0 +1,4 @@
+### Referencing Style
+- Use short inline citations like: (see: refunds_policy.pdf, section “Eligibility”).
+- Summaries must preserve disclaimers and conditions exactly as written.
+- If multiple files disagree, present both and note uncertainty.

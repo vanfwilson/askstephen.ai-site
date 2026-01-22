@@ -1,0 +1,13 @@
+# AskStephen.ai Robots Configuration
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /account/
+
+# Crawl Delay (Optional for busy sites)
+Crawl-delay: 10
+
+# Sitemap
+Sitemap: https://www.askstephen.ai/sitemap.xml

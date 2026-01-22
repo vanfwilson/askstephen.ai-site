@@ -1,0 +1,45 @@
+{
+    "config": {
+        "platform": {
+            "php": "7.4"
+        }
+    },
+    "require": {
+        "jlevers/selling-partner-api": "^5.1",
+        "brianhenryie/strauss": "^0.19.1"
+    },
+    "extra": {
+        "strauss": {
+            "target_directory": "vendor-prefixed",
+            "namespace_prefix": "WPLab\\Amazon\\",
+            "classmap_prefix": "WPLab_Amazon_",
+            "constant_prefix": "WPLA_",
+            "packages": [
+                "jlevers/selling-partner-api"
+            ],
+            "update_call_sites": false,
+            "override_autoload": {
+            },
+            "exclude_from_copy": {
+                "packages": [
+                ],
+                "namespaces": [
+                ],
+                "file_patterns": [
+                ]
+            },
+            "exclude_from_prefix": {
+                "packages": [
+                ],
+                "namespaces": [
+                ],
+                "file_patterns": [
+                ]
+            },
+            "namespace_replacement_patterns" : {
+            },
+            "delete_vendor_packages": true,
+            "delete_vendor_files": true
+        }
+    }
+}

@@ -1,0 +1,262 @@
+<?php
+
+/**
+ * The file that generates xml feed for Google Local Products Inventory.
+ *
+ * A class definition that includes functions used for generating xml feed.
+ *
+ * @link       https://rextheme.com
+ * @since      1.0.0
+ *
+ * @package    Rex_Product_Feed_Google_local_products_inventory
+ * @subpackage Rex_Product_Feed_Google_local_products_inventory/includes
+ * @author     RexTheme <info@rextheme.com>
+ */
+
+use LukeSnowden\GoogleShoppingFeed\Containers\GoogleShopping;
+
+class Rex_Product_Feed_Google_local_products_inventory extends Rex_Product_Feed_Abstract_Generator {
+
+    private $feed_merchants = array(
+        "nextag" => array(
+            'item_wrapper'  => 'product',
+            'items_wrapper' => 'products',
+        ),
+    );
+    /**
+     * Create Feed for Google
+     *
+     * @return boolean
+     * @author
+     **/
+    public function make_feed() {
+        GoogleShopping::$container = null;
+        GoogleShopping::title($this->title);
+        GoogleShopping::link($this->link);
+        GoogleShopping::description($this->desc);
+
+        // Generate feed for both simple and variable products.
+        $this->generate_product_feed();
+
+        $this->feed = $this->returnFinalProduct();
+
+        if ($this->batch >= $this->tbatch ) {
+            $this->save_feed($this->feed_format);
+            return array(
+                'msg' => 'finish'
+            );
+        }else {
+            return $this->save_feed($this->feed_format);
+        }
+
+    }
+
+    private function generate_product_feed(){
+        $product_meta_keys = Rex_Feed_Attributes::get_attributes();
+        $total_products = get_post_meta($this->id, '_rex_feed_total_products', true);
+        $total_products = $total_products ?: get_post_meta($this->id, 'rex_feed_total_products', true);
+        $simple_products = [];
+        $variation_products = [];
+        $variable_parent = [];
+        $group_products = [];
+        $total_products = $total_products ?: array(
+            'total' => 0,
+            'simple' => 0,
+            'variable' => 0,
+            'variable_parent' => 0,
+            'group' => 0,
+        );
+
+        if($this->batch == 1) {
+            $total_products = array(
+                'total' => 0,
+                'simple' => 0,
+                'variable' => 0,
+                'variable_parent' => 0,
+                'group' => 0,
+            );
+        }
+
+        foreach( $this->products as $productId ) {
+            $product = wc_get_product( $productId );
+
+            if ( ! is_object( $product ) ) {
+                continue;
+            }
+            if ( $this->exclude_hidden_products ) {
+                if ( !$product->is_visible() ) {
+                    continue;
+                }
+            }
+
+            if( !$this->include_zero_priced ) {
+                $product_price = rex_feed_get_product_price($product);
+                if( 0 == $product_price || '' == $product_price ) {
+                    continue;
+                }
+            }
+            if ( $product->is_type( 'variable' ) && $product->has_child() ) {
+                if($this->variable_product && $this->is_out_of_stock( $product ) ) {
+                    $variable_parent[] = $productId;
+                    $variable_product = new WC_Product_Variable($productId);
+                    $this->add_to_feed( $variable_product, $product_meta_keys );
+                }
+
+                if( $this->product_scope === 'product_cat' || $this->product_scope === 'product_tag' || $this->custom_filter_var_exclude ) {
+                    // Get all variations
+                    $variations = $this->exclude_hidden_products ? 
+                    $product->get_children() : // Since get_visible_children is undefined, fallback to get_children
+                    $product->get_children();
+                    if ($variations) {
+                        foreach ($variations as $variation_id) {
+                            $variation_product = wc_get_product($variation_id);
+                               if ($variation_product && $this->should_include_variation($variation_product, $variation_id)) {
+                                    $variation_products[] = $variation_id;
+                                    $this->add_to_feed($variation_product, $product_meta_keys, 'variation');
+                                }
+                        }
+                    }
+                }
+            }
+
+            if ( $this->is_out_of_stock( $product ) ) {
+                if ( $product->is_type( 'simple' ) || $product->is_type( 'external' ) || $product->is_type( 'composite' ) || $product->is_type( 'bundle' ) || $product->is_type('yith_bundle') || $product->is_type('yith-composite')) {
+                    if ( $this->exclude_simple_products ) {
+                        continue;
+                    }
+                    $simple_products[] = $productId;
+                    $this->add_to_feed( $product, $product_meta_keys );
+                }
+
+                if ( $this->product_scope === 'all' || $this->product_scope === 'product_filter' || $this->custom_filter_option ) {
+                    if ( $product->get_type() === 'variation' ) {
+						if ($this->should_include_variation($product, $productId)) {
+							$variation_products[] = $productId;
+							$this->add_to_feed($product, $product_meta_keys, 'variation');
+						}
+                    }
+                }
+
+                if ( $product->is_type( 'grouped' ) && $this->parent_product || $product->is_type( 'woosb' ) ) {
+                $group_products[] = $productId;
+                // Add the parent grouped product first
+                $this->add_to_feed( $product, $product_meta_keys );
+                
+                // Add all products in the group with group_item_id
+                $grouped_product_ids = $product->get_children();
+                foreach ($grouped_product_ids as $child_id) {
+                    $child_product = wc_get_product($child_id);
+                    if ($child_product && $this->is_out_of_stock($child_product)) {
+                        $this->add_to_feed($child_product, $product_meta_keys, 'grouped');
+                    }
+                }
+            }
+            }
+        }
+
+        // Fix variation product count
+        $variation_count = count($variation_products);
+        
+        $total_products = array(
+            'total' => (int) $total_products['total'] + (int) count($simple_products) + (int) $variation_count + (int) count($group_products) + (int) count($variable_parent),
+            'simple' => (int) $total_products['simple'] + (int) count($simple_products),
+            'variable' => (int) $total_products['variable'] + (int) $variation_count,
+            'variable_parent' => (int) $total_products['variable_parent'] + (int) count($variable_parent),
+            'group' => (int) $total_products['group'] + (int) count($group_products),
+        );
+
+        update_post_meta( $this->id, '_rex_feed_total_products', $total_products );
+	    if ( $this->tbatch === $this->batch ) {
+		    update_post_meta( $this->id, '_rex_feed_total_products_for_all_feed', $total_products[ 'total' ] );
+	    }
+    }
+
+
+    /**
+     * Adding items to feed
+     *
+     * @param $product
+     * @param $meta_keys
+     * @param string $product_type
+     */
+    private function add_to_feed( $product, $meta_keys, $product_type = '' ) {
+        $attributes = $this->get_product_data( $product, $meta_keys );
+
+        if( ( $this->rex_feed_skip_product && empty( array_keys($attributes, '') ) ) || !$this->rex_feed_skip_product ) {
+            $item = GoogleShopping::createItem();
+
+            // Handle item_group_id for variations and grouped products
+            if ($product_type === 'variation') {
+                $parent_id = $product->get_parent_id();
+                if ($parent_id) {
+                    $item->item_group_id($parent_id);
+                    $attributes['item_group_id'] = $parent_id;
+                }
+            } elseif ($product->is_type('grouped')) {
+                // For grouped products, get all the grouped product IDs
+                $grouped_products = $product->get_children();
+                if (!empty($grouped_products)) {
+                    $item->item_group_id($product->get_id());
+                    $attributes['item_group_id'] = $product->get_id();
+                }
+            }
+
+            foreach ($attributes as $key => $value) {
+                if ( $this->rex_feed_skip_row && $this->feed_format === 'xml' ) {
+                    if ( $value != '' ) {
+                        $item->$key($value);
+                    }
+                }
+                else {
+                    $item->$key($value);
+                }
+            }
+        }
+    }
+
+    /**
+     * Check if the merchants is valid or not
+     * @param $feed_merchants
+     * @return bool
+     */
+    public function is_valid_merchant(){
+        return array_key_exists($this->merchant, $this->feed_merchants)? true : false;
+    }
+
+    /**
+     * @return string
+     */
+    public function setItemWrapper()
+    {
+        return $this->is_valid_merchant()? $this->feed_merchants[$this->merchant]['item_wrapper'] : 'product';
+    }
+
+    public function setItemsWrapper()
+    {
+        return $this->is_valid_merchant()? $this->feed_merchants[$this->merchant]['items_wrapper'] : 'products';
+    }
+
+
+    /**
+     * Return Feed
+     *
+     * @return array|bool|string
+     */
+    public function returnFinalProduct()
+    {
+
+        if ($this->feed_format === 'xml') {
+            return GoogleShopping::asRss();
+        } elseif ($this->feed_format === 'text' || $this->feed_format === 'tsv') {
+            return GoogleShopping::asTxt();
+        } elseif ($this->feed_format === 'csv') {
+            return GoogleShopping::asCsv();
+        }
+        return GoogleShopping::asRss();
+    }
+
+    public function footer_replace() {
+        $this->feed = str_replace('</channel></rss>', '', $this->feed);
+
+    }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-schedule",
+  "title": "Event Schedule",
+  "category": "eventin-blocks",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styleVariant": {
+      "type": "string",
+      "default": "style-1"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "0px 0px 20px 0px",
+            "padding": "20px 20px 20px 20px",
+            "width": "100%",
+            "position": "relative",
+            "zIndex": 0,
+            "left": "0px",
+            "right": "auto",
+            "top": "0px",
+            "bottom": "auto",
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px",
+            "boxShadow": "0 0 30px rgba(0, 0, 0, .03)"
+          },
+          ".eventin-block-container:hover": {},
+          ".etn-nav": {
+            "margin": "0px 0px 30px 0px",
+            "padding": "0px 0px 0px 0px"
+          }
+        },
+        "Tablet": {
+          ".etn-tab-content": {}
+        },
+        "Mobile": {
+          ".etn-tab-content": {}
+        }
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

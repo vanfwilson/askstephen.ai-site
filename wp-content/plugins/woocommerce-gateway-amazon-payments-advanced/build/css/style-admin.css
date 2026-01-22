@@ -1,0 +1,12 @@
+.json_key_error {
+  border: 1px solid #f00;
+}
+
+.json_key_valid {
+  border: 1px solid #18ff59;
+}
+
+.wcapa-toggle-section:focus {
+  outline: 0;
+  box-shadow: none;
+}

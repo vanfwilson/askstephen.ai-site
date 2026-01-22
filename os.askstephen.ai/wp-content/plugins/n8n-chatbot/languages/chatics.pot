@@ -1,0 +1,88 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Chatics for WP\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/chatics\n"
+"POT-Creation-Date: 2025-07-26\n"
+"Language: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: ChatGPT\n"
+"X-Domain: chatics\n"
+
+#: includes/admin-settings.php:10
+msgid "Chatics Settings"
+msgstr ""
+
+#: includes/admin-settings.php:11
+msgid "Chatics"
+msgstr ""
+
+#: includes/admin-settings.php:52
+msgid "Chatics Settings"
+msgstr ""
+
+#: includes/admin-settings.php:70
+msgid "n8n Webhook URL"
+msgstr ""
+
+#: includes/admin-settings.php:78
+msgid "Enable Chatbot"
+msgstr ""
+
+#: includes/admin-settings.php:79
+msgid "Enable on site"
+msgstr ""
+
+#: includes/admin-settings.php:87
+msgid "Widget Position"
+msgstr ""
+
+#: includes/admin-settings.php:90
+msgid "Right"
+msgstr ""
+
+#: includes/admin-settings.php:91
+msgid "Left"
+msgstr ""
+
+#: includes/admin-settings.php:97
+msgid "Chat Button Title"
+msgstr ""
+
+#: includes/admin-settings.php:104
+msgid "Widget Color"
+msgstr ""
+
+#: includes/admin-settings.php:110
+msgid "Icon Type"
+msgstr ""
+
+#: includes/admin-settings.php:112
+msgid "Upload SVG/PNG"
+msgstr ""
+
+#: includes/admin-settings.php:113
+msgid "Upload Icon"
+msgstr ""
+
+#: includes/admin-settings.php:116
+msgid "Remove Icon"
+msgstr ""
+
+#: includes/admin-settings.php:121
+msgid "Chat Content Zoom (%)"
+msgstr ""
+
+#: includes/frontend-widget.php:18
+msgid "Chat with us"
+msgstr ""
+
+#: includes/frontend-widget.php:38
+msgid "Chat"
+msgstr ""
+
+#: includes/admin-settings.php:129
+msgid "Save Settings"
+msgstr ""

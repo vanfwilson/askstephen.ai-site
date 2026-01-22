@@ -1,0 +1,1 @@
+<?php return array('dependencies' => array('jquery', 'lodash', 'wc-ppcp-actions', 'wc-ppcp-cart', 'wc-ppcp-payment-methods', 'wc-ppcp-utils', 'wp-polyfill', 'wp-url'), 'version' => 'a3d4f1e5b0c80588ba91');

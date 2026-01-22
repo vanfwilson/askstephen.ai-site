@@ -1,0 +1,26 @@
+/**
+ * All of the block specific CSS should be
+ * included in this file.
+ */
+
+/* Editor : editor.css */
+
+.wp-block-php-everywhere-block-php {
+    font-family: Menlo, Consolas, monaco, monospace;
+	color: #1e1e1e;
+	padding: 0.8em 1em;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	max-height: 250px;
+	/* Fonts smaller than 16px causes mobile safari to zoom. */
+	font-size: 16px;
+}
+
+.wp-block-php-everywhere-block-php:focus {
+    box-shadow: none;
+}
+
+.components-button .php-everywhere-block .remove-button {
+	background-color: red !important;
+	color: white;
+}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introductory Consulting with Stephen Wright | Pick One Strategy</title>
+  <meta name="description" content="Not ready to jump in? Start with an introductory consulting package. 3 sessions, a SWOT analysis, and personalized recommendations for your business.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243352;
+      --navy-dark: #0f1829;
+      --gold: #c9a227;
+      --gold-light: #e8c547;
+      --gold-dark: #a68619;
+      --amber: #d4770a;
+      --cream: #faf8f3;
+      --warm-gray: #f5f3ef;
+      --white: #ffffff;
+      --text-dark: #2d3748;
+      --text-muted: #5a6578;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans Pro', -apple-system, sans-serif; line-height: 1.7; color: var(--text-dark); }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .section { padding: 80px 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .text-center { text-align: center; }
+    .eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 700; margin-bottom: 16px; }
+    .headline { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 24px; }
+    .btn { display: inline-block; padding: 18px 36px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; border: none; cursor: pointer; }
+    .btn--primary { color: var(--navy-dark); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%); box-shadow: 0 4px 20px rgba(201, 162, 39, 0.4); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201, 162, 39, 0.5); }
+    .btn--large { padding: 22px 48px; font-size: 1.1rem; }
+
+    .hero { background: linear-gradient(135deg, var(--cream), var(--warm-gray)); padding: 80px 24px; }
+    .hero__grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+    @media (min-width: 768px) { .hero__grid { grid-template-columns: 1fr 1fr; } }
+    .hero__content { text-align: left; }
+    @media (max-width: 767px) { .hero__content { text-align: center; } }
+    .hero__eyebrow { color: var(--gold-dark); }
+    .hero__headline { color: var(--navy); font-size: clamp(2rem, 5vw, 3rem); }
+    .hero__text { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.8; }
+    .hero__photo { position: relative; max-width: 350px; margin: 0 auto; }
+    .hero__photo img { width: 100%; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    .hero__photo-accent { position: absolute; bottom: -16px; right: -16px; width: 100px; height: 100px; background: linear-gradient(135deg, var(--gold), var(--amber)); border-radius: 8px; z-index: -1; }
+
+    .why { background: var(--white); }
+    .why__box { max-width: 700px; margin: 0 auto; padding: 48px 40px; background: var(--cream); border-radius: 16px; border-left: 4px solid var(--gold); }
+    .why__text { font-size: 1.2rem; color: var(--text-dark); line-height: 1.8; font-style: italic; }
+
+    .includes { background: var(--cream); }
+    .includes__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 48px; }
+    .includes__card { background: var(--white); padding: 32px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
+    .includes__icon { font-size: 3rem; margin-bottom: 16px; }
+    .includes__title { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .includes__desc { color: var(--text-muted); font-size: 0.95rem; }
+
+    .process { background: var(--navy); }
+    .process__eyebrow { color: var(--gold-light); }
+    .process__headline { color: var(--white); }
+    .process__steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 48px; }
+    .process__step { text-align: center; position: relative; }
+    .process__step-number { width: 60px; height: 60px; background: linear-gradient(135deg, var(--gold), var(--amber)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 0 auto 20px; }
+    .process__step-title { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .process__step-desc { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+
+    .pricing { background: var(--white); }
+    .pricing__box { max-width: 550px; margin: 0 auto; background: var(--cream); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+    .pricing__header { background: var(--navy); padding: 28px; text-align: center; }
+    .pricing__title { font-size: 1.4rem; font-weight: 700; color: var(--white); }
+    .pricing__subtitle { color: var(--gold-light); font-size: 0.95rem; margin-top: 4px; }
+    .pricing__content { padding: 40px 32px; text-align: center; }
+    .pricing__price-row { display: flex; justify-content: center; align-items: baseline; gap: 16px; margin-bottom: 8px; }
+    .pricing__old { font-size: 1.3rem; color: var(--text-muted); text-decoration: line-through; }
+    .pricing__price { font-size: 3.5rem; font-weight: 700; color: var(--navy); }
+    .pricing__note { color: var(--text-muted); margin-bottom: 28px; }
+    .pricing__list { text-align: left; margin-bottom: 28px; }
+    .pricing__item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .pricing__item:last-child { border-bottom: none; }
+    .pricing__item-icon { color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .pricing__item-text { color: var(--text-dark); }
+    .pricing__schedule-note { margin-top: 20px; padding: 16px; background: rgba(201, 162, 39, 0.1); border-radius: 8px; font-size: 0.9rem; color: var(--text-muted); }
+    .pricing__schedule-note strong { color: var(--navy); }
+
+    .ideal { background: var(--warm-gray); }
+    .ideal__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    @media (max-width: 600px) { .ideal__grid { grid-template-columns: 1fr; } }
+    .ideal__col-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .ideal__col--yes .ideal__col-title { color: var(--gold-dark); }
+    .ideal__col--no .ideal__col-title { color: var(--text-muted); }
+    .ideal__list { list-style: none; }
+    .ideal__list li { padding: 8px 0; color: var(--text-muted); font-size: 0.95rem; }
+
+    .final { background: linear-gradient(135deg, var(--gold), var(--amber)); padding: 80px 24px; }
+    .final__headline { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--navy); margin-bottom: 16px; }
+    .final__text { color: var(--navy); opacity: 0.9; font-size: 1.15rem; margin-bottom: 28px; }
+    .final__btn { background: var(--navy); color: var(--white); }
+    .final__btn:hover { background: var(--navy-light); }
+
+    .footer { background: var(--navy-dark); padding: 40px 24px; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+    .footer a { color: var(--gold-light); text-decoration: none; }
+    .footer__links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer__links a { color: rgba(255,255,255,0.6); }
+    .footer__links a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__grid">
+      <div class="hero__content">
+        <p class="eyebrow hero__eyebrow">Introductory Consulting</p>
+        <h1 class="hero__headline">Let's Find the Right Path for Your Business</h1>
+        <p class="hero__text">Some people aren't ready to jump into a full course when they don't know Stephen yet. That's completely understandable.</p>
+        <p class="hero__text">This introductory consulting package is a chance to meet each other and find the right path for your business—with zero pressure.</p>
+        <a href="#book" class="btn btn--primary">Book Your Intro Sessions - $250</a>
+      </div>
+      <div class="hero__photo">
+        <img src="images/stephenwrightblue.jpg" alt="Stephen E. Wright">
+        <div class="hero__photo-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why section">
+  <div class="container">
+    <div class="why__box">
+      <p class="why__text">"I've been a CEO and business coach for many years. I know that trust takes time. That's why I created this package—so we can talk about your specific situation, I can do some research on your company, and together we can figure out what makes sense for you. No pressure. Just clarity."</p>
+      <p style="margin-top: 20px; font-weight: 700; color: var(--navy);">— Stephen E. Wright</p>
+    </div>
+  </div>
+</section>
+
+<section class="includes section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">What's Included</p>
+    <h2 class="headline" style="color: var(--navy);">Your Introductory Consulting Package</h2>
+    <div class="includes__grid">
+      <div class="includes__card">
+        <div class="includes__icon">📞</div>
+        <h3 class="includes__title">3 x 30-Minute Sessions</h3>
+        <p class="includes__desc">Three focused sessions you can schedule at your convenience. Reschedule anytime if something comes up.</p>
+      </div>
+      <div class="includes__card">
+        <div class="includes__icon">📊</div>
+        <h3 class="includes__title">Company Research Report</h3>
+        <p class="includes__desc">Before our first call, I'll research your company and prepare an initial analysis of where you stand.</p>
+      </div>
+      <div class="includes__card">
+        <div class="includes__icon">🎯</div>
+        <h3 class="includes__title">SWOT Analysis</h3>
+        <p class="includes__desc">A clear picture of your Strengths, Weaknesses, Opportunities, and Threats based on our conversations.</p>
+      </div>
+      <div class="includes__card">
+        <div class="includes__icon">🗺️</div>
+        <h3 class="includes__title">Proposed Next Steps</h3>
+        <p class="includes__desc">A personalized recommendation for what strategy might fit your business and what your next steps should be.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process section">
+  <div class="container text-center">
+    <p class="eyebrow process__eyebrow">How It Works</p>
+    <h2 class="headline process__headline">Simple. No Pressure. Helpful.</h2>
+    <div class="process__steps">
+      <div class="process__step">
+        <div class="process__step-number">1</div>
+        <h3 class="process__step-title">Book &amp; Onboard</h3>
+        <p class="process__step-desc">Sign up and fill out a quick questionnaire so I can start researching your business.</p>
+      </div>
+      <div class="process__step">
+        <div class="process__step-number">2</div>
+        <h3 class="process__step-title">Session 1: Discovery</h3>
+        <p class="process__step-desc">We'll talk about your business, your challenges, and what you're trying to achieve.</p>
+      </div>
+      <div class="process__step">
+        <div class="process__step-number">3</div>
+        <h3 class="process__step-title">Session 2: Analysis</h3>
+        <p class="process__step-desc">I'll share my research and SWOT analysis. We'll dig deeper into the root issues.</p>
+      </div>
+      <div class="process__step">
+        <div class="process__step-number">4</div>
+        <h3 class="process__step-title">Session 3: Path Forward</h3>
+        <p class="process__step-desc">I'll give you my recommendations and proposed next steps—whether that's working together or not.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="pricing section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">Investment</p>
+    <h2 class="headline" style="color: var(--navy);">Get Started Today</h2>
+    <div class="pricing__box">
+      <div class="pricing__header">
+        <p class="pricing__title">Introductory Consulting Package</p>
+        <p class="pricing__subtitle">90 minutes of focused consulting</p>
+      </div>
+      <div class="pricing__content">
+        <div class="pricing__price-row">
+          <span class="pricing__old">$475 value</span>
+          <span class="pricing__price">$250</span>
+        </div>
+        <p class="pricing__note">One-time payment</p>
+        <div class="pricing__list">
+          <div class="pricing__item"><span class="pricing__item-icon">✓</span><span class="pricing__item-text">Three 30-minute sessions (schedule at your convenience)</span></div>
+          <div class="pricing__item"><span class="pricing__item-icon">✓</span><span class="pricing__item-text">Initial research report about your company</span></div>
+          <div class="pricing__item"><span class="pricing__item-icon">✓</span><span class="pricing__item-text">SWOT analysis</span></div>
+          <div class="pricing__item"><span class="pricing__item-icon">✓</span><span class="pricing__item-text">Proposed next steps document</span></div>
+          <div class="pricing__item"><span class="pricing__item-icon">✓</span><span class="pricing__item-text">Flexible rescheduling</span></div>
+        </div>
+        <a href="https://calendly.com/askstephen/intro-consulting" class="btn btn--primary" style="width: 100%;" target="_blank" rel="noopener">Schedule My First Session - $250</a>
+        <div class="pricing__schedule-note"><strong>How scheduling works:</strong> After payment, you'll get access to Stephen's calendar to book all 3 sessions at times that work for you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ideal section">
+  <div class="container">
+    <h2 class="headline text-center" style="color: var(--navy);">Is This Right For You?</h2>
+    <div class="ideal__grid">
+      <div class="ideal__col ideal__col--yes">
+        <p class="ideal__col-title">✓ This is for you if...</p>
+        <ul class="ideal__list">
+          <li>You want to explore working with Stephen before committing</li>
+          <li>You need clarity on your current situation</li>
+          <li>You want a personalized strategy recommendation</li>
+          <li>You value an outside perspective on your business</li>
+          <li>You're willing to invest 90 minutes in focused conversation</li>
+        </ul>
+      </div>
+      <div class="ideal__col ideal__col--no">
+        <p class="ideal__col-title">✗ This is NOT for you if...</p>
+        <ul class="ideal__list">
+          <li>You're looking for free advice</li>
+          <li>You're not ready to have honest conversations</li>
+          <li>You're expecting Stephen to "fix" your business in 90 minutes</li>
+          <li>You're not open to hearing hard truths</li>
+          <li>You're not willing to take action on recommendations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final text-center">
+  <div class="container">
+    <h2 class="headline final__headline">Let's Start the Conversation</h2>
+    <p class="final__text">All you need to do is Ask Stephen and Pick One Strategy.</p>
+    <a href="https://calendly.com/askstephen/intro-consulting" class="btn btn--large final__btn" target="_blank" rel="noopener">Schedule Your Intro Sessions - $250</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__links">
+    <a href="https://askstephen.ai/shop">Book &amp; Workbook</a>
+    <a href="https://askstephen.ai/course">Pick One Course</a>
+    <a href="https://askstephen.ai/mastermind/">Mastermind</a>
+    <a href="https://askstephen.ai/privacy/">Privacy Policy</a>
+    <a href="https://askstephen.ai/terms/">Terms</a>
+    <a href="https://askstephen.ai/newsletter/">Newsletter</a>
+  </div>
+  <p>&copy; 2026 Pick One Strategy. All rights reserved. | <a href="/cdn-cgi/l/email-protection#a4d7d1d4d4cbd6d0e4c5d7cfd7d0c1d4ccc1ca8ac5cd"><span class="

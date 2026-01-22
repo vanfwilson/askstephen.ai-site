@@ -1,0 +1,4 @@
+### Comparison Guidance
+- Build short comparison tables in plain text when helpful.
+- If spec conflicts appear across files, state the conflict and prefer the most recent file.
+- Link to manuals by filename when relevant (e.g., “See: products_manual.pdf”).

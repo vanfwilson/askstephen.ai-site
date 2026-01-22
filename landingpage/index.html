@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pick One Strategy | Build a Profitable Business That Runs Without You</title>
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    :root {
+      --gold: #e0b23d;
+      --dark-blue: #0c1833;
+      --light-gold-bg: #fff8e1;
+      --white: #ffffff;
+      --transition: all 0.6s ease;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      color: #222;
+      background-color: var(--white);
+      overflow-x: hidden;
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+    section {
+      padding: 80px 10%;
+      position: relative;
+    }
+    .dark {
+      background: var(--dark-blue);
+      color: var(--white);
+    }
+    .light {
+      background: var(--light-gold-bg);
+      color: #222;
+    }
+    .cta-btn {
+      background: var(--gold);
+      color: #000;
+      padding: 14px 32px;
+      border: none;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .cta-btn:hover {
+      background: #f0c94b;
+      transform: scale(1.05);
+    }
+    /* ===== STAR BACKGROUND ANIMATION ===== */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0;
+      animation: twinkle 5s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      background: linear-gradient(to bottom right, #fff8e1, #fef7d5);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 100px 10%;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #111;
+    }
+    .hero h2 {
+      color: #333;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+    /* ===== VIDEO PLACEHOLDER ===== */
+    .video-wrapper {
+      margin: 40px auto;
+      max-width: 700px;
+      position: relative;
+    }
+    .video-thumbnail {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .video-thumbnail:hover {
+      opacity: 0.85;
+    }
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: var(--gold);
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      padding: 20px;
+      cursor: pointer;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+    /* ===== ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HERO SECTION: LIGHT GOLD ===== -->
+<section class="hero light fade-in">
+  <div class="stars" id="star-bg"></div>
+  <div class="hero-content">
+    <h1>You Built a Successful Business. So Why Does It Still Feel This Hard?</h1>
+    <h2>You’re booked out, working nonstop, and profit still disappears.<br>
+    Your team’s loyal—but the chaos never stops.<br>
+    You know something has to change, but what?<br><br>
+    * It's not your work ethic.<br>
+    👉 It's the lack of one clear strategy.</h2>
+
+    <div class="video-wrapper" data-video="https://www.youtube.com/watch?v=placeholderID">
+      <img src="https://askstephen.ai/wp-content/uploads/Stephen-Wright-no-bg.jpg" alt="Stephen Wright Video Thumbnail" class="video-thumbnail">
+      <div class="play-button">▶</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROBLEM SECTION: DARK ===== -->
+<section class="dark fade-in">
+  <h2>Does this sound familiar?</h2>
+  <p>You’re not alone. Most business owners we work with say:</p>
+  <blockquote>
+    “We’re growing, but it feels like we’re drowning.”<br>
+    “I’ve got good people… but I’m still the bottleneck.”<br>
+    “I can’t take a week off without the place falling apart.”<br>
+    “The money should be there, but it’s not.”<br>
+    “I don’t even enjoy this anymore.”
+  </blockquote>
+  <p>
+    And the worst part?<br>
+    You’ve tried everything—
+    <ul>
+      <li>🧯 More marketing</li>
+      <li>🧯 New hires</li>
+      <li>🧯 Software</li>
+      <li>🧯 Lower prices</li>
+      <li>🧯 Working harder</li>
+    </ul>
+    But nothing sticks.<br>
+    That’s because you’re solving symptoms, not root causes.<br>
+    And every year you wait, it gets harder to fix.
+  </p>
+</section>
+
+<!-- ===== SOLUTION SECTION: LIGHT ===== -->
+<section class="light fade-in">
+  <h2>There is a better way. You just have to Pick One.</h2>
+  <p>
+    Pick One is the decision system built for successful but overworked businesses like yours.<br><br>
+    Instead of trying to fix everything at once, we help you identify the ONE strategy that changes everything.<br>
+    With a simple framework, a practical workbook, and an AI-powered business coach trained on 30+ years of proven business transformations… you’ll finally:
+  </p>
+  <ul>
+    <li>✅ Know what to fix—and what to ignore</li>
+    <li>✅ Align your team around one clear path</li>
+    <li>✅ Build systems that actually work</li>
+    <li>✅ Gain control of your time, cash, and energy</li>
+    <li>✅ Start enjoying your business again</li>
+  </ul>
+  <p>This isn’t theory. It’s the same system that’s helped 200+ businesses get profitable, aligned, and free.</p>
+</section>
+
+<!-- ===== WHAT YOU GET SECTION ===== -->
+<section class="dark fade-in">
+  <h2>What You Get with the Pick One™ Business Growth System</h2>
+  <ul>
+    <li>🧭 <strong>The Book</strong> – Learn the Pick One Strategy (Revise, Expand, Disrupt, Core Value)</li>
+    <li>📒 <strong>The Workbook</strong> – Hands-on tools to guide your team to clarity</li>
+    <li>🤖 <strong>AskStephen.AI</strong> – An AI coach trained on decades of experience</li>
+    <li>📈 <strong>Ongoing Training</strong> – Webinars, coaching calls, and new tools every month</li>
+    <li>🛠️ <strong>Optional Done-With-You Implementation</strong> – For serious growth with hands-on support</li>
+  </ul>
+  <p>Whether you want to scale, simplify, or just get your life back… Pick One gives you a clear path.</p>
+</section>
+
+<!-- ===== FAITH SECTION ===== -->
+<section class="light fade-in">
+  <h2>Faith-Based Business Principles</h2>
+  <blockquote>✝️ “My yoke is easy and my burden is light…” – Jesus</blockquote>
+  <p>We believe your business should bless your life, not burden it.<br>
+  If your success is costing you your family, your peace, or your health—something's off.<br>
+  “Pick One” is grounded in stewardship, rest, and impact.<br>
+  Built for the believing business owner who wants both profit and purpose.</p>
+  <a href="https://askstephen.ai/faith/" class="cta-btn">Explore Faith & Business</a>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="dark fade-in" id="cta">
+  <h2>Ready to Pick the Strategy That Will Finally Move Your Business Forward?</h2>
+  <p>Join the Free Webinar: <strong>“How to Create Profit Without Burnout — Even in an AI Economy”</strong></p>
+  <ul>
+    <li>✅ No fluff. Just practical steps that work.</li>
+    <li>✅ Hosted by Stephen Wright, 30-year business growth strategist</li>
+    <li>✅ Plus: See AskStephen.AI in action</li>
+  </ul>
+  <a href="https://askstephen.ai/checkout/?add-to-cart=1788" class="cta-btn">Join the Webinar</a>
+  <a href="https://askstephen.ai/checkout/?add-to-cart=1790" class="cta-btn">Buy the Book + Toolkit</a>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="light fade-in">
+  <h2>What Business Owners Are Saying</h2>
+  <blockquote>“We were making money but miserable. Pick One helped us find the real issue, align our team, and increase margins within 90 days.”<br>— James, Roofing Company Owner</blockquote>
+  <blockquote>“We stopped guessing. We picked a strategy, followed the plan, and hit our first $1M month.”<br>— Carla, Electrical Contractor</blockquote>
+  <blockquote>“It felt like therapy for the business. But with a profit dial at the end.”<br>— Mike, Janitorial Company</blockquote>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="dark fade-in">
+  <h2>If you feel stuck, overworked, or like your business is running you…</h2>
+  <p>It’s time to Pick One—and move forward with confidence.</p>
+  <a href="https://askstephen.ai/checkout/?add-to-cart=1788" class="cta-btn">Join the Webinar</a>
+  <a href="https://askstephen.ai/checkout/?add-to-cart=1790" class="cta-btn">Get the Book + Toolkit</a>
+</section>
+
+<script>
+  // STAR BACKGROUND GENERATOR
+  const starsContainer = document.getElementById('star-bg');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 5 + 's';
+    starsContainer.appendChild(s);
+  }
+
+  // FADE-IN ON SCROLL
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  });
+  faders.forEach(f => observer.observe(f));
+
+  // YOUTUBE PLACEHOLDER LOGIC
+  document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+    const play = wrapper.querySelector('.play-button');
+    play.addEventListener('click', () => {
+      const vid = wrapper.getAttribute('data-video');
+      wrapper.innerHTML = `<iframe src="${vid}?autoplay=1" allowfullscreen></iframe>`;
+    });
+  });
+</script>
+
+</body>
+</html>

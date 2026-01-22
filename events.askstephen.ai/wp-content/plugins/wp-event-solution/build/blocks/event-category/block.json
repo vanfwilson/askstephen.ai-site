@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-category",
+  "title": "Event Category",
+  "category": "eventin-blocks",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "0px 2px 20px 0px",
+            "padding": "20px 20px 20px 20px",
+            "width": "100%",
+            "position": "relative",
+            "zIndex": 0,
+            "left": "0px",
+            "right": "auto",
+            "top": "0px",
+            "bottom": "auto",
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px"
+          },
+          ".eventin-block-container:hover": {},
+          ".etn-event-category a": {
+            "padding": "5px 5px 5px 5px",
+            "color": "#4c21a3",
+            "fontSize": "1.125rem",
+            "borderColor": "#4c21a3",
+            "borderStyle": "solid",
+            "borderWidth": "1px",
+            "borderRadius": "4px 4px 4px 4px"
+          }
+        },
+        "Tablet": {
+          ".etn-tab-content": {}
+        },
+        "Mobile": {
+          ".etn-tab-content": {}
+        }
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

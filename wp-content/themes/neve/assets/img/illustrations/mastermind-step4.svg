@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Step 4: Implement with Metrics - person working with dashboard, sleeves rolled up -->
+  <defs>
+    <linearGradient id="goldGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b8860b"/>
+      <stop offset="100%" style="stop-color:#daa520"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="100" cy="100" r="90" fill="#f9f5eb" opacity="0.5"/>
+
+  <!-- Dashboard/Screen -->
+  <rect x="70" y="30" width="110" height="75" rx="6" fill="#1f2937" stroke="url(#goldGrad4)" stroke-width="2"/>
+
+  <!-- Dashboard content -->
+  <!-- Bar chart -->
+  <rect x="80" y="75" width="12" height="20" rx="2" fill="#4ade80"/>
+  <rect x="95" y="65" width="12" height="30" rx="2" fill="#4ade80"/>
+  <rect x="110" y="55" width="12" height="40" rx="2" fill="url(#goldGrad4)"/>
+  <rect x="125" y="60" width="12" height="35" rx="2" fill="#4ade80"/>
+
+  <!-- Line graph -->
+  <polyline points="145,85 155,70 165,75 170,50" stroke="url(#goldGrad4)" stroke-width="3" fill="none"/>
+  <circle cx="170" cy="50" r="4" fill="url(#goldGrad4)"/>
+
+  <!-- KPI number -->
+  <text x="85" y="48" font-family="Arial" font-size="12" font-weight="bold" fill="#4ade80">+42%</text>
+
+  <!-- Person at desk (casual, sleeves rolled) -->
+  <circle cx="55" cy="115" r="20" fill="#D2691E"/>
+
+  <!-- Green work shirt -->
+  <path d="M25 145 Q55 125 85 145 L90 190 L20 190 Z" fill="#065f46"/>
+
+  <!-- Rolled up sleeves -->
+  <ellipse cx="28" cy="155" rx="8" ry="5" fill="#047857"/>
+  <ellipse cx="82" cy="155" rx="8" ry="5" fill="#047857"/>
+
+  <!-- Arms reaching to keyboard -->
+  <path d="M35 160 Q50 170 70 165" stroke="#D2691E" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M75 160 Q90 150 100 140" stroke="#D2691E" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- Coffee mug -->
+  <rect x="15" y="165" width="15" height="18" rx="2" fill="#78350f"/>
+  <ellipse cx="22" cy="165" rx="7" ry="3" fill="#92400e"/>
+  <path d="M30 170 Q38 172 30 180" stroke="#78350f" stroke-width="3" fill="none"/>
+
+  <!-- Gear/cog for implementation -->
+  <g transform="translate(165, 130)">
+    <circle cx="0" cy="0" r="15" stroke="url(#goldGrad4)" stroke-width="3" fill="none"/>
+    <circle cx="0" cy="0" r="6" fill="url(#goldGrad4)"/>
+    <rect x="-3" y="-22" width="6" height="10" rx="1" fill="url(#goldGrad4)"/>
+    <rect x="-3" y="12" width="6" height="10" rx="1" fill="url(#goldGrad4)"/>
+    <rect x="-22" y="-3" width="10" height="6" rx="1" fill="url(#goldGrad4)"/>
+    <rect x="12" y="-3" width="10" height="6" rx="1" fill="url(#goldGrad4)"/>
+  </g>
+</svg>

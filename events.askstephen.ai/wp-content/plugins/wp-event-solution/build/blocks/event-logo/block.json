@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-logo",
+  "title": "Event Logo",
+  "category": "eventin-blocks",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "0px 0px 0px 0px",
+            "padding": "0px 0px 0px 0px",
+            "width": "100%",
+            "position": "relative",
+            "zIndex": 0,
+            "left": "0px",
+            "right": "auto",
+            "top": "0px",
+            "bottom": "auto",
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px",
+            "boxShadow": "none"
+          },
+          ".eventin-block-container:hover": {},
+          ".etn-event-logo-img": {
+            "width": "80px",
+            "height": "80px"
+          }
+        },
+        "Tablet": {
+          ".etn-event-content-body": {}
+        },
+        "Mobile": {
+          ".etn-event-content-body": {}
+        }
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

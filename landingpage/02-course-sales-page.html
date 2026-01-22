@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pick One Strategy Course - Transform Your Business in 90 Days</title>
+  <meta name="description" content="The complete Pick One Strategy course. Learn the 4 proven strategies and implement them with your team for lasting transformation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243352;
+      --navy-dark: #0f1829;
+      --gold: #c9a227;
+      --gold-light: #e8c547;
+      --gold-dark: #a68619;
+      --amber: #d4770a;
+      --cream: #faf8f3;
+      --warm-gray: #f5f3ef;
+      --white: #ffffff;
+      --text-dark: #2d3748;
+      --text-muted: #5a6578;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans Pro', -apple-system, sans-serif;
+      line-height: 1.7;
+      color: var(--text-dark);
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .text-center { text-align: center; }
+    .eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .headline {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 18px 36px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn--primary {
+      color: var(--navy-dark);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+      box-shadow: 0 4px 20px rgba(201, 162, 39, 0.4);
+    }
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 162, 39, 0.5);
+    }
+    .btn--secondary { color: var(--white); background: var(--navy); }
+    .btn--secondary:hover { background: var(--navy-light); }
+    .btn--outline { color: var(--navy); background: transparent; border: 2px solid var(--navy); }
+    .btn--outline:hover { background: var(--navy); color: var(--white); }
+    .btn--large { padding: 22px 48px; font-size: 1.1rem; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy), var(--navy-light));
+      padding: 100px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 60%; height: 100%;
+      background: radial-gradient(ellipse at right, rgba(201, 162, 39, 0.1), transparent 60%);
+    }
+    .hero__content { position: relative; z-index: 2; max-width: 800px; }
+    .hero__eyebrow { color: var(--gold-light); }
+    .hero__headline {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero__headline span { color: var(--gold-light); }
+    .hero__subheadline {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+    .hero__features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .hero__feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+    }
+    .hero__feature-icon { color: var(--gold); }
+
+    /* Who Is This For */
+    .who { background: var(--cream); }
+    .who__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .who__card {
+      background: var(--white);
+      padding: 28px;
+      border-radius: 12px;
+      border-left: 4px solid var(--gold);
+    }
+    .who__card-title {
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .who__card-desc { color: var(--text-muted); }
+
+    /* What You Get */
+    .modules { background: var(--white); }
+    .modules__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .module {
+      background: var(--cream);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .module__header {
+      background: var(--navy);
+      padding: 20px 24px;
+      color: var(--white);
+    }
+    .module__number {
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .module__title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .module__content { padding: 24px; }
+    .module__desc {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .module__list { list-style: none; }
+    .module__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+    .module__list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Bonuses */
+    .bonuses { background: var(--navy); }
+    .bonuses__eyebrow { color: var(--gold-light); }
+    .bonuses__headline { color: var(--white); }
+    .bonuses__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .bonus {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .bonus__icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .bonus__title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .bonus__desc {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    .bonus__value { color: var(--gold-light); font-weight: 600; }
+
+    /* Pricing */
+    .pricing { background: var(--cream); }
+    .pricing__box {
+      max-width: 600px;
+      margin: 48px auto 0;
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+    .pricing__header {
+      background: linear-gradient(135deg, var(--gold), var(--amber));
+      padding: 32px;
+      text-align: center;
+    }
+    .pricing__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .pricing__subtitle { color: var(--navy); opacity: 0.8; }
+    .pricing__content { padding: 40px 32px; }
+    .pricing__price-row {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .pricing__old-price {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .pricing__price {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .pricing__per { color: var(--text-muted); font-size: 0.95rem; }
+    .pricing__note {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .pricing__includes { margin-bottom: 28px; }
+    .pricing__include {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .pricing__include:last-child { border-bottom: none; }
+    .pricing__include-check {
+      width: 24px; height: 24px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .pricing__guarantee {
+      background: var(--cream);
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .pricing__guarantee-icon { font-size: 2rem; }
+    .pricing__guarantee-text { font-size: 0.9rem; color: var(--text-muted); }
+    .pricing__guarantee-text strong { color: var(--navy); }
+
+    /* Alternative */
+    .alternative { background: var(--warm-gray); }
+    .alternative__box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    }
+    .alternative__headline {
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .alternative__text {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .alternative__features {
+      text-align: left;
+      max-width: 500px;
+      margin: 24px auto;
+    }
+    .alternative__feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      color: var(--text-dark);
+    }
+    .alternative__feature-icon { color: var(--gold); flex-shrink: 0; }
+    .alternative__price { margin: 28px 0 20px; }
+    .alternative__price-old {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .alternative__price-new {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* FAQ */
+    .faq { background: var(--white); }
+    .faq__list { max-width: 750px; margin: 48px auto 0; }
+    .faq__item {
+      border-bottom: 1px solid #eee;
+      padding: 24px 0;
+    }
+    .faq__question {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .faq__answer { color: var(--text-muted); line-height: 1.8; }
+
+    /* Final CTA */
+    .final {
+      background: linear-gradient(135deg, var(--gold), var(--amber));
+      padding: 80px 24px;
+    }
+    .final__headline {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .final__text {
+      color: var(--navy);
+      opacity: 0.9;
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--navy-dark);
+      padding: 40px 24px;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+    .footer a { color: var(--gold-light); text-decoration: none; }
+    .footer__links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .footer__links a { color: rgba(255,255,255,0.6); }
+    .footer__links a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__content">
+      <p class="eyebrow hero__eyebrow">The Complete Pick One Strategy Course</p>
+      <h1 class="hero__headline">Transform Your Business <span>in 90 Days</span></h1>
+      <p class="hero__subheadline">The step-by-step course to discover, implement, and master the ONE strategy that will bring clarity, confidence, and profit to your business.</p>
+      
+      <div class="hero__features">
+        <div class="hero__feature">
+          <span class="hero__feature-icon">✓</span>
+          <span>5 Training Modules</span>
+        </div>
+        <div class="hero__feature">
+          <span class="hero__feature-icon">✓</span>
+          <span>Team Implementation</span>
+        </div>
+        <div class="hero__feature">
+          <span class="hero__feature-icon">✓</span>
+          <span>90-Day Action Plan</span>
+        </div>
+        <div class="hero__feature">
+          <span class="hero__feature-icon">✓</span>
+          <span>Live Q&A Sessions</span>
+        </div>
+      </div>
+      
+      <a href="#enroll" class="btn btn--primary btn--large">Enroll Your Team Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section class="who section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">Is This For You?</p>
+    <h2 class="headline" style="color: var(--navy);">This Course Is For Business Owners Who...</h2>
+    
+    <div class="who__grid">
+      <div class="who__card">
+        <p class="who__card-title">Want to Stop the Chaos</p>
+        <p class="who__card-desc">You're tired of putting out fires and ready for a clear direction everyone can follow.</p>
+      </div>
+      <div class="who__card">
+        <p class="who__card-title">Are Ready to Scale</p>
+        <p class="who__card-desc">Your business has grown, but the systems haven't kept up. You need clarity to scale without losing your mind.</p>
+      </div>
+      <div class="who__card">
+        <p class="who__card-title">Want Their Team Aligned</p>
+        <p class="who__card-desc">You want everyone rowing in the same direction with a strategy they understand and believe in.</p>
+      </div>
+      <div class="who__card">
+        <p class="who__card-title">Value Implementation</p>
+        <p class="who__card-desc">You don't just want information—you want a system to actually implement and see results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="modules section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">Course Curriculum</p>
+    <h2 class="headline" style="color: var(--navy);">What You'll Learn &amp; Implement</h2>
+    
+    <div class="modules__grid">
+      <div class="module">
+        <div class="module__header">
+          <p class="module__number">Module 1</p>
+          <p class="module__title">The Foundation</p>
+        </div>
+        <div class="module__content">
+          <p class="module__desc">Understand why confusion is your biggest competitor and how one focused strategy changes everything.</p>
+          <ul class="module__list">
+            <li>The real problem behind the symptoms</li>
+            <li>Why most strategies fail</li>
+            <li>The Pick One Framework</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="module">
+        <div class="module__header">
+          <p class="module__number">Module 2</p>
+          <p class="module__title">The 4 Strategies</p>
+        </div>
+        <div class="module__content">
+          <p class="module__desc">Deep dive into each of the 4 proven strategies and discover which one fits your business best.</p>
+          <ul class="module__list">
+            <li>Strategy breakdown &amp; analysis</li>
+            <li>Case studies for each strategy</li>
+            <li>Assessment tools</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="module">
+        <div class="module__header">
+          <p class="module__number">Module 3</p>
+          <p class="module__title">The Decision</p>
+        </div>
+        <div class="module__content">
+          <p class="module__desc">Use our proven method to pick your ONE strategy with confidence—no second-guessing.</p>
+          <ul class="module__list">
+            <li>Decision-making framework</li>
+            <li>Team alignment process</li>
+            <li>Strategy validation</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="module">
+        <div class="module__header">
+          <p class="module__number">Module 4</p>
+          <p class="module__title">Implementation</p>
+        </div>
+        <div class="module__content">
+          <p class="module__desc">Turn your strategy into action with metrics, systems, and training for excellence.</p>
+          <ul class="module__list">
+            <li>90-day implementation plan</li>
+            <li>KPI setup &amp; tracking</li>
+            <li>Team training templates</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="module">
+        <div class="module__header">
+          <p class="module__number">Module 5</p>
+          <p class="module__title">Mastery</p>
+        </div>
+        <div class="module__content">
+          <p class="module__desc">Embed your strategy into the DNA of your business for lasting transformation.</p>
+          <ul class="module__list">
+            <li>Culture integration</li>
+            <li>Continuous improvement</li>
+            <li>Scaling your success</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="module">
+        <div class="module__header">
+          <p class="module__number">Bonus</p>
+          <p class="module__title">Live Q&amp;A Sessions</p>
+        </div>
+        <div class="module__content">
+          <p class="module__desc">Get your specific questions answered by Stephen in live group sessions.</p>
+          <ul class="module__list">
+            <li>Bi-weekly live calls</li>
+            <li>Direct access to Stephen</li>
+            <li>Peer learning &amp; support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUSES -->
+<section class="bonuses section">
+  <div class="container text-center">
+    <p class="eyebrow bonuses__eyebrow">Exclusive Bonuses</p>
+    <h2 class="headline bonuses__headline">When You Enroll Today, You Also Get...</h2>
+    
+    <div class="bonuses__grid">
+      <div class="bonus">
+        <div class="bonus__icon">📚</div>
+        <p class="bonus__title">Pick One Book &amp; Workbook</p>
+        <p class="bonus__desc">The complete book and interactive workbook included for every team member.</p>
+        <p class="bonus__value">$120 value - Included</p>
+      </div>
+      <div class="bonus">
+        <div class="bonus__icon">🗺️</div>
+        <p class="bonus__title">Strategy Map Templates</p>
+        <p class="bonus__desc">Professional templates to map your strategy and share with your team.</p>
+        <p class="bonus__value">$197 value - Included</p>
+      </div>
+      <div class="bonus">
+        <div class="bonus__icon">📊</div>
+        <p class="bonus__title">KPI Dashboard</p>
+        <p class="bonus__desc">Pre-built dashboard to track the metrics that matter for your strategy.</p>
+        <p class="bonus__value">$297 value - Included</p>
+      </div>
+      <div class="bonus">
+        <div class="bonus__icon">👥</div>
+        <p class="bonus__title">Team Training Videos</p>
+        <p class="bonus__desc">Videos you can share with your team to get everyone aligned quickly.</p>
+        <p class="bonus__value">$497 value - Included</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="enroll" class="pricing section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">Choose Your Path</p>
+    <h2 class="headline" style="color: var(--navy);">Investment Options for Serious Business Owners</h2>
+    <p style="max-width: 700px; margin: 0 auto 48px; color: var(--text-muted); font-size: 1.1rem;">We believe in transparency. Choose the option that fits where you are in your business journey.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto;">
+
+      <!-- OPTION 1: Complete Package (Most Popular) -->
+      <div class="pricing__box" style="border: 3px solid var(--gold); position: relative;">
+        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy-dark); padding: 6px 20px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">Most Popular</div>
+        <div class="pricing__header">
+          <p class="pricing__title">Complete Pick One Package</p>
+          <p class="pricing__subtitle">Everything you need to transform</p>
+        </div>
+        <div class="pricing__content">
+          <div class="pricing__price-row">
+            <span class="pricing__old-price">,289</span>
+            <span class="pricing__price">,250</span>
+          </div>
+          <p class="pricing__per">One-time payment • Lifetime access</p>
+
+          <div class="pricing__includes">
+            <div class="pricing__include"><span class="pricing__include-check">✓</span><span>Pick One Book & Workbook</span></div>
+            <div class="pricing__include"><span class="pricing__include-check">✓</span><span>Full 5-Module Course</span></div>
+            <div class="pricing__include"><span class="pricing__include-check">✓</span><span>Bi-Weekly Live Q&A</span></div>
+            <div class="pricing__include"><span class="pricing__include-check">✓</span><span>All Bonus Materials (,111 value)</span></div>
+            <div class="pricing__include"><span class="pricing__include-check">✓</span><span>90-Day Implementation Support</span></div>
+          </div>
+
+          <a href="/checkout/?add-to-cart=1988" class="btn btn--primary" style="width: 100%;">Get Complete Package - ,250</a>
+          <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">Save  - Book & Workbook FREE</p>
+        </div>
+      </div>
+
+      <!-- OPTION 2: Course + Strategy Session -->
+      <div class="pricing__box">
+        <div class="pricing__header" style="background: var(--navy);">
+          <p class="pricing__title" style="color: var(--white);">Course + Strategy Session</p>
+          <p class="pricing__subtitle" style="color: rgba(255,255,255,0.8);">For hands-on implementation</p>
+        </div>
+        <div class="pricing__content">
+          <div class="pricing__price-row">
+            <span class="pricing__old-price">,600</span>
+            <span class="pricing__price">,450</span>
+          </div>
+          <p class="pricing__per">One-time payment • Lifetime access</p>
+
+          <div class="pricing__includes">
+            <div class="pricing__include"><span class="pricing__include-check">✓</span><span>Everything in Complete Package</span></div>
+            <div class="pricing__include"><span class="pricing__include-check" style="color: var(--gold);">★</span><span><strong>1-Hour Private Strategy Session</strong></span></div>
+            <div class="pricing__include"><span class="pricing__include-check">✓</span><span>With Stephen or Dr. Van Wilson</span></div>
+            <div class="pricing__include"><span class="pricing__include-check">✓</span><span>Personalized Implementation Plan</span></div>
+          </div>
+
+          <a href="/checkout/?add-to-cart=1989" class="btn btn--secondary" style="width: 100%;">Get Course + Session - ,450</a>
+          <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">Save 0 on consulting</p>
+        </div>
+      </div>
+
+      <!-- OPTION 3: Ultimate Transformation -->
+      <div class="pricing__box" style="background: linear-gradient(135deg, var(--navy-dark), var(--navy));">
+        <div class="pricing__header" style="background: rgba(201, 162, 39, 0.15);">
+          <p class="pricing__title" style="color: var(--gold-light);">Ultimate Business Transformation</p>
+          <p class="pricing__subtitle" style="color: rgba(255,255,255,0.8);">For 7-8 figure business owners</p>
+        </div>
+        <div class="pricing__content" style="color: var(--white);">
+          <div class="pricing__price-row">
+            <span class="pricing__old-price" style="color: rgba(255,255,255,0.6);">,400</span>
+            <span class="pricing__price" style="color: var(--gold-light);">,100</span>
+          </div>
+          <p class="pricing__per" style="color: rgba(255,255,255,0.7);">One-time + monthly membership</p>
+
+          <div class="pricing__includes" style="border-color: rgba(255,255,255,0.2);">
+            <div class="pricing__include" style="border-color: rgba(255,255,255,0.1);"><span class="pricing__include-check" style="color: var(--gold);">✓</span><span>Everything in Course + Session</span></div>
+            <div class="pricing__include" style="border-color: rgba(255,255,255,0.1);"><span class="pricing__include-check" style="color: var(--gold);">★</span><span><strong>First Month Mastermind Access</strong></span></div>
+            <div class="pricing__include" style="border-color: rgba(255,255,255,0.1);"><span class="pricing__include-check" style="color: var(--gold);">✓</span><span>Weekly Group Coaching Calls</span></div>
+            <div class="pricing__include" style="border-color: rgba(255,255,255,0.1);"><span class="pricing__include-check" style="color: var(--gold);">✓</span><span>Private Community Access</span></div>
+          </div>
+
+          <a href="/checkout/?add-to-cart=1990" class="btn btn--primary" style="width: 100%;">Get Ultimate Package - ,100</a>
+          <p style="margin-top: 12px; font-size: 0.85rem; color: rgba(255,255,255,0.7);">Save 0 - Best value for results</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pricing__guarantee" style="max-width: 500px; margin: 48px auto 0; padding: 24px; background: var(--white); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+      <span class="pricing__guarantee-icon">🛡️</span>
+      <p class="pricing__guarantee-text"><strong>30-Day Money-Back Guarantee</strong><br>Complete the first module. If you don't see the value, get a full refund. No questions asked.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALTERNATIVE -->
+<section class="alternative section">
+  <div class="container">
+    <div class="alternative__box">
+      <p class="eyebrow" style="color: var(--gold-dark);">Want to Explore First?</p>
+      <h2 class="alternative__headline">Start with the Book</h2>
+
+      <p class="alternative__text">If you want to understand the Pick One Strategy before committing to the full course, start with the book and workbook. Many of our course students started here.</p>
+
+      <div class="alternative__features">
+        <div class="alternative__feature">
+          <span class="alternative__feature-icon">✓</span>
+          <span>Complete Pick One Strategy methodology</span>
+        </div>
+        <div class="alternative__feature">
+          <span class="alternative__feature-icon">✓</span>
+          <span>Interactive workbook with exercises</span>
+        </div>
+        <div class="alternative__feature">
+          <span class="alternative__feature-icon">✓</span>
+          <span>Self-paced discovery of your strategy</span>
+        </div>
+        <div class="alternative__feature">
+          <span class="alternative__feature-icon">✓</span>
+          <span>Upgrade credit if you join the course later</span>
+        </div>
+      </div>
+
+      <div class="alternative__price">
+        <span class="alternative__price-new">Book + Workbook: </span>
+      </div>
+
+      <a href="/checkout/?add-to-cart=1790" class="btn btn--outline">Get the Book & Workbook</a>
+      <p style="margin-top: 16px; font-size: 0.9rem; color: var(--text-muted);">Or <a href="/checkout/?add-to-cart=1789" style="color: var(--navy);">just the book for </a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq section">
+  <div class="container text-center">
+    <p class="eyebrow" style="color: var(--gold-dark);">Questions?</p>
+    <h2 class="headline" style="color: var(--navy);">Frequently Asked Questions</h2>
+    
+    <div class="faq__list" style="text-align: left;">
+      <div class="faq__item">
+        <p class="faq__question">How long do I have access to the course?</p>
+        <p class="faq__answer">Lifetime access. Once you enroll, you can access the materials forever, including any updates we make.</p>
+      </div>
+      <div class="faq__item">
+        <p class="faq__question">Is this for my whole team or just me?</p>
+        <p class="faq__answer">Your entire company/team. One enrollment covers everyone. We want your whole team aligned on the same strategy.</p>
+      </div>
+      <div class="faq__item">
+        <p class="faq__question">What if I've already bought the book?</p>
+        <p class="faq__answer">Great! The course goes much deeper than the book, with implementation tools, live sessions, and team training materials you won't find anywhere else.</p>
+      </div>
+      <div class="faq__item">
+        <p class="faq__question">How much time does this take?</p>
+        <p class="faq__answer">Plan for 2-3 hours per week over 90 days. The modules are designed for busy business owners who need to implement while they learn.</p>
+      </div>
+      <div class="faq__item">
+        <p class="faq__question">What if it doesn't work for my business?</p>
+        <p class="faq__answer">We have a 30-day money-back guarantee. Complete the first module—if you don't see the value, we'll refund you in full.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final text-center">
+  <div class="container">
+    <h2 class="headline final__headline">More Peace. More Profit.</h2>
+    <p class="final__text">All you need to do is Ask Stephen and Pick One Strategy.</p>
+    <a href="#enroll" class="btn btn--secondary btn--large">Choose Your Package</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__links">
+    <a href="https://askstephen.ai/shop">Book &amp; Workbook</a>
+    <a href="https://askstephen.ai/consulting">Intro Consulting</a>
+    <a href="https://askstephen.ai/mastermind/">Mastermind</a>
+    <a href="https://askstephen.ai/privacy/">Privacy Policy</a>
+    <a href="https://askstephen.ai/terms/">Terms</a>
+    <a href="https://askstephen.ai/newsletter/">Newsletter</a>
+  </div>
+  <p>&copy; 2026 Pick One Strategy. All rights reserved. | <a href="/cdn-cgi/l/email-protection#a2d1d7d2d2cdd0d6e2c3d1c9d1d6c7d2cac7cc8cc3cb"><span class="

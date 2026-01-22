@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Growth Chart Illustration -->
+  <defs>
+    <linearGradient id="goldGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b8860b"/>
+      <stop offset="100%" style="stop-color:#daa520"/>
+    </linearGradient>
+    <linearGradient id="chartGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#b8860b;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#b8860b;stop-opacity:0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Chart background -->
+  <rect x="50" y="50" width="300" height="200" rx="10" fill="#1f2937" opacity="0.1"/>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="80" x2="80" y2="220" stroke="#9ca3af" stroke-width="1" opacity="0.3"/>
+  <line x1="80" y1="220" x2="320" y2="220" stroke="#9ca3af" stroke-width="1" opacity="0.3"/>
+  <line x1="80" y1="180" x2="320" y2="180" stroke="#9ca3af" stroke-width="1" opacity="0.2" stroke-dasharray="5,5"/>
+  <line x1="80" y1="140" x2="320" y2="140" stroke="#9ca3af" stroke-width="1" opacity="0.2" stroke-dasharray="5,5"/>
+  <line x1="80" y1="100" x2="320" y2="100" stroke="#9ca3af" stroke-width="1" opacity="0.2" stroke-dasharray="5,5"/>
+
+  <!-- Growth area fill -->
+  <path d="M80 220 L120 190 L160 175 L200 140 L240 110 L280 85 L320 60 L320 220 Z" fill="url(#chartGrad)"/>
+
+  <!-- Growth line -->
+  <path d="M80 220 L120 190 L160 175 L200 140 L240 110 L280 85 L320 60" stroke="url(#goldGrad3)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Data points -->
+  <circle cx="80" cy="220" r="6" fill="url(#goldGrad3)"/>
+  <circle cx="120" cy="190" r="6" fill="url(#goldGrad3)"/>
+  <circle cx="160" cy="175" r="6" fill="url(#goldGrad3)"/>
+  <circle cx="200" cy="140" r="8" fill="url(#goldGrad3)"/>
+  <circle cx="240" cy="110" r="6" fill="url(#goldGrad3)"/>
+  <circle cx="280" cy="85" r="6" fill="url(#goldGrad3)"/>
+  <circle cx="320" cy="60" r="8" fill="url(#goldGrad3)"/>
+
+  <!-- Arrow indicator -->
+  <path d="M300 70 L320 50 L340 70" stroke="url(#goldGrad3)" stroke-width="3" fill="none"/>
+  <line x1="320" y1="50" x2="320" y2="90" stroke="url(#goldGrad3)" stroke-width="3"/>
+</svg>

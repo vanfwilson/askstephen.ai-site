@@ -1,0 +1,1 @@
+<?php return array('dependencies' => array('wc-ppcp-blocks-vendors', 'wc-blocks-checkout', 'wc-blocks-data-store', 'wc-ppcp-block-data', 'wc-ppcp-utils', 'wc-settings', 'wp-api-fetch', 'wp-data', 'wp-element', 'wp-polyfill', 'wp-url'), 'version' => 'afe7e9e536f20e6c700a');

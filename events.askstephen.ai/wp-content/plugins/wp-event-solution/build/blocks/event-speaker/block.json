@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-speaker",
+  "title": "Event Speaker",
+  "category": "eventin-blocks",
+  "icon": "EnvironmentOutlined",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "styleVariant": {
+      "type": "string",
+      "default": "style-1"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          ".eventin-block-container": {
+            "margin": "0px 0px 0px 0px",
+            "padding": "0px 0px 0px 0px",
+            "width": "100%",
+            "position": "relative",
+            "zIndex": 0,
+            "left": "0px",
+            "right": "auto",
+            "top": "0px",
+            "bottom": "auto",
+            "borderColor": "transparent",
+            "borderStyle": "solid",
+            "borderWidth": "0px",
+            "borderRadius": "0px 0px 0px 0px",
+            "boxShadow": "none"
+          },
+          ".eventin-block-container:hover": {},
+          ".etn-se-speaker-item .etn-speaker-name": {
+            "fontSize": "16px",
+            "fontWeight": "700",
+            "textTransform": "capitalize",
+            "margin": "0px 0px 8px 0px",
+            "padding": "0px 0px 0px 0px",
+            "lineHeight": 1.5
+          },
+          ".etn-se-speaker-item .etn-speaker-name a": {
+            "color": "#010b14"
+          },
+          ".etn-speaker-designation p.eventin-speaker-designation": {
+            "fontSize": "14px",
+            "color": "#585858",
+            "margin": "0px 0px 0px 0px",
+            "padding": "0px 0px 0px 0px",
+            "lineHeight": 1
+          },
+          ".etn-social a .etn-icon": {
+            "fontSize": "12px"
+          }
+        },
+        "Tablet": {},
+        "Mobile": {}
+      }
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}

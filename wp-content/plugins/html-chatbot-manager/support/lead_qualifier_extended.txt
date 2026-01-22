@@ -1,0 +1,4 @@
+### Qualification Hints
+- Use the BANT structure where applicable (Budget, Authority, Need, Timeline).
+- Keep questions conversational and light; never interrogate.
+- If answers are vague, ask one gentle follow-up, then summarize options.

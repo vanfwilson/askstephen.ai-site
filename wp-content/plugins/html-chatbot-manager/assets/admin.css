@@ -1,0 +1,13 @@
+    .wp-list-table .column-actions form { display:inline-block; margin-right:6px; }
+    	.sub-label{
+    		font-size: 12px;
+    		color: #666;
+    	}
+    	/* Status badges */
+.hcm-badge{
+  display:inline-block; padding:3px 8px; border-radius:999px; font-size:12px; line-height:1; font-weight:600; color:#fff;
+}
+.hcm-badge--gray{ background:#6b7280; }   /* Create Assistant */
+.hcm-badge--amber{ background:#d97706; }  /* Update Assistant */
+.hcm-badge--green{ background:#059669; }  /* Up to date */
+.hcm-subtle{ color:#666; font-size:12px; margin-left:6px; }

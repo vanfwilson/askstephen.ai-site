@@ -1,0 +1,134 @@
+#chatics-widget {
+    position: fixed;
+    bottom: 20px;
+    z-index: 99999;
+}
+
+.chatics-position-right {
+    right: 20px;
+}
+
+.chatics-position-left {
+    left: 20px;
+}
+
+#chatics-toggle {
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #00b894;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+#chatics-toggle img {
+    width: 28px;
+    height: 28px;
+}
+#chatics-toggle svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
+}
+
+#chatics-frame-wrapper {
+    position: fixed;
+    bottom: 90px;
+    width: 400px;
+    height: 600px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    display: none;
+    flex-direction: column;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+}
+
+#chatics-frame-wrapper.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.chatics-position-right #chatics-frame-wrapper {
+    right: 20px;
+}
+
+.chatics-position-left #chatics-frame-wrapper {
+    left: 20px;
+}
+
+#chatics-frame-wrapper iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* Optional Chat Header - only if you want to inject your own UI */
+#chatics-header {
+    background-color: #00b894;
+    color: #fff;
+    padding: 12px 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatics-header-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+#chatics-fullscreen,
+#chatics-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px; 
+}
+
+ 
+
+/* Full-screen mode styles */
+#chatics-frame-wrapper.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: calc(100vw ) !important;
+    height: calc(100vh) !important;
+    border-radius: 16px !important;
+    z-index: 999999 !important;
+    transform-origin: center center !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#chatics-frame-wrapper.fullscreen iframe {
+    height: calc(100vh) !important;
+}
+
+/* Iframe height adjustment when header is disabled */
+#chatics-frame-wrapper:not(:has(#chatics-header)) iframe,
+#chatics-frame-wrapper:not([data-has-header="true"]) iframe {
+    height: 100% !important;
+}
+
+#chatics-frame-wrapper.fullscreen:not(:has(#chatics-header)) iframe,
+#chatics-frame-wrapper.fullscreen:not([data-has-header="true"]) iframe {
+    height: 100vh !important;
+}

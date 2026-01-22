@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eventin-pro/event-attendee",
+  "title": "Event Attendee",
+  "category": "eventin-blocks",
+  "icon": "groups",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "containerClassName": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "itemsPerRow": {
+      "type": "number",
+      "default": 3
+    },
+    "styles": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "supports": {
+    "customClassName": true
+  },
+  "editorScript": "file:./index.js"
+}
